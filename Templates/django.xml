@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scribes version="0.1">
+  <snippet>
+    <entry>
+      <trigger id="django">auto</trigger>
+      <description>Django AutoField</description>
+      <template>${fieldname} = models.AutoField()${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">bool</trigger>
+      <description>Django BooleanField</description>
+      <template>${fieldname} = models.BooleanField(${default=True})${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">char</trigger>
+      <description>Django CharField</description>
+      <template>${fieldname} = models.CharField(max_length=${length},${ blank=True})${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">comma</trigger>
+      <description>Django CommaSeparatedIntegerField</description>
+      <template>${fieldname} = models.CommaSeparatedIntegerField(max_length=${length},${ blank=True})${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">date</trigger>
+      <description>Django DateField</description>
+      <template>${fieldname} = models.DateField(${auto_now_add=True, auto_now=True},${ blank=True, null=True})${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">datetime</trigger>
+      <description>Django DateTimeField</description>
+      <template>${fieldname} = models.DateTimeField(${auto_now_add=True, auto_now=True},${ blank=True, null=True})${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">decimal</trigger>
+      <description>Django DecimalField</description>
+      <template>${fieldname} = models.DecimalField(max_digits=${digits}, decimal_places=${places})${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">email</trigger>
+      <description>Django EmailField</description>
+      <template>${fieldname} = models.EmailField(max_length=${75},${3: blank=True})${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">file</trigger>
+      <description>Django FileField</description>
+      <template>${fieldname} = models.FileField(upload_to="${path/for/upload}",${ max_length=100})${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">filepath</trigger>
+      <description>Django FilePathField</description>
+      <template>${fieldname} = models.FilePathField(path="${/abs/path/to/dir}",${ max_length=100},${ match="*.ext"},${ recursive=True},${ blank=True})${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">float</trigger>
+      <description>Django FloatField</description>
+      <template>${fieldname} = models.FloatField()${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">image</trigger>
+      <description>Django ImageField</description>
+      <template>${fieldname} = models.ImageField(upload_to="${path/for/upload}",${ height_field=height, width_field=width},${ max_length=100})${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">int</trigger>
+      <description>Django IntField</description>
+      <template>${fieldname} = models.IntegerField()${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">ip</trigger>
+      <description>Django IPAddressField</description>
+      <template>${fieldname} = models.IPAddressField()${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">nullbool</trigger>
+      <description>Django NullBooleanField</description>
+      <template>${fieldname} = models.NullBooleanField()${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">posint</trigger>
+      <description>Django PositiveIntegerField</description>
+      <template>${fieldname} = models.PositiveIntegerField()${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">possmallint</trigger>
+      <description>Django PositiveSmallIntegerField</description>
+      <template>${fieldname} = models.PositiveSmallIntegerField()${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">slug</trigger>
+      <description>Django SlugField</description>
+      <template>${fieldname} = models.SlugField(max_length=${50},${ blank=True})${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">slug</trigger>
+      <description>Django SlugField</description>
+      <template>${fieldname} = models.SlugField(max_length=${50},${ blank=True})${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">smallint</trigger>
+      <description>Django SmallIntegerField</description>
+      <template>${fieldname} = models.SmallIntegerField()${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">text</trigger>
+      <description>Django TextField</description>
+      <template>${fieldname} = models.TextField(${blank=True})${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">time</trigger>
+      <description>Django TimeField</description>
+      <template>${fieldname} = models.TimeField(${auto_now_add=True, auto_now=True},${ blank=True, null=True})${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">url</trigger>
+      <description>Django URLField</description>
+      <template>${fieldname} = models.URLField(${verify_exists=False},${ max_length=200},${ blank=True})${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">xml</trigger>
+      <description>Django XMLField</description>
+      <template>${fieldname} = models.XMLField(schema_path=${None},${ blank=True})${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">fk</trigger>
+      <description>Django ForeignKey</description>
+      <template>${fieldname} = models.ForeignKey("${App.Model}",${ related_name=''},${ limit_choices_to=},${ to_field=''})${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">m2m</trigger>
+      <description>Django ManyToManyField</description>
+      <template>${fieldname} = models.ManyToManyField("${OtherModel}",${ related_name=''},${ limit_choices_to=},${ symmetrical=False},${ through=''},${ db_table=''})${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">o2o</trigger>
+      <description>Django OneToOneField</description>
+      <template>${fieldname} = models.OneToOneField("${OtherModel}",${ parent_link=True},${ related_name=''},${ limit_choices_to=},${ to_field=''})${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">form</trigger>
+      <description>Django Form</description>
+      <template>class ${formname}(forms.Form):
+    """
+    ${docstring}
+    """
+    ${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="django">model</trigger>
+      <description>Django Model</description>
+      <template>class ${modelname}(models.Model):
+    """
+    ${docstring}
+    """
+    ${cursor}
+    
+    class Meta:
+        ${meta}
+    
+    def __unicode__(self):
+        return u"${unicode}"
+    
+    @models.permalink
+    def get_absolute_url(self):
+        return ('${view_or_url_name}')
+    </template>
+    </entry>
+    <entry>
+      <trigger id="django">modeladmin</trigger>
+      <description>Django ModelAdmin</description>
+      <template>class ${modelname}Admin(admin.ModelAdmin):
+    ${cursor}
+    
+    admin.site.register(${modelname}, ${modelname}Admin)
+    </template>
+    </entry>
+    <entry>
+      <trigger id="django">r2r</trigger>
+      <description>Django render_to_response</description>
+      <template>
+    return render_to_response('${template.html}', {
+            ${cursor}
+        },${ context_instance=RequestContext(request)}
+	)
+    </template>
+    </entry>
+  </snippet>
+</scribes>

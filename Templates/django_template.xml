@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scribes version="0.1">
+  <snippet>
+    <entry>
+      <trigger id="html">var</trigger>
+      <description>Django Template Variable</description>
+      <template>{{ ${varname} }}${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">autoescape</trigger>
+      <description>Django Template Autoescape</description>
+      <template>{% autoscape ${off} %}
+${cursor}
+{% endautoescape %}</template>
+    </entry>
+    <entry>
+      <trigger id="html">block</trigger>
+      <description>Django Template Block</description>
+      <template>{% block ${name} %}
+${cursor}
+{% endblock %}</template>
+    </entry>
+    <entry>
+      <trigger id="html">#</trigger>
+      <description>Django Template Line Comment</description>
+      <template>{# ${comment} #}${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">comment</trigger>
+      <description>Django Template Comment</description>
+      <template>{% comment %}
+${cursor}
+{% endcomment %}</template>
+    </entry>
+    <entry>
+      <trigger id="html">cycle</trigger>
+      <description>Django Template Cycle</description>
+      <template>{% cycle ${val1} ${val2} ${as name} %}${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">debug</trigger>
+      <description>Django Template Debug</description>
+      <template>{% debug %}${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">extends</trigger>
+      <description>Django Template Extends</description>
+      <template>{% extends "${base.html}" %}${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">filter</trigger>
+      <description>Django Template Filter</description>
+      <template>{% filter ${filter} %}
+${cursor}
+{% endfilter %}</template>
+    </entry>
+    <entry>
+      <trigger id="html">firstof</trigger>
+      <description>Django Template Firstof</description>
+      <template>{% firstof ${val} %}${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">for</trigger>
+      <description>Django Template For</description>
+      <template>{% for ${a} in ${b} %}
+${cursor}
+{% endfor %}</template>
+    </entry>
+    <entry>
+      <trigger id="html">empty</trigger>
+      <description>Django Template Empty</description>
+      <template>{% empty %}
+${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">if</trigger>
+      <description>Django Template If</description>
+      <template>{% if ${val} %}
+${cursor}
+{% endif %}</template>
+    </entry>
+    <entry>
+      <trigger id="html">else</trigger>
+      <description>Django Template Else</description>
+      <template>{% else %}
+${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">ifchanged</trigger>
+      <description>Django Template Ifchanged</description>
+      <template>{% ifchanged %}${cursor}{% endifchanged %}</template>
+    </entry>
+    <entry>
+      <trigger id="html">ifequal</trigger>
+      <description>Django Template Ifequal</description>
+      <template>{% ifequal ${val1} ${val2} %}
+${cursor}
+{% endifequal %}</template>
+    </entry>
+    <entry>
+      <trigger id="html">ifnotequal</trigger>
+      <description>Django Template Ifnotequal</description>
+      <template>{% ifnotequal ${val1} ${val2} %}
+${cursor}
+{% endifnotequal %}</template>
+    </entry>
+    <entry>
+      <trigger id="html">include</trigger>
+      <description>Django Template Include</description>
+      <template>{% include "${val}" %}${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">load</trigger>
+      <description>Django Template Load</description>
+      <template>{% load "${val}" %}${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">now</trigger>
+      <description>Django Template Now</description>
+      <template>{% now "${jS F Y H:i}" %}${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">regroup</trigger>
+      <description>Django Template Regroup</description>
+      <template>{% regroup ${1} by ${2} as ${3} %}${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">spaceless</trigger>
+      <description>Django Template Spaceless</description>
+      <template>{% spaceless %}${cursor}{% endespaceless %}</template>
+    </entry>
+    <entry>
+      <trigger id="html">ssi</trigger>
+      <description>Django Template Ssi</description>
+      <template>{% ssi ${1} %}${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">trans</trigger>
+      <description>Django Template Trans</description>
+      <template>{% trans "${string}" %}${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">url</trigger>
+      <description>Django Template Url</description>
+      <template>{% url ${1} as ${2} %}${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">widthratio</trigger>
+      <description>Django Template Widthratio</description>
+      <template>{% widthratio ${this_value} ${max_value} ${100} %}${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">with</trigger>
+      <description>Django Template With</description>
+      <template>{% with ${1} as ${2} %}${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">add</trigger>
+      <description>Django Template Filter Add</description>
+      <template>add: "${1}"${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">center</trigger>
+      <description>Django Template Filter Center</description>
+      <template>center: "${1}"${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">cut</trigger>
+      <description>Django Template Filter Cut</description>
+      <template>cut: "${1}"${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">date</trigger>
+      <description>Django Template Filter Date</description>
+      <template>date: "${1}"${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">default</trigger>
+      <description>Django Template Filter Default</description>
+      <template>default: "${1}"${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">default_if_none</trigger>
+      <description>Django Template Filter Default if none</description>
+      <template>default_if_none: "${1}"${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">dictsort</trigger>
+      <description>Django Template Filter Dictsort</description>
+      <template>dictsort: "${1}"${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">dictsortrev</trigger>
+      <description>Django Template Filter Dictsortreversed</description>
+      <template>dictsortreversed: "${1}"${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">divisibleby</trigger>
+      <description>Django Template Filter Divisibleby</description>
+      <template>divisibleby: "${1}"${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">floatformat</trigger>
+      <description>Django Template Filter Floatformat</description>
+      <template>floatformat: "${1}"${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">getdigit</trigger>
+      <description>Django Template Filter Get_digit</description>
+      <template>get_digit: "${1}"${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">join</trigger>
+      <description>Django Template Filter Join</description>
+      <template>join: "${1}"${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">lengthis</trigger>
+      <description>Django Template Filter Length_is</description>
+      <template>length_is: "${1}"${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">pluralize</trigger>
+      <description>Django Template Filter Pluralize</description>
+      <template>pluralize: "${1}"${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">removetags</trigger>
+      <description>Django Template Filter Removetags</description>
+      <template>removetags: "${1}"${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">slice</trigger>
+      <description>Django Template Filter Slice</description>
+      <template>slice: "${1}"${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">stringformat</trigger>
+      <description>Django Template Filter Stringformat</description>
+      <template>stringformat: "${1}"${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">time</trigger>
+      <description>Django Template Filter Time</description>
+      <template>time: "${1}"${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">truncatewords</trigger>
+      <description>Django Template Filter Truncatewords</description>
+      <template>truncatewords: "${1}"${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">truncatewordshtml</trigger>
+      <description>Django Template Filter Truncatewords_html</description>
+      <template>truncatewords_html: "${1}"${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">urlizetrunc</trigger>
+      <description>Django Template Filter Urlizetrunc</description>
+      <template>urlizetrunc: "${1}"${cursor}</template>
+    </entry>
+    <entry>
+      <trigger id="html">wordwrap</trigger>
+      <description>Django Template Filter Wordwrap</description>
+      <template>wordwrap: "${1}"${cursor}</template>
+    </entry>
+  </snippet>
+</scribes>

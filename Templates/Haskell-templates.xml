@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scribes version="0.1">
+<snippet><entry><trigger id="haskell">\</trigger><description>\t -&gt; t (\)</description><template>\\${name} -&gt; ${name}</template></entry><entry><trigger id="haskell">func</trigger><description>Function Definition</description><template>${func_name} ${args} = ${cursor}</template></entry><entry><trigger id="haskell">mod</trigger><description>module</description><template>module ${Main} where
+	${cursor}</template></entry><entry><trigger id="haskell">vdef</trigger><description>Variable definition</description><template>${name} = ${value}</template></entry></snippet></scribes>

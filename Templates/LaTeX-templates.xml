@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scribes version="0.1">
+<snippet><entry><trigger id="latex">\</trigger><description>Generic Command</description><template>\${command}</template></entry><entry><trigger id="latex">author</trigger><description>Author Command</description><template>\author{${Author Name}}${cursor}</template></entry><entry><trigger id="latex">bib</trigger><description>Bibliography To Use</description><template>\bibliography{${bibliography file .bib to use}}
+${cursor}</template></entry><entry><trigger id="latex">bibstyl</trigger><description>Bibliography Style Format</description><template>\bibliographystyle{${example: apalike.bst, IEEEtran.bst}}
+${cursor}</template></entry><entry><trigger id="latex">chap</trigger><description>Chapter</description><template>\chapter{${Chapter Title}}${cursor}</template></entry><entry><trigger id="latex">chapwl</trigger><description>Chapter With Label</description><template>\chapter{${Chapter Title}} \label{c:${chapter_label}}
+${cursor}</template></entry><entry><trigger id="latex">cite</trigger><description>Cite a Reference from an included Bibtex file</description><template>\cite{${citation_name}}${cursor}</template></entry><entry><trigger id="latex">cntr</trigger><description>Center Alignment</description><template>\begin{center}
+${cursor}
+\end{center}</template></entry><entry><trigger id="latex">comm</trigger><description>Comment Line</description><template>% ---------- ${Comment}${cursor}</template></entry><entry><trigger id="latex">date</trigger><description>Date Command</description><template>\date{\today}${cursor}</template></entry><entry><trigger id="latex">dfrac</trigger><description>Fraction</description><template>\dfrac{${numerator}}{${denominator}}${cursor}</template></entry><entry><trigger id="latex">doc</trigger><description>Document Template</description><template>\begin{document}
+${cursor}
+\end{document}</template></entry><entry><trigger id="latex">docc</trigger><description>Document class</description><template>\documentclass{${document type eg: report}}${cursor}</template></entry><entry><trigger id="latex">enum</trigger><description>Enumerate items</description><template>\begin{enumerate}
+	${item}
+\end{enumerate}</template></entry><entry><trigger id="latex">epage</trigger><description>Empty Page</description><template>\clearpage
+${cursor}</template></entry><entry><trigger id="latex">eqn</trigger><description>Equation Template</description><template>\begin{equation}
+	${cursor}
+\end{equation}</template></entry><entry><trigger id="latex">eqnwl</trigger><description>Equation with label</description><template>\begin{equation} \label{eq:${eqn_label}}
+	${cursor}
+\end{equation}</template></entry><entry><trigger id="latex">fig</trigger><description>Figure</description><template>\begin{figure}
+		\includegraphics{${filename}}
+ 		\caption{${Figure Caption}}
+ 		\label{fig:${label for reference}}
+\end{figure}
+${cursor}</template></entry><entry><trigger id="latex">figco</trigger><description>Figure at Center with Options</description><template>\begin{figure}[${additional placement options, eg: h!t}]
+ 	\begin{center}
+		\includegraphics[${height, width, zoom eg: height=2.5in}]{${filename, eg: images/image_file}}
+ 		\caption{${Figure Caption}}
+ 		\label{fig:${label for reference}}
+	\end{center}
+\end{figure}
+${cursor}</template></entry><entry><trigger id="latex">fltbr</trigger><description>Floar Barrier</description><template>\FloatBarrier
+${cursor}</template></entry><entry><trigger id="latex">hyps</trigger><description>Hyper Setup</description><template>\hypersetup{
+	pdfauthor = {${author names separated by ','}},
+	pdftitle = {${PDF Title}},
+	pdfsubject = {${PDF subject}},
+	pdfkeywords = {${subject keywords separated by ','}},
+	pdfcreator = {${PDFTeX with report, hyperref packages}},
+	pdfproducer = {${pdflatex + bibtex on Linux}},
+	pdffitwindow= ${true or false},
+	colorlinks = ${true/false},
+	linkcolor = ${blue/red/green},
+	anchorcolor = ${red/blue/green},
+	citecolor = ${blue/green/red},
+	filecolor = ${green},
+	pagecolor = ${red},
+	urlcolor = ${red1}
+}
+${cursor}</template></entry><entry><trigger id="latex">incl</trigger><description>Include Tex Files</description><template>\include{${Additional Tex File Names to include}}
+${cursor}</template></entry><entry><trigger id="latex">item</trigger><description>Item</description><template>\item ${cursor}</template></entry><entry><trigger id="latex">itemize</trigger><description>Itemize Content</description><template>\begin{itemize}
+	${item}
+\end{itemize}</template></entry><entry><trigger id="latex">labl</trigger><description>Add Label to Refer to at a later stage in the document</description><template>\label{${label_name}}${cursor}</template></entry><entry><trigger id="latex">lstfig</trigger><description>List of Figures</description><template>\listoffigures
+${cursor}</template></entry><entry><trigger id="latex">lsttabl</trigger><description>List of Tables</description><template>\listoftables
+${cursor}</template></entry><entry><trigger id="latex">math</trigger><description>Display Math</description><template>\\[
+	${cursor}
+]</template></entry><entry><trigger id="latex">newpg</trigger><description>New Page</description><template>\newpage
+${cursor}</template></entry><entry><trigger id="latex">\p</trigger><description>Generic Command Parameter</description><template>\${command}{${arguments}}${cursor}</template></entry><entry><trigger id="latex">par</trigger><description>Paragraph Command</description><template>\paragraph{${Paragraph Title}}${cursor}</template></entry><entry><trigger id="latex">pgbrk</trigger><description>Page Break</description><template>\pagebreak
+${cursor}</template></entry><entry><trigger id="latex">pgnum</trigger><description>Format Page numbering</description><template>\pagenumbering{${arabic or roman}}
+${cursor}</template></entry><entry><trigger id="latex">ref</trigger><description>Refer to a Label</description><template>\ref{${label_name}}${cursor}</template></entry><entry><trigger id="latex">sec</trigger><description>Section Command</description><template>\section{${Section Title}}${cursor}</template></entry><entry><trigger id="latex">secwl</trigger><description>Section with Label</description><template>\section{${Section Title}} \label{s:${section_label}}
+${cursor}</template></entry><entry><trigger id="latex">ssec</trigger><description>Sub Section</description><template>\subsection{${Sub-Section Title}}${cursor}</template></entry><entry><trigger id="latex">ssecwl</trigger><description>Sub-Section with Label</description><template>\subsection{${Sub-Section Title}} \label{ss:${sub-section_label}}
+${cursor}</template></entry><entry><trigger id="latex">sym_mu</trigger><description>Symbol mu</description><template>$\mu$${cursor}</template></entry><entry><trigger id="latex">title</trigger><description>Title Command</description><template>\title{${Title Name}}${cursor}</template></entry><entry><trigger id="latex">toc</trigger><description>table of contents</description><template>\tableofcontents
+${cursor}</template></entry><entry><trigger id="latex">txtbf</trigger><description>Text Bold Font</description><template>\textbf{${Bold Font Content}}${cursor}</template></entry><entry><trigger id="latex">txtcolr</trigger><description>Text Colour</description><template>\textcolor{${color, eg: Blue, Red}}{${Content}}${cursor}</template></entry><entry><trigger id="latex">txtit</trigger><description>Text Italics</description><template>\textit{${Italic Font Content}}${cursor}</template></entry><entry><trigger id="latex">upkg</trigger><description>Use Package</description><template>\usepackage{${packagename}}${cursor}</template></entry><entry><trigger id="latex">upkga4w</trigger><description>Use package a4 wide</description><template>\usepackage{a4wide}${cursor}</template></entry><entry><trigger id="latex">upkgapndx</trigger><description>Use package Appendix</description><template>\usepackage{appendix}${cursor}</template></entry><entry><trigger id="latex">upkgmath</trigger><description>Use Math Package</description><template>\usepackage{amsmath}${cursor}</template></entry><entry><trigger id="latex">upkgo</trigger><description>Use Package with Options</description><template>\usepackage[${package options}]{${package name}}${cursor}</template></entry><entry><trigger id="latex">upkgplace</trigger><description>Use Package Placins</description><template>\usepackage{placeins} % ---- Place image forcibly ${cursor}</template></entry><entry><trigger id="latex">upkgverb</trigger><description>use package verbatim</description><template>\usepackage{verbatim}${cursor}</template></entry></snippet></scribes>

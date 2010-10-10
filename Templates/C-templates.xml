@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scribes version="0.1">
+<snippet><entry><trigger id="c">array</trigger><description>Array Definition</description><template>${type} ${name}[${size}] = ${value};</template></entry><entry><trigger id="c">cmt</trigger><description>C Comment</description><template>/* ${comment} */${cursor}</template></entry><entry><trigger id="c">def</trigger><description>Preprocessor Statement</description><template>#define ${CONSTANT} (${SUBSTITUTE})${cursor}</template></entry><entry><trigger id="c">for</trigger><description>For Statement</description><template>for (${initial_statement}; ${condition}; ${iteration_statement}) {
+	${cursor};
+}
+</template></entry><entry><trigger id="c">func</trigger><description>Function Definition</description><template>${type} ${func_name}(${parameters}) {
+
+	${cursor}
+
+}</template></entry><entry><trigger id="c">if</trigger><description>If Condition</description><template>if (${condition}) {
+	${cursor}
+}</template></entry><entry><trigger id="c">incl</trigger><description>Include Preprocessor Statement</description><template>#include &lt;${cursor}&gt;</template></entry><entry><trigger id="c">main</trigger><description>Main Function (void)</description><template>int main(void) {
+	
+	${cursor}
+	
+	return (0);
+}</template></entry><entry><trigger id="c">mainp</trigger><description>Main Function</description><template>int main(int argc, char **argv) {
+	
+	${cursor}
+	
+	return (0);
+}</template></entry><entry><trigger id="c">mlc</trigger><description>Malloc Function</description><template>malloc(sizeof(${object}));</template></entry><entry><trigger id="c">nl</trigger><description>NULL</description><template>NULL</template></entry><entry><trigger id="c">nul</trigger><description>Nul Character</description><template>'\0'</template></entry><entry><trigger id="c">prt</trigger><description>Print Statement</description><template>printf(${value});${cursor}</template></entry><entry><trigger id="c">ret</trigger><description>Return Statement</description><template>return (${value});${cursor}</template></entry><entry><trigger id="c">struct</trigger><description>Structure Definition</description><template>struct ${structure_name} {
+	${cursor}
+} ${variable_name};</template></entry><entry><trigger id="c">vdec</trigger><description>Variable Declaration</description><template>${type} ${name};${cursor}</template></entry><entry><trigger id="c">vdef</trigger><description>Variable Definition</description><template>${name} = ${value};${cursor}</template></entry><entry><trigger id="c">while</trigger><description>While Loop Construct</description><template>while (${condition}){
+	${cursor}
+}</template></entry></snippet>
+</scribes>

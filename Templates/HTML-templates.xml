@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scribes version="0.1">
+<snippet><entry><trigger id="html">altag</trigger><description>Tag with Attribute</description><template>&lt;${HTML_TAG} ${name}=${value}&gt;
+	${text}
+&lt;/${HTML_TAG}&gt;${cursor}</template></entry><entry><trigger id="html">tag</trigger><description>Generic Tag</description><template>&lt;${HTML_TAG}&gt;${text}&lt;/${HTML_TAG}&gt;${cursor}</template></entry><entry><trigger id="html">link</trigger><description>HTML link</description><template>&lt;a href=&quot;${URL}&quot;&gt;${text}&lt;/a&gt;${cursor}</template></entry><entry><trigger id="html">ltag</trigger><description>Long Generic Tag</description><template>&lt;${HTML_TAG}&gt;
+	${text}
+&lt;/${HTML_TAG}&gt;${cursor}</template></entry><entry><trigger id="html">atag</trigger><description>Short Tag With Attributes</description><template>&lt;${HTML_TAG} ${name}=${value}&gt;${text}&lt;/${HTML_TAG}&gt;${cursor}</template></entry><entry><trigger id="html">attr</trigger><description>Tag Attribute Definition</description><template>${name}=&quot;${value}&quot;${cursor}</template></entry><entry><trigger id="html">htmlstrict</trigger><description>Doctype Strict</description><template>&lt;!DOCTYPE html
+PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</template></entry></snippet></scribes>

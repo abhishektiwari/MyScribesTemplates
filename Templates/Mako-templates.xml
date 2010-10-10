@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scribes version="0.1">
+<snippet><entry><trigger id="Mako">blk</trigger><description>Python Block</description><template>&lt;%
+	${cursor}
+%&gt;</template></entry><entry><trigger id="Mako">call</trigger><description>CALL Tag</description><template>&lt;%call expr=&quot;${expression}&quot;&gt;
+	${cursor}
+&lt;/%call&gt;</template></entry><entry><trigger id="Mako">calla</trigger><description>CALL Tag with args</description><template>&lt;%call expr=&quot;${expression}&quot; args=&quot;${arguments}&quot;&gt;
+	${cursor}
+&lt;/%call&gt;</template></entry><entry><trigger id="Mako">def</trigger><description>DEF Tag</description><template>&lt;%def name=&quot;${function_name}(${parameters})&quot;${ buffered=&quot;True&quot;}&gt;
+	${cursor}
+&lt;/%def&gt;</template></entry><entry><trigger id="Mako">doc</trigger><description>Block Comment</description><template>&lt;%doc&gt;
+	${cursor}
+&lt;/%doc&gt;</template></entry><entry><trigger id="Mako">elif</trigger><description>ELIF Statement</description><template>% elif ${condition}:
+	${cursor}</template></entry><entry><trigger id="Mako">else</trigger><description>ELSE Statement</description><template>% else:
+	${cursor}</template></entry><entry><trigger id="Mako">for</trigger><description>FOR Statement</description><template>% for ${item} in ${list}:
+	${cursor}
+% endfor</template></entry><entry><trigger id="Mako">if</trigger><description>IF statement</description><template>% if ${condition}:
+	${cursor}
+% endif</template></entry><entry><trigger id="Mako">ifs</trigger><description>IF/ELSE Statement</description><template>% if ${condition}:
+	${statement}
+% else:
+	${cursor}
+% endif</template></entry><entry><trigger id="Mako">inc</trigger><description>INCLUDE Tag</description><template>&lt;%include file=&quot;${filename}&quot;/&gt;${cursor}</template></entry><entry><trigger id="Mako">inh</trigger><description>INHERIT Tag</description><template>&lt;%inherit file=&quot;${filename}&quot;/&gt;${cursor}</template></entry><entry><trigger id="Mako">lns</trigger><description>Large NAMESPACE Block</description><template>&lt;%namespace name=&quot;${name}&quot;&gt;
+	${cursor}
+&lt;/%namespace&gt;</template></entry><entry><trigger id="Mako">mblk</trigger><description>Module-level Block</description><template>&lt;%!
+	${cursor}
+%&gt;</template></entry><entry><trigger id="Mako">ns</trigger><description>NAMESPACE Tag</description><template>&lt;%namespace name=&quot;${name}&quot; file=&quot;${filename}&quot;${ inheritable=&quot;True&quot;}/&gt;${cursor}
+</template></entry><entry><trigger id="Mako">nsimp</trigger><description>NAMESPACE Import</description><template>&lt;%namespace file=&quot;${filename}&quot; import=&quot;${*}&quot;${ inheritable=&quot;True&quot;}/&gt;${cursor}</template></entry><entry><trigger id="Mako">nsmod</trigger><description>NAMESPACE from Python module</description><template>&lt;%namespace name=&quot;${name}&quot; module=&quot;${modelname}&quot;${ inheritable=&quot;True&quot;}/&gt;${cursor}</template></entry><entry><trigger id="Mako">page</trigger><description>PAGE Tag</description><template>&lt;%page args=&quot;${arguments}&quot;${ cached=&quot;True&quot; cache_type=&quot;memory&quot;}/&gt;${cursor}</template></entry><entry><trigger id="Mako">sdef</trigger><description>Simple DEF Statement</description><template>% def ${function_name}(${parameters}):
+	${cursor}
+% enddef</template></entry><entry><trigger id="Mako">test</trigger><description>A test template</description><template>% if ${editor}:
+	${comment}
+% elif ${editor}:
+	${comment}
+% elif ${editor}:
+	${comment}
+% elif ${editor}:
+	${comment}
+% else:
+	${cursor}
+% endif</template></entry><entry><trigger id="Mako">text</trigger><description>Text Tag</description><template>&lt;%text filter=&quot;${filter}&quot;&gt;
+	${cursor}
+&lt;/%text&gt;</template></entry><entry><trigger id="Mako">while</trigger><description>WHILE Statement</description><template>% while ${condition}:
+	${cursor}
+% endwhile</template></entry></snippet></scribes>

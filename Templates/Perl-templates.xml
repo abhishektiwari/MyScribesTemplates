@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scribes version="0.1">
+<snippet><entry><trigger id="perl">file</trigger><description>Input from file</description><template>my $${filename_var} = ${filename};
+
+open(${FILEHANDLE}, &quot;${filename_var}&quot;);
+my @${filename_var} = &lt;${FILEHANDLE}&gt;;
+close(${FILEHANDLE});
+${cursor}</template></entry><entry><trigger id="perl">for</trigger><description>for/foreach loop</description><template>for (${condition}) {
+	${cursor};
+}</template></entry><entry><trigger id="perl">if</trigger><description>Conditional statement</description><template>if (${condition}) {
+	${cursor};
+}</template></entry><entry><trigger id="perl">ife</trigger><description>If-Else conditional statement</description><template>if (${condition}) {
+	${statement};
+} else {
+	${cursor};
+}</template></entry><entry><trigger id="perl">perl</trigger><description>Document information</description><template>#!/usr/bin/perl -w
+# ${date}
+# ${name}
+# ${description}
+
+${cursor}
+</template></entry><entry><trigger id="perl">un</trigger><description>unless conditional statement</description><template>unless (${condition}) {
+	${cursor};
+}</template></entry><entry><trigger id="perl">while</trigger><description>while loop</description><template>while (${condition}) {
+	${cursor};
+}</template></entry></snippet></scribes>

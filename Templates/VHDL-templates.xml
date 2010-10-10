@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scribes version="0.1">
+<snippet><entry><trigger id="vhdl">acom</trigger><description>Architecture Comment Section</description><template>--------------------------------------------------------------------------------
+-- Architecture Section
+--------------------------------------------------------------------------------
+
+${cursor}</template></entry><entry><trigger id="vhdl">arch</trigger><description>Architecture definition</description><template>architecture ${arch_instance_name} of ${entity_instance_name} is
+
+	begin
+	${cursor}
+	
+end architecture ${arch_instance_name};</template></entry><entry><trigger id="vhdl">asig</trigger><description>assign a signal with a value</description><template>${signal_name} &lt;= ${signal_value}${cursor}</template></entry><entry><trigger id="vhdl">attrd</trigger><description>Attribute Definition</description><template>attribute ${attribute_name} : ${attribute_type};${cursor}</template></entry><entry><trigger id="vhdl">attri</trigger><description>Attribute instantantiate</description><template>attribute ${attribute_name} of ${signal_name} : signal is ${signal_type};${cursor}</template></entry><entry><trigger id="vhdl">case</trigger><description>case using when statement</description><template>case ${state/case name} is
+	when(${state type}) =&gt;
+		${cursor}
+end case;</template></entry><entry><trigger id="vhdl">comp</trigger><description>component description section</description><template>component ${component_name} is
+	port
+	(
+		${signal_name}	: 	${in/out/buffer}	${stdl or stdlv};${cursor}
+		
+	);
+	
+end component ${component_name};</template></entry><entry><trigger id="vhdl">const</trigger><description>Contant declaration and definition</description><template>constant ${const_var}	:	${var_type with or without initialisation};${cursor}</template></entry><entry><trigger id="vhdl">ecom</trigger><description>Entity Comment Section</description><template>--------------------------------------------------------------------------------
+-- Entity Section
+--------------------------------------------------------------------------------
+
+${cursor}</template></entry><entry><trigger id="vhdl">ent</trigger><description>Entity</description><template>entity ${entity_name} is
+	port
+	(
+		-- Port definitions
+		${port_1_name}		:	${in/out/buffer} ${port_type};
+	);
+	
+end entity ${entity_name};
+
+${cursor}</template></entry><entry><trigger id="vhdl">fcom</trigger><description>File Level Comment</description><template>---------------------------------------------------------------
+-- ${filename} - ${entity/architecture pair}
+---------------------------------------------------------------
+--
+---------------------------------------------------------------
+-- Filename:	${filename}
+-- Version:		${version}
+-- Description:	${File Description}
+-- Date:		${Date}
+---------------------------------------------------------------
+
+${cursor}</template></entry><entry><trigger id="vhdl">gend</trigger><description>Generic definition</description><template>generic
+(
+	${signal_name}	: ${signal_type with a default value}
+	${cursor}
+);</template></entry><entry><trigger id="vhdl">ifthn</trigger><description>if then 1 condition</description><template>if ${condition} then
+	${cursor}
+end if;</template></entry><entry><trigger id="vhdl">ifthnc</trigger><description>ifa conditional</description><template>if ${condition_1} and ${condition_2} then
+	${cursor}
+end if;</template></entry><entry><trigger id="vhdl">ifthnels</trigger><description>if then else with 1 condition</description><template>if ${condition} then
+	${cursor}
+else
+
+end if;</template></entry><entry><trigger id="vhdl">ifthnelsc</trigger><description>if then else condition</description><template>if ${condition_1} and ${condition_2} then
+	${cursor}
+else
+
+end if;</template></entry><entry><trigger id="vhdl">lib</trigger><description>Library Definition</description><template>library ${lib_name};${cursor}</template></entry><entry><trigger id="vhdl">proc</trigger><description>process with sensitivity</description><template>${process_tag} : process (${sensitivity list}) is
+	begin
+		${cursor}
+end process ${process_tag};</template></entry><entry><trigger id="vhdl">prt</trigger><description>Port entry</description><template>${signal_name}		:	${in/out/buffer} ${stdl or stdlv};${cursor}</template></entry><entry><trigger id="vhdl">sig</trigger><description>signal Definition and Declaration</description><template>signal ${signal_name}	:	${signal_type};${cursor}</template></entry><entry><trigger id="vhdl">stdlv</trigger><description>standard logic vector</description><template>std_logic_vector(${higher_bit} downto ${lower_bit});${cursor}</template></entry><entry><trigger id="vhdl">stdlvt</trigger><description>standard logic vector lower to higher bit position</description><template>std_logic_vector(${lower_bit} to ${higher_bit});${cursor}</template></entry><entry><trigger id="vhdl">todo</trigger><description>Todo list</description><template>---- TODO ----
+--	${cursor}</template></entry><entry><trigger id="vhdl">type</trigger><description>Type definition</description><template>type ${type_name} is (${types separated by ','});${cursor}</template></entry><entry><trigger id="vhdl">use</trigger><description>USE Library</description><template>use ${lib_name}.${lib_module}.${all};${cursor}</template></entry><entry><trigger id="vhdl">uses</trigger><description>Use All entities from the included module</description><template>use ${lib_name}.${lib_module}.${all or specific item};${cursor}</template></entry><entry><trigger id="vhdl">whn</trigger><description>when statement</description><template>when(${state type}) =&gt;
+	${cursor}</template></entry><entry><trigger id="vhdl">whnels</trigger><description>when else statement</description><template>${signal_1} &lt;= ${signal_2} when 
+	${signal_3/variable_3} ${condition/=} else ${value_2};${cursor}</template></entry></snippet></scribes>
