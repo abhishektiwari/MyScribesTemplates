@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<scribes version="0.1"><snippet><entry><trigger id="General">License</trigger><description>License</description><template>Copyright (c) 2010 Abhishek Tiwari
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</template></entry><entry><trigger id="General">Readme</trigger><description>Read me</description><template>== ${ProjectName}
+
+Project Description
+
+== Dependencies
+
+* Item1
+* Item2
+
+
+
+== Help &amp; Documentation
+For more information about installing, running and configuring ${ProjectName}
+including a list of known issues and troubleshooting information, 
+refer to: http://wiki.github.com/abhishektiwari/${ProjectName}/
+
+
+== Authors and copyright
+© 2010 Abhishek Tiwari (abhishek@abhishek-tiwari.com)
+
+The software included in this package is copyrighted freeware
+distributed under the terms and conditions as specified in file LICENSE.</template></entry></snippet></scribes>
