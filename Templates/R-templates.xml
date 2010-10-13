@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<scribes version="0.1">
+    <snippet>
+        <entry>
+            <trigger id="r">wdir</trigger>
+            <description>Get current working dir</description>
+            <template>getwd()</template>
+        </entry>
+        <entry>
+            <trigger id="r">vvar</trigger>
+            <description>Variance of a vector</description>
+            <template>var (${nvec})</template>
+        </entry>
+        <entry>
+            <trigger id="r">vsummury</trigger>
+            <description>Summary of a vector</description>
+            <template>summary (${nvec})</template>
+        </entry>
+        <entry>
+            <trigger id="r">vsum</trigger>
+            <description>Sum of vector elements</description>
+            <template>sum ${nvec}</template>
+        </entry>
+        <entry>
+            <trigger id="r">vsd</trigger>
+            <description>Standard deviation of a vector</description>
+            <template>sd (${nvec})</template>
+        </entry>
+        <entry>
+            <trigger id="r">vmin</trigger>
+            <description>Min of a vector</description>
+            <template>min (${nvec})</template>
+        </entry>
+        <entry>
+            <trigger id="r">vmean</trigger>
+            <description>Mean of a vector</description>
+            <template>mean (${nvec})</template>
+        </entry>
+        <entry>
+            <trigger id="r">vmax</trigger>
+            <description>Max of a vector</description>
+            <template>max (${nvec})</template>
+        </entry>
+        <entry>
+            <trigger id="r">sdir</trigger>
+            <description>Set working dir</description>
+            <template>setwd("${path/to/dir}")</template>
+        </entry>
+        <entry>
+            <trigger id="r">rvec</trigger>
+            <description>Repeat vector</description>
+            <template>rep( x = ${N1}:${N1}, times = ${N3})
+#rep( x = ${N1}:${N1}, times = ${nvec})</template>
+        </entry>
+        <entry>
+            <trigger id="r">rhelp</trigger>
+            <description>Help on a topic</description>
+            <template>help(${topic})</template>
+        </entry>
+        <entry>
+            <trigger id="r">rfile</trigger>
+            <description>Remove a file</description>
+            <template>file.remove("${path/fileName}")</template>
+        </entry>
+        <entry>
+            <trigger id="r">reqp</trigger>
+            <description>Load a package from within a function</description>
+            <template>require( package =${packageName} )</template>
+        </entry>
+        <entry>
+            <trigger id="r">print</trigger>
+            <description>Print something</description>
+            <template>print (${someName})</template>
+        </entry>
+        <entry>
+            <trigger id="r">phelp</trigger>
+            <description>Help for packages</description>
+            <template>help(package = ${packageName})</template>
+        </entry>
+        <entry>
+            <trigger id="r">nvecr</trigger>
+            <description>Vector of random numbers with normal distribution</description>
+            <template>${nvec} &lt;- c(stats::rnorm( ${N}, ${mean}, ${sd}))</template>
+        </entry>
+        <entry>
+            <trigger id="r">nvec</trigger>
+            <description>Create numeric vector</description>
+            <template>${vecName} &lt;- c(${N1, N2, N3, ....})</template>
+        </entry>
+        <entry>
+            <trigger id="r">nseql</trigger>
+            <description>Sequence generation</description>
+            <template>${vec} &lt;-c(seq(from=${N1}, to=${N1}, length.out=${length} ))</template>
+        </entry>
+        <entry>
+            <trigger id="r">nseq</trigger>
+            <description>Sequence generation</description>
+            <template>${vec} &lt;-c(seq(from=${N1}, to=${N1}, by=${Diff} ))</template>
+        </entry>
+        <entry>
+            <trigger id="r">lvec</trigger>
+            <description>Create a logical vector</description>
+            <template>${lvec} &lt;- ${nvec} ${&lt;=&gt;} ${N}</template>
+        </entry>
+        <entry>
+            <trigger id="r">loadp</trigger>
+            <description>Load a package from the command line</description>
+            <template>library( package = ${packageName} )</template>
+        </entry>
+        <entry>
+            <trigger id="r">lfile</trigger>
+            <description>List files in dir</description>
+            <template>list.files("path/to/dir")</template>
+        </entry>
+        <entry>
+            <trigger id="r">ldir</trigger>
+            <description>List files stored in the directory</description>
+            <template>dir("path/dirName")</template>
+        </entry>
+        <entry>
+            <trigger id="r">fhelp</trigger>
+            <description>Help on a function</description>
+            <template>help( "${functionName}" )</template>
+        </entry>
+        <entry>
+            <trigger id="r">detach</trigger>
+            <description>Detach either a data.frame or a package to search path</description>
+            <template>detach(${packageName or data.frame})</template>
+        </entry>
+        <entry>
+            <trigger id="r">dataframe</trigger>
+            <description>data.frame made of vector columns. a data frame can have different data types for each column, while a matrix is all one data type</description>
+            <template>${dataframe} &lt;- data.frame(${colName1}=${vec1}, ${colName2}=${vec2}, ${colName3}=${vec3}, ${...})
+#Access individual col
+#${dataframe}$${colName1}
+#or use attach(${dataframe}) and 
+#${colName1}</template>
+        </entry>
+        <entry>
+            <trigger id="r">cvec</trigger>
+            <description>Create character vector</description>
+            <template>${vecName} &lt;- c( "${Str1}", "${Str2}", "${Str3}", ${...})</template>
+        </entry>
+        <entry>
+            <trigger id="r">cfile</trigger>
+            <description>Create a file</description>
+            <template>file.create("${path/fileName}")</template>
+        </entry>
+        <entry>
+            <trigger id="r">cdir</trigger>
+            <description>Create a dir</description>
+            <template>dir.create("path/dirName")</template>
+        </entry>
+        <entry>
+            <trigger id="r">attach</trigger>
+            <description>Attaching a data frame (or list) to the search path</description>
+            <template>attach(${data.frame or list})</template>
+        </entry>
+    </snippet>
+</scribes>
