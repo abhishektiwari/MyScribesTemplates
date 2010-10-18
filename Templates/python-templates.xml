@@ -251,6 +251,29 @@ ${cursor}</template>
             <template>return</template>
         </entry>
         <entry>
+            <trigger id="python">setup</trigger>
+            <description>setup.py basic</description>
+            <template>
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
+ 
+config = {
+    'description': '${ProjectDescription}',
+    'author': 'Abhishek Tiwari',
+    'url': 'http://github.com/abhishektiwari/${ProjectName}',
+    'download_url': 'http://github.com/abhishektiwari/${ProjectName}',
+    'author_email': 'abhishek@abhishek-tiwari.com',
+    'version': '0.1',
+    'install_requires': ['${ModuleName1}','${ModuleName1}'],
+    'packages': ['${PackageName}', '${PackageName}'],
+    'scripts': [],
+}
+
+setup(**config)</template>
+        </entry>
+        <entry>
             <trigger id="python">sprt</trigger>
             <description>Print String Statement</description>
             <template>print "${string}"${cursor}</template>
