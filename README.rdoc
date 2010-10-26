@@ -14,6 +14,32 @@ For more information about installing, running and configuring MyScribesTemplate
 including a list of known issues and troubleshooting information, 
 refer to: http://wiki.github.com/abhishektiwari/MyScribesTemplates/
 
+== Directory Hierarchy
+.
+|-- DirTree.txt
+|-- LICENSE
+|-- README.rdoc
+`-- Templates
+    |-- C-templates.xml
+    |-- django_template.xml
+    |-- django.xml
+    |-- General-templates.xml
+    |-- GtkRC-templates.xml
+    |-- Haskell-templates.xml
+    |-- HTML-templates.xml
+    |-- Java-templates.xml
+    |-- LaTeX-templates.xml
+    |-- Mako-templates.xml
+    |-- Perl-templates.xml
+    |-- PHP-templates.xml
+    |-- python-templates.xml
+    |-- ROR-templates.xml
+    |-- R-templates.xml
+    |-- Ruby-templates.xml
+    |-- VHDL-templates.xml
+    `-- XML-templates.xml
+
+1 directory, 21 files
 
 == Authors and copyright
 © 2010 Abhishek Tiwari (abhishek@abhishek-tiwari.com)
