@@ -1,44 +1,192 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<scribes version="0.1"><snippet><entry><trigger id="python">.</trigger><description>Object Reference</description><template>self.${cursor}</template></entry><entry><trigger id="python">bcmt</trigger><description>Block Comment</description><template>################################################################################
+<scribes version="0.1">
+    <snippet>
+        <entry>
+            <trigger id="python">.</trigger>
+            <description>Object Reference</description>
+            <template>self.${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">bcmt</trigger>
+            <description>Block Comment</description>
+            <template>################################################################################
 #
 #	${cursor}
 #
 ################################################################################
 
-</template></entry><entry><trigger id="python">brk</trigger><description>break statement</description><template>break</template></entry><entry><trigger id="python">cls</trigger><description>Class definition</description><template>class ${class_name}(${object}):
+</template>
+        </entry>
+        <entry>
+            <trigger id="python">brk</trigger>
+            <description>break statement</description>
+            <template>break</template>
+        </entry>
+        <entry>
+            <trigger id="python">cls</trigger>
+            <description>Class definition</description>
+            <template>class ${class_name}(${object}):
 	"""
 	${class_documentation}
 	"""
-	${cursor}</template></entry><entry><trigger id="python">cmt</trigger><description>python Comment</description><template># ${comment}</template></entry><entry><trigger id="python">cont</trigger><description>continue statement</description><template>continue</template></entry><entry><trigger id="python">def</trigger><description>Function definition</description><template>def ${function_name}(${parameters}):
+	${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">cmt</trigger>
+            <description>python Comment</description>
+            <template># ${comment}</template>
+        </entry>
+        <entry>
+            <trigger id="python">cont</trigger>
+            <description>continue statement</description>
+            <template>continue</template>
+        </entry>
+        <entry>
+            <trigger id="python">def</trigger>
+            <description>Function definition</description>
+            <template>def ${function_name}(${parameters}):
+	"""
+	${Enter_documentation}
+	"""
 	${cursor}
-	return ${value}</template></entry><entry><trigger id="python">del</trigger><description>Instance Destructor</description><template>def __del__(self):
+	return ${value}</template>
+        </entry>
+        <entry>
+            <trigger id="python">del</trigger>
+            <description>Instance Destructor</description>
+            <template>def __del__(self):
 	${statement}
 	from gc import collect
-	collect()</template></entry><entry><trigger id="python">dict</trigger><description>Create a dictionary object</description><template>${dictionary} = {
+	collect()</template>
+        </entry>
+        <entry>
+            <trigger id="python">dict</trigger>
+            <description>Create a dictionary object</description>
+            <template>${dictionary} = {
 		${key}: ${value},
-	}</template></entry><entry><trigger id="python">elif</trigger><description>An else if statement</description><template>elif ${condition}:
-	${cursor}</template></entry><entry><trigger id="python">else</trigger><description>An else statement</description><template>else:
-	${cursor}</template></entry><entry><trigger id="python">eq</trigger><description>If Equal Statement</description><template>${name} == ${value}</template></entry><entry><trigger id="python">f</trigger><description>False</description><template>False</template></entry><entry><trigger id="python">fdoc</trigger><description>Function documentation</description><template>"""
+	}</template>
+        </entry>
+        <entry>
+            <trigger id="python">elif</trigger>
+            <description>An else if statement</description>
+            <template>elif ${condition}:
+	${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">else</trigger>
+            <description>An else statement</description>
+            <template>else:
+	${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">eq</trigger>
+            <description>If Equal Statement</description>
+            <template>${name} == ${value}</template>
+        </entry>
+        <entry>
+            <trigger id="python">f</trigger>
+            <description>False</description>
+            <template>False</template>
+        </entry>
+        <entry>
+            <trigger id="python">fdoc</trigger>
+            <description>Function documentation</description>
+            <template>"""
 ${Enter_documentation}
-"""${cursor}</template></entry><entry><trigger id="python">fimp</trigger><description>From import statement</description><template>from ${module} import ${object}</template></entry><entry><trigger id="python">for</trigger><description>python looping construct</description><template>for ${item} in ${list}:
-	${cursor}</template></entry><entry><trigger id="python">fxm</trigger><description>Fixme Comment</description><template>#FIXME: ${comment}</template></entry><entry><trigger id="python">gbl</trigger><description>Global Statement</description><template>global</template></entry><entry><trigger id="python">hdr</trigger><description>python Header</description><template>#! /usr/bin/env python
+"""${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">fimp</trigger>
+            <description>From import statement</description>
+            <template>from ${module} import ${object}</template>
+        </entry>
+        <entry>
+            <trigger id="python">for</trigger>
+            <description>python looping construct</description>
+            <template>for ${item} in ${list}:
+	${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">fxm</trigger>
+            <description>Fixme Comment</description>
+            <template>#FIXME: ${comment}</template>
+        </entry>
+        <entry>
+            <trigger id="python">gbl</trigger>
+            <description>Global Statement</description>
+            <template>global</template>
+        </entry>
+        <entry>
+            <trigger id="python">hdr</trigger>
+            <description>python Header</description>
+            <template>#! /usr/bin/env python
 # -*- coding: utf8 -*-
-${cursor}</template></entry><entry><trigger id="python">if</trigger><description>Conditional statement</description><template>if ${condition}:
-	${cursor}</template></entry><entry><trigger id="python">ifs</trigger><description>If-Else conditional statement</description><template>if ${condition}:
+${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">if</trigger>
+            <description>Conditional statement</description>
+            <template>if ${condition}:
+	${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">ifs</trigger>
+            <description>If-Else conditional statement</description>
+            <template>if ${condition}:
 	${statement}
 else:
-	${cursor}</template></entry><entry><trigger id="python">iftest</trigger><description>Module Test</description><template>if __name__ == "__main__":
-	${cursor}</template></entry><entry><trigger id="python">imp</trigger><description>Import statement</description><template>import ${module}</template></entry><entry><trigger id="python">init</trigger><description>python constructor</description><template>def __init__(self${parameter}):
-	${cursor}</template></entry><entry><trigger id="python">keyvalue</trigger><description>A key, value pair for a dictionary</description><template>${key}: ${value},${cursor}</template></entry><entry><trigger id="python">lic</trigger><description>GPL License</description><template># -*- coding: utf-8 -*-
+	${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">iftest</trigger>
+            <description>Module Test</description>
+            <template>if __name__ == "__main__":
+	${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">imp</trigger>
+            <description>Import statement</description>
+            <template>import ${module}</template>
+        </entry>
+        <entry>
+            <trigger id="python">init</trigger>
+            <description>python constructor</description>
+            <template>def __init__(self${parameter}):
+	${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">keyvalue</trigger>
+            <description>A key, value pair for a dictionary</description>
+            <template>${key}: ${value},${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">lic</trigger>
+            <description>GPL License</description>
+            <template>
 # Copyright © 2010 ${Abhishek Tiwari} (abhishek@abhishek-tiwari.com)
 #
 # This file is part of ${ProjectName}.
 #
 # Files included in this package ${ProjectName} are copyrighted freeware
 # distributed under the terms and conditions as specified in file LICENSE.
-${cursor}</template></entry><entry><trigger id="python">lst</trigger><description>List statement</description><template>${list_name} = [${elements}]</template></entry><entry><trigger id="python">mdef</trigger><description>Method Definition</description><template>def ${method_name}(self${, parameters}):
+${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">lst</trigger>
+            <description>List statement</description>
+            <template>${list_name} = [${elements}]</template>
+        </entry>
+        <entry>
+            <trigger id="python">mdef</trigger>
+            <description>Method Definition</description>
+            <template>def ${method_name}(self${, parameters}):
 	${cursor}
-	return ${value}</template></entry><entry><trigger id="python">mdoc</trigger><description>Module documentation</description><template>"""
+	return ${value}</template>
+        </entry>
+        <entry>
+            <trigger id="python">mdoc</trigger>
+            <description>Module documentation</description>
+            <template>"""
 ${enter_documentation_string_here}
 
 @author: Abhishek Tiwari
@@ -47,13 +195,111 @@ ${enter_documentation_string_here}
 @license: Specified in LICENSE file 
 @contact: abhishek@abhishek-tiwari.com
 """
-${cursor}</template></entry><entry><trigger id="python">nn</trigger><description>None Value</description><template>None</template></entry><entry><trigger id="python">param</trigger><description>Function parameter documentation</description><template>@param ${argument}: ${}
-@type ${argument}: ${A_or_An} ${type} object.${cursor}</template></entry><entry><trigger id="python">paramedit</trigger><description>Scribes Editor Object Documentation</description><template>@param editor: Reference to the text editor.
-@type editor: An Editor object.${cursor}</template></entry><entry><trigger id="python">paramret</trigger><description>Return value documentation</description><template>@return: ${}
-@rtype: ${A_or_An} ${type} object.${cursor}</template></entry><entry><trigger id="python">paramretevent</trigger><description>Documentation for Return Value for GObject Signals</description><template>@return: True to propagate signals to parent widgets.
-@type: A Boolean Object.${cursor}</template></entry><entry><trigger id="python">paramself</trigger><description>Self parameter documentation</description><template>@param self: Reference to the ${class} instance.
-@type self: ${A_or_An} ${class} object.${cursor}</template></entry><entry><trigger id="python">paramt</trigger><description /><template>@return: True to call this function again, False otherwise.
-@rtype: A Boolean object.</template></entry><entry><trigger id="python">prt</trigger><description>A print statement</description><template>print ${cursor}</template></entry><entry><trigger id="python">ps</trigger><description>Pass Statement</description><template>pass</template></entry><entry><trigger id="python">ret</trigger><description>Return Statement</description><template>return</template></entry><entry><trigger id="python">sprt</trigger><description>Print String Statement</description><template>print "${string}"${cursor}</template></entry><entry><trigger id="python">svdef</trigger><description>Instance Variable Definition</description><template>self.${name} = ${value}</template></entry><entry><trigger id="python">t</trigger><description>True</description><template>True</template></entry><entry><trigger id="python">td</trigger><description>Todo Comment</description><template>#TODO: ${comment}</template></entry><entry><trigger id="python">test</trigger><description>A Test Template</description><template>if ${editor}:
+${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">nn</trigger>
+            <description>None Value</description>
+            <template>None</template>
+        </entry>
+        <entry>
+            <trigger id="python">param</trigger>
+            <description>Function parameter documentation</description>
+            <template>@param ${argument}: ${}
+@type ${argument}: ${A_or_An} ${type} object.${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">paramedit</trigger>
+            <description>Scribes Editor Object Documentation</description>
+            <template>@param editor: Reference to the text editor.
+@type editor: An Editor object.${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">paramret</trigger>
+            <description>Return value documentation</description>
+            <template>@return: ${}
+@rtype: ${A_or_An} ${type} object.${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">paramretevent</trigger>
+            <description>Documentation for Return Value for GObject Signals</description>
+            <template>@return: True to propagate signals to parent widgets.
+@type: A Boolean Object.${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">paramself</trigger>
+            <description>Self parameter documentation</description>
+            <template>@param self: Reference to the ${class} instance.
+@type self: ${A_or_An} ${class} object.${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">paramt</trigger>
+            <description />
+            <template>@return: True to call this function again, False otherwise.
+@rtype: A Boolean object.</template>
+        </entry>
+        <entry>
+            <trigger id="python">prt</trigger>
+            <description>A print statement</description>
+            <template>print ${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">ps</trigger>
+            <description>Pass Statement</description>
+            <template>pass</template>
+        </entry>
+        <entry>
+            <trigger id="python">ret</trigger>
+            <description>Return Statement</description>
+            <template>return</template>
+        </entry>
+        <entry>
+            <trigger id="python">setup</trigger>
+            <description>setup.py basic</description>
+            <template>
+try:
+	from setuptools import setup
+except ImportError:
+	from distutils.core import setup
+ 
+config = {
+	'description': '${ProjectDescription}',
+	'author': 'Abhishek Tiwari',
+	'url': 'http://github.com/abhishektiwari/${ProjectName}',
+	 'download_url': 'http://github.com/abhishektiwari/${ProjectName}',
+	'author_email': 'abhishek@abhishek-tiwari.com',
+	 'version': '0.1',
+	 'install_requires': ['${ModuleName1}','${ModuleName1}'],
+	 'packages': ['${PackageName}', '${PackageName}'],
+	 'scripts': [],
+}
+
+setup(**config)</template>
+        </entry>
+        <entry>
+            <trigger id="python">sprt</trigger>
+            <description>Print String Statement</description>
+            <template>print "${string}"${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">svdef</trigger>
+            <description>Instance Variable Definition</description>
+            <template>self.${name} = ${value}</template>
+        </entry>
+        <entry>
+            <trigger id="python">t</trigger>
+            <description>True</description>
+            <template>True</template>
+        </entry>
+        <entry>
+            <trigger id="python">td</trigger>
+            <description>Todo Comment</description>
+            <template>#TODO: ${comment}</template>
+        </entry>
+        <entry>
+            <trigger id="python">test</trigger>
+            <description>A Test Template</description>
+            <template>if ${editor}:
 	${comment}
 elif ${editor}:
 	${comment}
@@ -62,4 +308,67 @@ elif ${editor}:
 elif ${editor}:
 	${comment}
 else:
-	${new comment}</template></entry><entry><trigger id="python">timeoutcmt</trigger><description>Timeout Function Comment</description><template>This function is called repeatedly unless its return value is False.</template></entry><entry><trigger id="python">tup</trigger><description>Tuple statement</description><template>${tuple_name} = (${elements})</template></entry></snippet></scribes>
+	${new comment}</template>
+        </entry>
+        <entry>
+            <trigger id="python">timeoutcmt</trigger>
+            <description>Timeout Function Comment</description>
+            <template>This function is called repeatedly unless its return value is False.</template>
+        </entry>
+        <entry>
+            <trigger id="python">try1</trigger>
+            <description>Handling Exceptions</description>
+            <template>try:
+	${some_code_block}
+except (RuntimeError, TypeError, NameError, ValueError, IOError, ${AnotherError}, ${UserDefinedError}):
+	print "${something about the error}"
+else:
+	${do_something_if_no_exception_was raised}
+finally:
+	${do_something_which_must_be_executed_under_all_circumstances}</template>
+        </entry>
+        <entry>
+            <trigger id="python">try2</trigger>
+            <description>Handling Exceptions</description>
+            <template>#import sys
+try:
+	${some_code_block}
+except :
+	print "${something_about_error}"
+	print "Unexpected error:", sys.exc_info()[0]</template>
+        </entry>
+        <entry>
+            <trigger id="python">try3</trigger>
+            <description>Handling Exceptions</description>
+            <template>#import sys
+try:
+	${some_code_block}
+except  ${SomeError} as ${errname}:
+	print "${something about the error}"
+except  ${AnotherError}:
+	print "${something about the error}"
+except:
+	print "Unexpected error:", sys.exc_info()[0]
+else:
+	${do_something_if_no_exception_was raised}
+finally:
+	${do_something_which_must_be_executed_under_all_circumstances}</template>
+        </entry>
+        <entry>
+            <trigger id="python">try4</trigger>
+            <description>Exceptions Handling</description>
+            <template>#import sys
+try:
+	${some_code_block}
+except:
+	print "Unexpected error:", sys.exc_info()[0]
+finally:
+	${do_something_which_must_be_executed_under_all_circumstances}</template>
+        </entry>
+        <entry>
+            <trigger id="python">tup</trigger>
+            <description>Tuple statement</description>
+            <template>${tuple_name} = (${elements})</template>
+        </entry>
+    </snippet>
+</scribes>
