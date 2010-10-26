@@ -45,6 +45,9 @@
             <trigger id="python">def</trigger>
             <description>Function definition</description>
             <template>def ${function_name}(${parameters}):
+	"""
+	${Enter_documentation}
+	"""
 	${cursor}
 	return ${value}</template>
         </entry>
@@ -159,7 +162,7 @@ else:
         <entry>
             <trigger id="python">lic</trigger>
             <description>GPL License</description>
-            <template># -*- coding: utf-8 -*-
+            <template>
 # Copyright © 2010 ${Abhishek Tiwari} (abhishek@abhishek-tiwari.com)
 #
 # This file is part of ${ProjectName}.
@@ -255,20 +258,20 @@ ${cursor}</template>
             <description>setup.py basic</description>
             <template>
 try:
-    from setuptools import setup
+	from setuptools import setup
 except ImportError:
-    from distutils.core import setup
+	from distutils.core import setup
  
 config = {
-    'description': '${ProjectDescription}',
-    'author': 'Abhishek Tiwari',
-    'url': 'http://github.com/abhishektiwari/${ProjectName}',
-    'download_url': 'http://github.com/abhishektiwari/${ProjectName}',
-    'author_email': 'abhishek@abhishek-tiwari.com',
-    'version': '0.1',
-    'install_requires': ['${ModuleName1}','${ModuleName1}'],
-    'packages': ['${PackageName}', '${PackageName}'],
-    'scripts': [],
+	'description': '${ProjectDescription}',
+	'author': 'Abhishek Tiwari',
+	'url': 'http://github.com/abhishektiwari/${ProjectName}',
+	 'download_url': 'http://github.com/abhishektiwari/${ProjectName}',
+	'author_email': 'abhishek@abhishek-tiwari.com',
+	 'version': '0.1',
+	 'install_requires': ['${ModuleName1}','${ModuleName1}'],
+	 'packages': ['${PackageName}', '${PackageName}'],
+	 'scripts': [],
 }
 
 setup(**config)</template>
@@ -311,6 +314,56 @@ else:
             <trigger id="python">timeoutcmt</trigger>
             <description>Timeout Function Comment</description>
             <template>This function is called repeatedly unless its return value is False.</template>
+        </entry>
+        <entry>
+            <trigger id="python">try1</trigger>
+            <description>Handling Exceptions</description>
+            <template>try:
+	${some_code_block}
+except (RuntimeError, TypeError, NameError, ValueError, IOError, ${AnotherError}, ${UserDefinedError}):
+	print "${something about the error}"
+else:
+	${do_something_if_no_exception_was raised}
+finally:
+	${do_something_which_must_be_executed_under_all_circumstances}</template>
+        </entry>
+        <entry>
+            <trigger id="python">try2</trigger>
+            <description>Handling Exceptions</description>
+            <template>#import sys
+try:
+	${some_code_block}
+except :
+	print "${something_about_error}"
+	print "Unexpected error:", sys.exc_info()[0]</template>
+        </entry>
+        <entry>
+            <trigger id="python">try3</trigger>
+            <description>Handling Exceptions</description>
+            <template>#import sys
+try:
+	${some_code_block}
+except  ${SomeError} as ${errname}:
+	print "${something about the error}"
+except  ${AnotherError}:
+	print "${something about the error}"
+except:
+	print "Unexpected error:", sys.exc_info()[0]
+else:
+	${do_something_if_no_exception_was raised}
+finally:
+	${do_something_which_must_be_executed_under_all_circumstances}</template>
+        </entry>
+        <entry>
+            <trigger id="python">try4</trigger>
+            <description>Exceptions Handling</description>
+            <template>#import sys
+try:
+	${some_code_block}
+except:
+	print "Unexpected error:", sys.exc_info()[0]
+finally:
+	${do_something_which_must_be_executed_under_all_circumstances}</template>
         </entry>
         <entry>
             <trigger id="python">tup</trigger>
