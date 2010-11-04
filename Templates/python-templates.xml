@@ -263,15 +263,16 @@ except ImportError:
 	from distutils.core import setup
  
 config = {
+	'name' : '${ProjectName}',
 	'description': '${ProjectDescription}',
 	'author': 'Abhishek Tiwari',
 	'url': 'http://github.com/abhishektiwari/${ProjectName}',
-	 'download_url': 'http://github.com/abhishektiwari/${ProjectName}',
+	'download_url': 'http://github.com/abhishektiwari/${ProjectName}',
 	'author_email': 'abhishek@abhishek-tiwari.com',
-	 'version': '0.1',
-	 'install_requires': ['${ModuleName1}','${ModuleName1}'],
-	 'packages': ['${PackageName}', '${PackageName}'],
-	 'scripts': [],
+	'version': '0.1',
+	'install_requires': ['${ModuleName1}','${ModuleName1}'],
+	'packages': ['${PackageName}', '${PackageName}'],
+	'scripts': [],
 }
 
 setup(**config)</template>
