@@ -2,6 +2,11 @@
 <scribes version="0.1">
     <snippet>
         <entry>
+            <trigger id="r">aes</trigger>
+            <description>Define aesthetic mapping</description>
+            <template>aes(${dim_1}, ${dim_2}, ${..,} colour = ${dim_i}, size = ${dim_j})</template>
+        </entry>
+        <entry>
             <trigger id="r">arr</trigger>
             <description>Array function</description>
             <template>${myarray} &lt;- array(${data_vector}, ${dimension_vector})
@@ -98,9 +103,56 @@ if (is.null(ylim)) {
             <template>ddply(${data.frame}, .${(var1, var2 etc)}, ${fun} ${= NULL})</template>
         </entry>
         <entry>
+            <trigger id="r">geom</trigger>
+            <description>ggplot2  geom options</description>
+            <template>geom = " ${geom_type} ", </template>
+        </entry>
+        <entry>
+            <trigger id="r">geom_</trigger>
+            <description>ggplot2 geom_ options</description>
+            <template>geom_${bar | point | smooth | boxplot | path | line | histogram | density | tile | quantile | contour}(${aes}, ${data.frame}, ${geom}, ${geom_params_type}, ${stat}, ${stat_params}, ${position})</template>
+        </entry>
+        <entry>
+            <trigger id="r">geom_params</trigger>
+            <description>ggplot2 geom_params</description>
+            <template>geom_params = list( geom_params_type ),</template>
+        </entry>
+        <entry>
+            <trigger id="r">geom_params_type</trigger>
+            <description>ggplot2 geom options</description>
+            <template>fill = "${color_name}", binwidth = "${number, only histogram}"</template>
+        </entry>
+        <entry>
+            <trigger id="r">geom_type</trigger>
+            <description>ggplot2 geom type</description>
+            <template>bar | point | smooth | boxplot | path | line | histogram | density | tile | quantile | contour</template>
+        </entry>
+        <entry>
+            <trigger id="r">ggplot</trigger>
+            <description>To create the plot object ourselves</description>
+            <template>${plot.object} &lt;- ggplot(data = ${data.frame}, mapping = ${aes}) + ${glayer} + ${glayer} + ${opts} + ${labs} + ${lims}</template>
+        </entry>
+        <entry>
+            <trigger id="r">ggplot1</trigger>
+            <description>To create the plot object ourselves</description>
+            <template>${plot.object} &lt;- ggplot(data = ${data.frame}, mapping = ${aes}) + ${geom_} + ${stat_} + ${opts}  + ${labs} + ${lims}</template>
+        </entry>
+        <entry>
             <trigger id="r">ggsave</trigger>
             <description>Save ggplot and  qplot</description>
             <template>ggsave("${filename.png}", width = ${ like 5}, height = ${ like 5}, dpi = ${ like 300})</template>
+        </entry>
+        <entry>
+            <trigger id="r">glayer</trigger>
+            <description>Arg for plotting the layer</description>
+            <template>layer(
+  data = ${data.frame}
+  mapping = ${aes}
+  ${geom}
+  ${geom_params}
+  ${stat}
+  ${position}
+)</template>
         </entry>
         <entry>
             <trigger id="r">gmelt</trigger>
@@ -111,6 +163,11 @@ if (is.null(ylim)) {
             <trigger id="r">gprint</trigger>
             <description>Render the ggplot object</description>
             <template>print(${ggplot_object})</template>
+        </entry>
+        <entry>
+            <trigger id="r">labs</trigger>
+            <description>ggplot2 labels</description>
+            <template>labs(x = "x-axis", y = "y-axis", colour = "color", size = "size")</template>
         </entry>
         <entry>
             <trigger id="r">ldir</trigger>
@@ -132,6 +189,11 @@ if (is.null(ylim)) {
 # Files included in this package ${ProjectName} are copyrighted freeware
 # distributed under the terms and conditions as specified in file LICENSE.
 ${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="r">lims</trigger>
+            <description>ggplot2 limiting axis</description>
+            <template>xlim(${x1}, ${x2}) + ylim(${y1}, ${y2})</template>
         </entry>
         <entry>
             <trigger id="r">list</trigger>
@@ -200,9 +262,19 @@ filename_unittest.R</template>
             <template>${nvec} &lt;- c(stats::rnorm( ${N}, ${mean}, ${sd}))</template>
         </entry>
         <entry>
+            <trigger id="r">opts</trigger>
+            <description>ggplot options</description>
+            <template />
+        </entry>
+        <entry>
             <trigger id="r">phelp</trigger>
             <description>Help for packages</description>
             <template>help(package = ${packageName})</template>
+        </entry>
+        <entry>
+            <trigger id="r">position</trigger>
+            <description>ggplot position</description>
+            <template>position = "${dodge | fill | identity | jitter | stack}",</template>
         </entry>
         <entry>
             <trigger id="r">print</trigger>
@@ -217,18 +289,18 @@ filename_unittest.R</template>
         <entry>
             <trigger id="r">qplot1</trigger>
             <description>ggplot2 qplot</description>
-            <template>qplot(${dim_1}, ${dim_2} ${= NULL}, ${dim_3} ${= NULL}, ${...}, colour = ${dim_i}, shape = ${dim_j}, data = ${data.frame}, facets = ${dim_x or .} ~ ${dim_y or .}, geom = "${auto | point | smooth | boxplot | path | line | histogram| density}", main = "${plot title}")</template>
+            <template>qplot(${dim_1}, ${dim_2} ${= NULL}, ${dim_3} ${= NULL}, ${...}, colour = ${dim_i}, shape = ${dim_j}, data = ${data.frame}, facets = ${dim_x or .} ~ ${dim_y or .}, ${geom} main = "${plot title}", xlab = "${x-axis}", ylab = "${y-axis}")</template>
         </entry>
         <entry>
             <trigger id="r">qplot2</trigger>
             <description>ggplot2 qplot</description>
             <template>attach(${data.frame})
-qplot(${dim_1}, ${dim_2} ${= NULL}, ${dim_3} ${= NULL}, ${...}, colour = ${dim_i}, shape = ${dim_j}, facets = ${dim_x or .} ~ ${dim_y or .}, geom = "${auto | point | smooth | boxplot | path | line | histogram| density}", main = "${plot title}")</template>
+qplot(${dim_1}, ${dim_2} ${= NULL}, ${dim_3} ${= NULL}, ${...}, colour = ${dim_i}, shape = ${dim_j}, facets = ${dim_x or .} ~ ${dim_y or .}, ${geom} main = "${plot title}", xlab = "${x-axis}", ylab = "${y-axis}")</template>
         </entry>
         <entry>
             <trigger id="r">qplot3</trigger>
             <description>ggplot2 qplot</description>
-            <template>qplot(${dim_1}, ${dim_2} ${= NULL}, ${dim_3} ${= NULL}, ${...}, colour = ${dim_i}, shape = ${dim_j}, data = ${data.frame}, facets = ${dim_x or .} ~ ${dim_y or .}, geom = c("${point}", "${smooth}", "${boxplot}", "${density}"), main = "${plot title}")</template>
+            <template>qplot(${dim_1}, ${dim_2} ${= NULL}, ${dim_3} ${= NULL}, ${...}, colour = ${dim_i}, shape = ${dim_j}, data = ${data.frame}, facets = ${dim_x or .} ~ ${dim_y or .}, ${geom} main = "${plot title}", xlab = "${x-axis}", ylab = "${y-axis}")</template>
         </entry>
         <entry>
             <trigger id="r">reqp</trigger>
@@ -283,6 +355,21 @@ if (my.var &gt; 10)
 
 # Extra spacing (i.e., more than one space in a row) is okay if it
 # improves alignment of equals signs or arrows (&lt;-).</template>
+        </entry>
+        <entry>
+            <trigger id="r">stat</trigger>
+            <description>ggplot stat</description>
+            <template>stat = " ${stat_type} ",</template>
+        </entry>
+        <entry>
+            <trigger id="r">stat_</trigger>
+            <description>ggplot2 stat_ options</description>
+            <template>stat_${abline | bin | smooth | boxplot | function | summary | density | identity | quantile | contour}(${aes}, ${data.frame}, ${geom}, ${geom_params}, ${stat}, ${stat_params_type}, ${position})</template>
+        </entry>
+        <entry>
+            <trigger id="r">stat_type</trigger>
+            <description>ggplot2 stat type</description>
+            <template>abline | bin | smooth | boxplot | function | summary | density | identity | quantile | contour</template>
         </entry>
         <entry>
             <trigger id="r">summary</trigger>
