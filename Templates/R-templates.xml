@@ -1,26 +1,134 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<scribes version="0.1"><snippet><entry><trigger id="r">aes</trigger><description>Define aesthetic mapping</description><template>aes(${dim_1}, ${dim_2}, ${..,} colour = ${dim_i}, size = ${dim_j})</template></entry><entry><trigger id="r">afun</trigger><description>anonymous function</description><template>(function(${arg1}, ${arg2}, ${arg3}, ${...})  {
+<scribes version="0.1">
+    <snippet>
+        <entry>
+            <trigger id="r">aes</trigger>
+            <description>Define aesthetic mapping</description>
+            <template>aes(${dim_1}, ${dim_2}, ${..,} colour = ${dim_i}, size = ${dim_j})</template>
+        </entry>
+        <entry>
+            <trigger id="r">afun</trigger>
+            <description>anonymous function</description>
+            <template>(function(${arg1}, ${arg2}, ${arg3}, ${...})  {
   #
   # ${Description of function, what is does}
   # 
   ${do something here}
   return (${something})
-}) (${value1}, ${value2}, ${value3}, ${...})</template></entry><entry><trigger id="r">arr</trigger><description>Array function</description><template>${myarray} &lt;- array(${data_vector}, ${dimension_vector})
-#  x &lt;- array(1:20, dim=c(4,5)) </template></entry><entry><trigger id="r">attach</trigger><description>Attaching a data frame (or list) to the search path</description><template>attach(${data.frame or list})</template></entry><entry><trigger id="r">cdir</trigger><description>Create a dir</description><template>dir.create("${path/dirName}")</template></entry><entry><trigger id="r">cfile</trigger><description>Create a file</description><template>file.create("${path/fileName}")</template></entry><entry><trigger id="r">concat</trigger><description>Concatenating</description><template>${list.ABC} &lt;- c(${list.A}, ${list.B}, ${list.C})
-${vect.ABC} &lt;- c(${vect.A}, ${vect.B}, ${vect.C})</template></entry><entry><trigger id="r">convention</trigger><description>General items</description><template># Do not terminate your lines with semicolons or use semicolons to 
+}) (${value1}, ${value2}, ${value3}, ${...})</template>
+        </entry>
+        <entry>
+            <trigger id="r">apply</trigger>
+            <description>apply function to array or matrix</description>
+            <template>apply(${matrix or array}, c(${1,2}), ${function}, ${args to function})
+# 1 for rows, 2 for columns and c(1,2) indicates rows and columns</template>
+        </entry>
+        <entry>
+            <trigger id="r">arr</trigger>
+            <description>Array function</description>
+            <template>${myarray} &lt;- array(${data_vector}, ${dimension_vector})
+#  x &lt;- array(1:20, dim=c(4,5)) </template>
+        </entry>
+        <entry>
+            <trigger id="r">attach</trigger>
+            <description>Attaching a data frame (or list) to the search path</description>
+            <template>attach(${data.frame or list})</template>
+        </entry>
+        <entry>
+            <trigger id="r">cat</trigger>
+            <description>cat normally used with print for outputs</description>
+            <template>cat(${R_obj1}, ${R_obj2}, ${...} , file = "", sep = " ", fill = ${FALSE}, 
+       labels = ${NULL}, append = ${FALSE})</template>
+        </entry>
+        <entry>
+            <trigger id="r">cbind</trigger>
+            <description>combine vectors into matrices in a column by column</description>
+            <template>cbind(${vec1 or matrix1}, ${vec2 or matrix2}, ${...}, deparse.level = ${1})</template>
+        </entry>
+        <entry>
+            <trigger id="r">cdir</trigger>
+            <description>Create a dir</description>
+            <template>dir.create("${path/dirName}")</template>
+        </entry>
+        <entry>
+            <trigger id="r">cfile</trigger>
+            <description>Create a file</description>
+            <template>file.create("${path/fileName}")</template>
+        </entry>
+        <entry>
+            <trigger id="r">chdir</trigger>
+            <description>Set or change working dir</description>
+            <template>setwd("${path/to/dir}")</template>
+        </entry>
+        <entry>
+            <trigger id="r">concat</trigger>
+            <description>Concatenating</description>
+            <template>${list.ABC} &lt;- c(${list.A}, ${list.B}, ${list.C})
+${vect.ABC} &lt;- c(${vect.A}, ${vect.B}, ${vect.C})</template>
+        </entry>
+        <entry>
+            <trigger id="r">convention</trigger>
+            <description>General items</description>
+            <template># Do not terminate your lines with semicolons or use semicolons to 
 # put more than one command on the same line
 
 # An opening curly brace on same line; a closing curly brace on new line
 if (is.null(ylim)) {
   ylim &lt;- c(0, 0.06)
-}</template></entry><entry><trigger id="r">cvec</trigger><description>Create character vector</description><template>${vecName} &lt;- c( "${Str1}", "${Str2}", "${Str3}", ${...})</template></entry><entry><trigger id="r">detach</trigger><description>Detach either a data.frame or a package to search path</description><template>detach(${packageName or data.frame})</template></entry><entry><trigger id="r">dframe</trigger><description>data.frame made of vector columns. a data frame can have different data types for each column, while a matrix is all one data type</description><template>${dataframe} &lt;- data.frame(${colName1} = ${vec1}, ${colName2} = ${vec2}, ${colName3} = ${vec3}, ${...})
+}</template>
+        </entry>
+        <entry>
+            <trigger id="r">cvec</trigger>
+            <description>Create character vector</description>
+            <template>${vecName} &lt;- c( "${Str1}", "${Str2}", "${Str3}", ${...})</template>
+        </entry>
+        <entry>
+            <trigger id="r">detach</trigger>
+            <description>Detach either a data.frame or a package to search path</description>
+            <template>detach(${packageName or data.frame})</template>
+        </entry>
+        <entry>
+            <trigger id="r">dframe</trigger>
+            <description>data.frame made of vector columns. a data frame can have different data types for each column, while a matrix is all one data type</description>
+            <template>${dataframe} &lt;- data.frame(${colName1} = ${vec1}, ${colName2} = ${vec2}, ${colName3} = ${vec3}, ${...})
 # Access individual col
 # ${dataframe}$${colName1}
 # or use attach(${dataframe}) and 
-# ${colName1}</template></entry><entry><trigger id="r">diag</trigger><description>diagonal of a matrix</description><template>diag(${matrix, vector or 1D array}, ${nrow}, ${ncol})</template></entry><entry><trigger id="r">dim</trigger><description>dim attribute</description><template>dim(${vec}) &lt;- c(${x}, ${y}, ${z})
+# ${colName1}</template>
+        </entry>
+        <entry>
+            <trigger id="r">diag</trigger>
+            <description>diagonal of a matrix</description>
+            <template>diag(${matrix, vector or 1D array}, ${nrow}, ${ncol})</template>
+        </entry>
+        <entry>
+            <trigger id="r">dim</trigger>
+            <description>dim attribute</description>
+            <template>dim(${vec}) &lt;- c(${x}, ${y}, ${z})
 # A vector can be used by R as an array only if it has a dimension vector as its dim attribute.
 # vec &lt;- c(1:36)
-# dim(vec) &lt;- c(3, 3, 4)</template></entry><entry><trigger id="r">fhelp</trigger><description>Help on a function</description><template>help("${FunctionName}")</template></entry><entry><trigger id="r">fun</trigger><description>Writing your own function</description><template>${FunctionName} &lt;- function(${arg1}, ${arg2}, ${arg3}, ${...})  {
+# dim(vec) &lt;- c(3, 3, 4)</template>
+        </entry>
+        <entry>
+            <trigger id="r">fcon</trigger>
+            <description>file connection</description>
+            <template>fcon &lt;- file("${file_name}", open = "${r|w|a}")
+close(fcon)</template>
+        </entry>
+        <entry>
+            <trigger id="r">fhelp</trigger>
+            <description>Help on a function</description>
+            <template>help("${FunctionName}")</template>
+        </entry>
+        <entry>
+            <trigger id="r">format</trigger>
+            <description>format R objects</description>
+            <template>format(${R_obj}, trim = ${FALSE}, justify = "${left, right, centre, none}")</template>
+        </entry>
+        <entry>
+            <trigger id="r">fun</trigger>
+            <description>Writing your own function</description>
+            <template>${FunctionName} &lt;- function(${arg1}, ${arg2}, ${arg3}, ${...})  {
   #
   # ${Description of function, what is does}
   # 
@@ -29,26 +137,201 @@ if (is.null(ylim)) {
 
   return (${something})
 }
-</template></entry><entry><trigger id="r">gddply</trigger><description>Split data frame, apply function, and return results in a data frame</description><template>ddply(${data.frame}, .${(var1, var2 etc)}, ${fun} ${= NULL})</template></entry><entry><trigger id="r">geom</trigger><description>ggplot2  geom options</description><template>geom = " ${geom_type} ", </template></entry><entry><trigger id="r">geom_</trigger><description>ggplot2 geom_ options</description><template>geom_${bar | point | smooth | boxplot | path | line | histogram | density | tile | quantile | contour}(${aes}, ${data.frame}, ${geom}, ${geom_params_type}, ${stat}, ${stat_params}, ${position})</template></entry><entry><trigger id="r">geom_params</trigger><description>ggplot2 geom_params</description><template>geom_params = list( geom_params_type ),</template></entry><entry><trigger id="r">geom_params_type</trigger><description>ggplot2 geom options</description><template>fill = "${color_name}", binwidth = "${number, only histogram}"</template></entry><entry><trigger id="r">geom_type</trigger><description>ggplot2 geom type</description><template>bar | point | smooth | boxplot | path | line | histogram | density | tile | quantile | contour</template></entry><entry><trigger id="r">ggplot</trigger><description>To create the plot object ourselves</description><template>${plot.object} &lt;- ggplot(data = ${data.frame}, mapping = ${aes}) + ${glayer} + ${glayer} + ${opts} + ${labs} + ${lims}</template></entry><entry><trigger id="r">ggplot_</trigger><description>To create the plot object ourselves</description><template>${plot.object} &lt;- ggplot(data = ${data.frame}, mapping = ${aes}) + ${geom_} + ${stat_} + ${opts}  + ${labs} + ${lims}</template></entry><entry><trigger id="r">ggsave</trigger><description>Save ggplot and  qplot</description><template>ggsave("${filename.png}", width = ${ like 5}, height = ${ like 5}, dpi = ${ like 300})</template></entry><entry><trigger id="r">glayer</trigger><description>Arg for plotting the layer</description><template>layer(
+</template>
+        </entry>
+        <entry>
+            <trigger id="r">gddply</trigger>
+            <description>Split data frame, apply function, and return results in a data frame</description>
+            <template>ddply(${data.frame}, .${(var1, var2 etc)}, ${fun} ${= NULL})</template>
+        </entry>
+        <entry>
+            <trigger id="r">geom</trigger>
+            <description>ggplot2  geom options</description>
+            <template>geom = " ${geom_type} ", </template>
+        </entry>
+        <entry>
+            <trigger id="r">geom_</trigger>
+            <description>ggplot2 geom_ options</description>
+            <template>geom_${bar | point | smooth | boxplot | path | line | histogram | density | tile | quantile | contour}(${aes}, ${data.frame}, ${geom}, ${geom_params_type}, ${stat}, ${stat_params}, ${position})</template>
+        </entry>
+        <entry>
+            <trigger id="r">geom_params</trigger>
+            <description>ggplot2 geom_params</description>
+            <template>geom_params = list( geom_params_type ),</template>
+        </entry>
+        <entry>
+            <trigger id="r">geom_params_type</trigger>
+            <description>ggplot2 geom options</description>
+            <template>fill = "${color_name}", binwidth = "${number, only histogram}"</template>
+        </entry>
+        <entry>
+            <trigger id="r">geom_type</trigger>
+            <description>ggplot2 geom type</description>
+            <template>bar | point | smooth | boxplot | path | line | histogram | density | tile | quantile | contour</template>
+        </entry>
+        <entry>
+            <trigger id="r">ggplot</trigger>
+            <description>To create the plot object ourselves</description>
+            <template>${plot.object} &lt;- ggplot(data = ${data.frame}, mapping = ${aes}) + ${glayer} + ${glayer} + ${opts} + ${labs} + ${lims}</template>
+        </entry>
+        <entry>
+            <trigger id="r">ggplot_</trigger>
+            <description>To create the plot object ourselves</description>
+            <template>${plot.object} &lt;- ggplot(data = ${data.frame}, mapping = ${aes}) + ${geom_} + ${stat_} + ${opts}  + ${labs} + ${lims}</template>
+        </entry>
+        <entry>
+            <trigger id="r">ggsave</trigger>
+            <description>Save ggplot and  qplot</description>
+            <template>ggsave("${filename.png}", width = ${ like 5}, height = ${ like 5}, dpi = ${ like 300})</template>
+        </entry>
+        <entry>
+            <trigger id="r">glayer</trigger>
+            <description>Arg for plotting the layer</description>
+            <template>layer(
   data = ${data.frame}
   mapping = ${aes}
   ${geom}
   ${geom_params}
   ${stat}
   ${position}
-)</template></entry><entry><trigger id="r">gmelt</trigger><description>Melt an object into a form suitable for easy casting</description><template>melt(${data}, id = c(${var_1}), ${var_2}))</template></entry><entry><trigger id="r">gprint</trigger><description>Render the ggplot object</description><template>print(${ggplot_object})</template></entry><entry><trigger id="r">grep</trigger><description>get patter index if value FALSE </description><template>grep(${pattern}, ${cvec}, ignore.case = ${FALSE}, value = ${FALSE}
-       perl = ${FALSE}, fixed = ${FALSE}, useBytes = ${FALSE}, invert = ${FALSE})</template></entry><entry><trigger id="r">grepl</trigger><description>returns a logical vector</description><template>grepl(${pattern}, ${cvec}, ignore.case = ${FALSE}, perl = ${FALSE}, fixed = ${FALSE},
-            useBytes = ${FALSE})</template></entry><entry><trigger id="r">gsub</trigger><description>replacement of all matches</description><template>gsub(${pattern}, ${replacement}, ${cvec}, ignore.case = ${FALSE}, 
-         perl = ${FALSE}, fixed = ${FALSE}, useBytes = ${FALSE})</template></entry><entry><trigger id="r">hdr</trigger><description>R script header</description><template>#! /usr/bin/env Rscript</template></entry><entry><trigger id="r">labs</trigger><description>ggplot2 labels</description><template>labs(x = "x-axis", y = "y-axis", colour = "color", size = "size")</template></entry><entry><trigger id="r">ldir</trigger><description>List files stored in the directory</description><template>dir("${path/dirName}")</template></entry><entry><trigger id="r">lfile</trigger><description>List files in dir</description><template>list.files("{path/to/dir}")</template></entry><entry><trigger id="r">lic</trigger><description>GPL License</description><template># Copyright © 2010 ${Abhishek Tiwari} (abhishek@abhishek-tiwari.com)
+)</template>
+        </entry>
+        <entry>
+            <trigger id="r">gmelt</trigger>
+            <description>Melt an object into a form suitable for easy casting</description>
+            <template>melt(${data}, id = c(${var_1}), ${var_2}))</template>
+        </entry>
+        <entry>
+            <trigger id="r">gprint</trigger>
+            <description>Render the ggplot object</description>
+            <template>print(${ggplot_object})</template>
+        </entry>
+        <entry>
+            <trigger id="r">grep</trigger>
+            <description>get patter index if value FALSE </description>
+            <template>grep(${pattern}, ${cvec}, ignore.case = ${FALSE}, value = ${FALSE}
+       perl = ${FALSE}, fixed = ${FALSE}, useBytes = ${FALSE}, invert = ${FALSE})</template>
+        </entry>
+        <entry>
+            <trigger id="r">grepl</trigger>
+            <description>returns a logical vector</description>
+            <template>grepl(${pattern}, ${cvec}, ignore.case = ${FALSE}, perl = ${FALSE}, fixed = ${FALSE},
+            useBytes = ${FALSE})</template>
+        </entry>
+        <entry>
+            <trigger id="r">gsub</trigger>
+            <description>replacement of all matches</description>
+            <template>gsub(${pattern}, ${replacement}, ${cvec}, ignore.case = ${FALSE}, 
+         perl = ${FALSE}, fixed = ${FALSE}, useBytes = ${FALSE})</template>
+        </entry>
+        <entry>
+            <trigger id="r">hdr</trigger>
+            <description>R script header</description>
+            <template>#! /usr/bin/env Rscript</template>
+        </entry>
+        <entry>
+            <trigger id="r">labs</trigger>
+            <description>ggplot2 labels</description>
+            <template>labs(x = "x-axis", y = "y-axis", colour = "color", size = "size")</template>
+        </entry>
+        <entry>
+            <trigger id="r">ldir</trigger>
+            <description>List files stored in the directory</description>
+            <template>dir("${path/dirName}")</template>
+        </entry>
+        <entry>
+            <trigger id="r">lfile</trigger>
+            <description>List files in dir</description>
+            <template>list.files("{path/to/dir}")</template>
+        </entry>
+        <entry>
+            <trigger id="r">libs</trigger>
+            <description>libs required</description>
+            <template>library(RCurl)
+library(ggplot2)
+library(lattice)
+library(stats)
+library(utils)
+library(tools)
+library(foreign)
+library(Matrix)
+library(rjson)
+library(rJava)
+library(XML)
+library(tm)
+library(ts)
+# 'require' for use inside other  functions
+</template>
+        </entry>
+        <entry>
+            <trigger id="r">lic</trigger>
+            <description>GPL License</description>
+            <template># Copyright © 2010 ${Abhishek Tiwari} (abhishek@abhishek-tiwari.com)
 #
 # This file is part of ${ProjectName}.
 #
 # Files included in this package ${ProjectName} are copyrighted freeware
 # distributed under the terms and conditions as specified in file LICENSE.
-${cursor}</template></entry><entry><trigger id="r">lims</trigger><description>ggplot2 limiting axis</description><template>xlim(${x1}, ${x2}) + ylim(${y1}, ${y2})</template></entry><entry><trigger id="r">list</trigger><description>Constructing List </description><template>${lst} &lt;- list(${name1} = ${object1}, ${name2} = ${object2}, ${name3} = ${object3},  ${...}, ${name_m} = ${object_m})
+${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="r">lims</trigger>
+            <description>ggplot2 limiting axis</description>
+            <template>xlim(${x1}, ${x2}) + ylim(${y1}, ${y2})</template>
+        </entry>
+        <entry>
+            <trigger id="r">list</trigger>
+            <description>Constructing List </description>
+            <template>${lst} &lt;- list(${name1} = ${object1}, ${name2} = ${object2}, ${name3} = ${object3},  ${...}, ${name_m} = ${object_m})
 # An R list is an object consisting of an ordered collection of objects known as its components.
 # Components can accessed either ${lst$name_m}, ${lst[["name_m"]]} or ${lst[[m]]}
-# ${lst[[m]][n]} to access elements inside the components</template></entry><entry><trigger id="r">load</trigger><description>Load saved R objects from disk</description><template>load("${name}.rdata")</template></entry><entry><trigger id="r">loadp</trigger><description>Load a package from the command line</description><template>library(package = ${packageName})</template></entry><entry><trigger id="r">lower</trigger><description>convert upper-case characters in lower</description><template>tolower(${x})</template></entry><entry><trigger id="r">lstrip</trigger><description>strip leading space</description><template>sub("^ +", "", ${your_string})</template></entry><entry><trigger id="r">lvec</trigger><description>Create a logical vector</description><template>${lvec} &lt;- ${nvec} ${&lt;=&gt;} ${N}</template></entry><entry><trigger id="r">match</trigger><description>returns a vector of the positions of (first) matches</description><template>match(${value to match}, ${vec}, nomatch = NA_integer_, incomparables = NULL)</template></entry><entry><trigger id="r">matchl</trigger><description>logical vector indicating if there is a match or not</description><template>${value to match} %in% ${vec}</template></entry><entry><trigger id="r">naming</trigger><description>Naming convention help</description><template># Variable names should have all lower case letters and words separated with dots (.) 
+# ${lst[[m]][n]} to access elements inside the components</template>
+        </entry>
+        <entry>
+            <trigger id="r">load</trigger>
+            <description>Load saved R objects from disk</description>
+            <template>load("${name}.rdata")</template>
+        </entry>
+        <entry>
+            <trigger id="r">loadp</trigger>
+            <description>Load a package from the command line</description>
+            <template>library(package = ${packageName})</template>
+        </entry>
+        <entry>
+            <trigger id="r">lower</trigger>
+            <description>convert upper-case characters in lower</description>
+            <template>tolower(${x})</template>
+        </entry>
+        <entry>
+            <trigger id="r">lstrip</trigger>
+            <description>strip leading space</description>
+            <template>sub("^ +", "", ${your_string})</template>
+        </entry>
+        <entry>
+            <trigger id="r">lvec</trigger>
+            <description>Create a logical vector</description>
+            <template>${lvec} &lt;- ${nvec} ${&lt;=&gt;} ${N}</template>
+        </entry>
+        <entry>
+            <trigger id="r">match</trigger>
+            <description>returns a vector of the positions of (first) matches</description>
+            <template>match(${value to match}, ${vec}, nomatch = NA_integer_, incomparables = NULL)</template>
+        </entry>
+        <entry>
+            <trigger id="r">matchl</trigger>
+            <description>logical vector indicating if there is a match or not</description>
+            <template>${value to match} %in% ${vec}</template>
+        </entry>
+        <entry>
+            <trigger id="r">matrix</trigger>
+            <description>matrix</description>
+            <template>matrix(data = ${vec}, nrow = ${1}, ncol = ${1}, byrow = ${FALSE},
+            dimnames = ${NULL})</template>
+        </entry>
+        <entry>
+            <trigger id="r">naming</trigger>
+            <description>Naming convention help</description>
+            <template># Variable names should have all lower case letters and words separated with dots (.) 
 variable.name
 
 # Function names have initial capital letters
@@ -61,16 +344,178 @@ kConstantName
 my_filename.R
 
 # Unit tests should go in a separate file named 
-filename_unittest.R</template></entry><entry><trigger id="r">nchar</trigger><description>return number of characters</description><template>nchar(${cvec}, type = "${chars}", allowNA = ${FALSE})</template></entry><entry><trigger id="r">ncol</trigger><description>Number of columns # x a vector, array or data frame</description><template>ncol(${x})</template></entry><entry><trigger id="r">nrow</trigger><description>Number of rows # x a vector, array or data frame</description><template>nrow(${x})</template></entry><entry><trigger id="r">nseq</trigger><description>Sequence generation</description><template>${vec} &lt;- c(seq(from = ${N1}, to = ${N1}, by = ${Diff}))</template></entry><entry><trigger id="r">nseq:</trigger><description>Sequence generation</description><template>${vec} &lt;- c(${n1}:${n2}, ${n3}:${n4}, ${n5}:${n6}, ${..})</template></entry><entry><trigger id="r">nseql</trigger><description>Sequence generation</description><template>${vec} &lt;- c(seq(from = ${N1}, to = ${N1}, length.out = ${length} ))</template></entry><entry><trigger id="r">nvec</trigger><description>Create numeric vector</description><template>${vec.name} &lt;- c(${N1}, ${N2}, ${N3}, ${....})</template></entry><entry><trigger id="r">nvecr</trigger><description>Vector of random numbers with normal distribution</description><template>${nvec} &lt;- c(stats::rnorm( ${N}, ${mean}, ${sd}))</template></entry><entry><trigger id="r">opts</trigger><description>ggplot options</description><template /></entry><entry><trigger id="r">paste</trigger><description>R objects converted to character vectors and one or more R objects, to be converted to character vectors and concatenated</description><template>paste(${R_obj1}, ${R_obj2}, ${...}, sep = " ", collapse = NULL)</template></entry><entry><trigger id="r">phelp</trigger><description>Help for packages</description><template>help(package = ${packageName})</template></entry><entry><trigger id="r">position</trigger><description>ggplot position</description><template>position = "${dodge | fill | identity | jitter | stack}",</template></entry><entry><trigger id="r">print</trigger><description>Print something</description><template>print(${some.name})</template></entry><entry><trigger id="r">qhisto</trigger><description>ggplot qplot</description><template>qplot(${dim_1}, data = ${data.frame}, fill = ${dim_i}, binwidth = ${some_number}, facets = ${dim_x or .} ~ ${dim_y or .}, main = "${plot title}")</template></entry><entry><trigger id="r">qplot1</trigger><description>ggplot2 qplot</description><template>qplot(${dim_1}, ${dim_2} ${= NULL}, ${dim_3} ${= NULL}, ${...}, colour = ${dim_i}, shape = ${dim_j}, data = ${data.frame}, facets = ${dim_x or .} ~ ${dim_y or .}, ${geom} main = "${plot title}", xlab = "${x-axis}", ylab = "${y-axis}")</template></entry><entry><trigger id="r">qplot2</trigger><description>ggplot2 qplot</description><template>attach(${data.frame})
-qplot(${dim_1}, ${dim_2} ${= NULL}, ${dim_3} ${= NULL}, ${...}, colour = ${dim_i}, shape = ${dim_j}, facets = ${dim_x or .} ~ ${dim_y or .}, ${geom} main = "${plot title}", xlab = "${x-axis}", ylab = "${y-axis}")</template></entry><entry><trigger id="r">qplot3</trigger><description>ggplot2 qplot</description><template>qplot(${dim_1}, ${dim_2} ${= NULL}, ${dim_3} ${= NULL}, ${...}, colour = ${dim_i}, shape = ${dim_j}, data = ${data.frame}, facets = ${dim_x or .} ~ ${dim_y or .}, ${geom} main = "${plot title}", xlab = "${x-axis}", ylab = "${y-axis}")</template></entry><entry><trigger id="r">rcsv</trigger><description>read csv</description><template>read.csv(${file_name}, header = ${TRUE|FALSE}, sep = ",", quote="${\"'}", dec="${.}",
-                fill = TRUE, comment.char="", ${...})</template></entry><entry><trigger id="r">rcsv2</trigger><description>read csv2</description><template>read.csv2(${file_name}, header = ${TRUE|FALSE}, sep = ";", quote="${\"'}", dec="${.}",
-                fill = TRUE, comment.char="", ${...})</template></entry><entry><trigger id="r">rdelim</trigger><description>read delim</description><template>read.delim(${file_name}, header = ${TRUE|FALSE}, sep = "\t", quote="${\"'}", dec="${.}",
-                fill = TRUE, comment.char="", ${...})</template></entry><entry><trigger id="r">reqp</trigger><description>Load a package from within a function</description><template>require(package = ${packageName})</template></entry><entry><trigger id="r">rfile</trigger><description>Remove a file</description><template>file.remove("${path/file_name}")</template></entry><entry><trigger id="r">rhelp</trigger><description>Help on a topic</description><template>help(${topic})</template></entry><entry><trigger id="r">rstrip</trigger><description>strip trailing space</description><template>sub(" +$", "", ${your_string})</template></entry><entry><trigger id="r">rtable</trigger><description>read table</description><template>read.table(${file_name}, header = ${TRUE|FALSE}, sep = "${\t,;}", quote="${\"'}", dec="${.}",
-                fill = TRUE, comment.char="", ${...})</template></entry><entry><trigger id="r">rvec</trigger><description>Repeat vector</description><template>rep(x = ${N1}:${N1}, times = ${N3})
-rep(x = ${N1}:${N1}, times = ${nvec})</template></entry><entry><trigger id="r">sample</trigger><description>Random Samples and Permutations</description><template>sample(${vec}, ${size}, ${replace = FALSE}, ${prob = NULL})
+filename_unittest.R</template>
+        </entry>
+        <entry>
+            <trigger id="r">nchar</trigger>
+            <description>return number of characters</description>
+            <template>nchar(${cvec}, type = "${chars}", allowNA = ${FALSE})</template>
+        </entry>
+        <entry>
+            <trigger id="r">ncol</trigger>
+            <description>Number of columns # x a vector, array or data frame</description>
+            <template>ncol(${x})</template>
+        </entry>
+        <entry>
+            <trigger id="r">nrow</trigger>
+            <description>Number of rows # x a vector, array or data frame</description>
+            <template>nrow(${x})</template>
+        </entry>
+        <entry>
+            <trigger id="r">nseq</trigger>
+            <description>Sequence generation</description>
+            <template>${vec} &lt;- c(seq(from = ${N1}, to = ${N1}, by = ${Diff}))</template>
+        </entry>
+        <entry>
+            <trigger id="r">nseq:</trigger>
+            <description>Sequence generation</description>
+            <template>${vec} &lt;- c(${n1}:${n2}, ${n3}:${n4}, ${n5}:${n6}, ${..})</template>
+        </entry>
+        <entry>
+            <trigger id="r">nseql</trigger>
+            <description>Sequence generation</description>
+            <template>${vec} &lt;- c(seq(from = ${N1}, to = ${N1}, length.out = ${length} ))</template>
+        </entry>
+        <entry>
+            <trigger id="r">nvec</trigger>
+            <description>Create numeric vector</description>
+            <template>${vec.name} &lt;- c(${N1}, ${N2}, ${N3}, ${....})</template>
+        </entry>
+        <entry>
+            <trigger id="r">nvecr</trigger>
+            <description>Vector of random numbers with normal distribution</description>
+            <template>${nvec} &lt;- c(stats::rnorm( ${N}, ${mean}, ${sd}))</template>
+        </entry>
+        <entry>
+            <trigger id="r">opts</trigger>
+            <description>ggplot options</description>
+            <template>#Need to add details</template>
+        </entry>
+        <entry>
+            <trigger id="r">paste</trigger>
+            <description>R objects converted to character vectors and one or more R objects, to be converted to character vectors and concatenated</description>
+            <template>paste(${R_obj1}, ${R_obj2}, ${...}, sep = " ", collapse = NULL)</template>
+        </entry>
+        <entry>
+            <trigger id="r">phelp</trigger>
+            <description>Help for packages</description>
+            <template>help(package = ${packageName})</template>
+        </entry>
+        <entry>
+            <trigger id="r">position</trigger>
+            <description>ggplot position</description>
+            <template>position = "${dodge | fill | identity | jitter | stack}",</template>
+        </entry>
+        <entry>
+            <trigger id="r">print</trigger>
+            <description>Print something</description>
+            <template>print(${some.name},${....})</template>
+        </entry>
+        <entry>
+            <trigger id="r">qhisto</trigger>
+            <description>ggplot qplot</description>
+            <template>qplot(${dim_1}, data = ${data.frame}, fill = ${dim_i}, binwidth = ${some_number}, facets = ${dim_x or .} ~ ${dim_y or .}, main = "${plot title}")</template>
+        </entry>
+        <entry>
+            <trigger id="r">qplot1</trigger>
+            <description>ggplot2 qplot</description>
+            <template>qplot(${dim_1}, ${dim_2} ${= NULL}, ${dim_3} ${= NULL}, ${...}, colour = ${dim_i}, shape = ${dim_j}, data = ${data.frame}, facets = ${dim_x or .} ~ ${dim_y or .}, ${geom} main = "${plot title}", xlab = "${x-axis}", ylab = "${y-axis}")</template>
+        </entry>
+        <entry>
+            <trigger id="r">qplot2</trigger>
+            <description>ggplot2 qplot</description>
+            <template>attach(${data.frame})
+qplot(${dim_1}, ${dim_2} ${= NULL}, ${dim_3} ${= NULL}, ${...}, colour = ${dim_i}, shape = ${dim_j}, facets = ${dim_x or .} ~ ${dim_y or .}, ${geom} main = "${plot title}", xlab = "${x-axis}", ylab = "${y-axis}")</template>
+        </entry>
+        <entry>
+            <trigger id="r">qplot3</trigger>
+            <description>ggplot2 qplot</description>
+            <template>qplot(${dim_1}, ${dim_2} ${= NULL}, ${dim_3} ${= NULL}, ${...}, colour = ${dim_i}, shape = ${dim_j}, data = ${data.frame}, facets = ${dim_x or .} ~ ${dim_y or .}, ${geom} main = "${plot title}", xlab = "${x-axis}", ylab = "${y-axis}")</template>
+        </entry>
+        <entry>
+            <trigger id="r">rbind</trigger>
+            <description>combine vectors into matrices in a row by row</description>
+            <template>rbind(${vec1 or matrix1}, ${vec2 or matrix2}, ${...}, deparse.level = ${1})</template>
+        </entry>
+        <entry>
+            <trigger id="r">rcsv</trigger>
+            <description>read csv</description>
+            <template>read.csv(${file_name}, header = ${TRUE|FALSE}, sep = ",", quote="${\"'}", dec="${.}",
+                fill = TRUE, comment.char="", ${...})</template>
+        </entry>
+        <entry>
+            <trigger id="r">rcsv2</trigger>
+            <description>read csv2</description>
+            <template>read.csv2(${file_name}, header = ${TRUE|FALSE}, sep = ";", quote="${\"'}", dec="${.}",
+                fill = TRUE, comment.char="", ${...})</template>
+        </entry>
+        <entry>
+            <trigger id="r">rdelim</trigger>
+            <description>read delim</description>
+            <template>read.delim(${file_name}, header = ${TRUE|FALSE}, sep = "\t", quote="${\"'}", dec="${.}",
+                fill = TRUE, comment.char="", ${...})</template>
+        </entry>
+        <entry>
+            <trigger id="r">readfile</trigger>
+            <description>read a file using connection</description>
+            <template>fcon &lt;- file("${file_name}", open = "${r}")
+readLines(fcon, n = ${-1L}, ok = ${TRUE}, warn = ${TRUE}, encoding = "${unknown}")
+close(fcon)</template>
+        </entry>
+        <entry>
+            <trigger id="r">readline</trigger>
+            <description>readLines</description>
+            <template>readLines(${fcon or ucon}, n = ${-1L}, ok = ${TRUE}, warn = ${TRUE}, encoding = "${unknown}")</template>
+        </entry>
+        <entry>
+            <trigger id="r">reqp</trigger>
+            <description>Load a package from within a function</description>
+            <template>require(package = ${packageName})</template>
+        </entry>
+        <entry>
+            <trigger id="r">rfile</trigger>
+            <description>Remove a file</description>
+            <template>file.remove("${path/file_name}")</template>
+        </entry>
+        <entry>
+            <trigger id="r">rhelp</trigger>
+            <description>Help on a topic</description>
+            <template>help(${topic})</template>
+        </entry>
+        <entry>
+            <trigger id="r">rstrip</trigger>
+            <description>strip trailing space</description>
+            <template>sub(" +$", "", ${your_string})</template>
+        </entry>
+        <entry>
+            <trigger id="r">rtable</trigger>
+            <description>read table</description>
+            <template>read.table(${file_name}, header = ${TRUE|FALSE}, sep = "${\t,;}", quote="${\"'}", dec="${.}",
+                fill = TRUE, comment.char="", ${...})</template>
+        </entry>
+        <entry>
+            <trigger id="r">rvec</trigger>
+            <description>Repeat vector</description>
+            <template>rep(x = ${N1}:${N1}, times = ${N3})
+rep(x = ${N1}:${N1}, times = ${nvec})</template>
+        </entry>
+        <entry>
+            <trigger id="r">sample</trigger>
+            <description>Random Samples and Permutations</description>
+            <template>sample(${vec}, ${size}, ${replace = FALSE}, ${prob = NULL})
 
 # Should sampling be with replacement? TRUE oR FALSE
-# sample(vec [vec &lt;=&gt;  something])</template></entry><entry><trigger id="r">save</trigger><description>Save R objects to disk</description><template>save(${obj1, obj2, ..}, file = "${name}.rdata")</template></entry><entry><trigger id="r">sdir</trigger><description>Set working dir</description><template>setwd("${path/to/dir}")</template></entry><entry><trigger id="r">space</trigger><description>Space &amp; indentation convention</description><template># Space between comment and hash
+# sample(vec [vec &lt;=&gt;  something])</template>
+        </entry>
+        <entry>
+            <trigger id="r">save</trigger>
+            <description>Save R objects to disk</description>
+            <template>save(${obj1, obj2, ..}, file = "${name}.rdata")</template>
+        </entry>
+        <entry>
+            <trigger id="r">space</trigger>
+            <description>Space &amp; indentation convention</description>
+            <template># Space between comment and hash
 
 # Short comments can be placed after code preceded 
 # by two spaces, #, and then one space.
@@ -88,16 +533,197 @@ kMax = 30  # Maximum rate constant
 if (my.var &gt; 10)
 
 # Extra spacing (i.e., more than one space in a row) is okay if it
-# improves alignment of equals signs or arrows (&lt;-).</template></entry><entry><trigger id="r">split</trigger><description>string split</description><template>strsplit(${cvec}, ${split regex}, fixed = ${FALSE}, perl = ${FALSE}, useBytes = ${FALSE})</template></entry><entry><trigger id="r">stat</trigger><description>ggplot stat</description><template>stat = " ${stat_type} ",</template></entry><entry><trigger id="r">stat_</trigger><description>ggplot2 stat_ options</description><template>stat_${abline | bin | smooth | boxplot | function | summary | density | identity | quantile | contour}(${aes}, ${data.frame}, ${geom}, ${geom_params}, ${stat}, ${stat_params_type}, ${position})</template></entry><entry><trigger id="r">stat_type</trigger><description>ggplot2 stat type</description><template>abline | bin | smooth | boxplot | function | summary | density | identity | quantile | contour</template></entry><entry><trigger id="r">strip</trigger><description>both strip</description><template>gsub("(^ +)|( +$)", "", ${your_string})</template></entry><entry><trigger id="r">sub</trigger><description>replacement of first matche</description><template>sub(${pattern}, ${replacement}, ${cvec}, ignore.case = ${FALSE}, 
-         perl = ${FALSE}, fixed = ${FALSE}, useBytes = ${FALSE})</template></entry><entry><trigger id="r">substr</trigger><description>substr</description><template>substr(${cvec}, ${start}, ${stop})</template></entry><entry><trigger id="r">substring</trigger><description>substring compatible with S</description><template>substring(${cvec}, ${first}, ${last = 1000000L})</template></entry><entry><trigger id="r">substringv</trigger><description>substring value compatible with S</description><template>substring(${cvec}, ${first}, ${last = 1000000L}) &lt;- ${another cvec}</template></entry><entry><trigger id="r">substrv</trigger><description>substr value</description><template>substr(${cvec}, ${start}, ${stop}) &lt;- ${another cvec}</template></entry><entry><trigger id="r">summary</trigger><description>Summary of R object, data structure or anythin</description><template>summary(${obj})</template></entry><entry><trigger id="r">trans</trigger><description>transpose of matrix or dataframe</description><template>t(${matrix or data.frame})</template></entry><entry><trigger id="r">transform</trigger><description>Transform an Object, for Example a Data Frame</description><template>transform(${data.frame}, ${change a column, Ozone = Ozone * 3}, ${add a new column, new = Ozone * 4})</template></entry><entry><trigger id="r">transform1</trigger><description>Transform an Object, for Example a Data Frame</description><template>attach ${data.frame}
-transform(${column1}, ${change column1, Ozone = Ozone * 3}, ${column2}, ${change column2, new = Ozone * 4})</template></entry><entry><trigger id="r">translate</trigger><description>like perl translate, translates each character in string</description><template>chartr(${old}, ${new}, ${cvec})</template></entry><entry><trigger id="r">try1</trigger><description>Exception handling</description><template>tryCatch({
+# improves alignment of equals signs or arrows (&lt;-).</template>
+        </entry>
+        <entry>
+            <trigger id="r">split</trigger>
+            <description>string split</description>
+            <template>strsplit(${cvec}, ${split regex}, fixed = ${FALSE}, perl = ${FALSE}, useBytes = ${FALSE})</template>
+        </entry>
+        <entry>
+            <trigger id="r">stat</trigger>
+            <description>ggplot stat</description>
+            <template>stat = " ${stat_type} ",</template>
+        </entry>
+        <entry>
+            <trigger id="r">stat_</trigger>
+            <description>ggplot2 stat_ options</description>
+            <template>stat_${abline | bin | smooth | boxplot | function | summary | density | identity | quantile | contour}(${aes}, ${data.frame}, ${geom}, ${geom_params}, ${stat}, ${stat_params_type}, ${position})</template>
+        </entry>
+        <entry>
+            <trigger id="r">stat_type</trigger>
+            <description>ggplot2 stat type</description>
+            <template>abline | bin | smooth | boxplot | function | summary | density | identity | quantile | contour</template>
+        </entry>
+        <entry>
+            <trigger id="r">strip</trigger>
+            <description>both strip</description>
+            <template>gsub("(^ +)|( +$)", "", ${your_string})</template>
+        </entry>
+        <entry>
+            <trigger id="r">sub</trigger>
+            <description>replacement of first matche</description>
+            <template>sub(${pattern}, ${replacement}, ${cvec}, ignore.case = ${FALSE}, 
+         perl = ${FALSE}, fixed = ${FALSE}, useBytes = ${FALSE})</template>
+        </entry>
+        <entry>
+            <trigger id="r">substr</trigger>
+            <description>substr</description>
+            <template>substr(${cvec}, ${start}, ${stop})</template>
+        </entry>
+        <entry>
+            <trigger id="r">substring</trigger>
+            <description>substring compatible with S</description>
+            <template>substring(${cvec}, ${first}, ${last = 1000000L})</template>
+        </entry>
+        <entry>
+            <trigger id="r">substringv</trigger>
+            <description>substring value compatible with S</description>
+            <template>substring(${cvec}, ${first}, ${last = 1000000L}) &lt;- ${another cvec}</template>
+        </entry>
+        <entry>
+            <trigger id="r">substrv</trigger>
+            <description>substr value</description>
+            <template>substr(${cvec}, ${start}, ${stop}) &lt;- ${another cvec}</template>
+        </entry>
+        <entry>
+            <trigger id="r">summary</trigger>
+            <description>Summary of R object, data structure or anythin</description>
+            <template>summary(${obj})</template>
+        </entry>
+        <entry>
+            <trigger id="r">trans</trigger>
+            <description>transpose of matrix or dataframe</description>
+            <template>t(${matrix or data.frame})</template>
+        </entry>
+        <entry>
+            <trigger id="r">transform</trigger>
+            <description>Transform an Object, for Example a Data Frame</description>
+            <template>transform(${data.frame}, ${change a column, Ozone = Ozone * 3}, ${add a new column, new = Ozone * 4})</template>
+        </entry>
+        <entry>
+            <trigger id="r">transform1</trigger>
+            <description>Transform an Object, for Example a Data Frame</description>
+            <template>attach ${data.frame}
+transform(${column1}, ${change column1, Ozone = Ozone * 3}, ${column2}, ${change column2, new = Ozone * 4})</template>
+        </entry>
+        <entry>
+            <trigger id="r">translate</trigger>
+            <description>like perl translate, translates each character in string</description>
+            <template>chartr(${old}, ${new}, ${cvec})</template>
+        </entry>
+        <entry>
+            <trigger id="r">try1</trigger>
+            <description>Exception handling</description>
+            <template>tryCatch({
   ${your main code here}
 }, error = function(error) {
   ${details about error here}
-})</template></entry><entry><trigger id="r">try2</trigger><description>Exception handling</description><template>tryCatch({
+})</template>
+        </entry>
+        <entry>
+            <trigger id="r">try2</trigger>
+            <description>Exception handling</description>
+            <template>tryCatch({
   ${your main code here}
 }, error = function(error) {
   ${details about error here}
 }, finally = {
   ${clean up work here, reverting changes}
-})</template></entry><entry><trigger id="r">upper</trigger><description>convert lower-case characters in upper</description><template>toupper(${x})</template></entry><entry><trigger id="r">vmax</trigger><description>Max of a vector</description><template>max(${nvec})</template></entry><entry><trigger id="r">vmean</trigger><description>Mean of a vector</description><template>mean(${nvec})</template></entry><entry><trigger id="r">vmin</trigger><description>Min of a vector</description><template>min(${nvec})</template></entry><entry><trigger id="r">vsd</trigger><description>Standard deviation of a vector</description><template>sd(${nvec})</template></entry><entry><trigger id="r">vsum</trigger><description>Sum of vector elements</description><template>sum(${nvec})</template></entry><entry><trigger id="r">vsummury</trigger><description>Summary of a vector</description><template>summary(${nvec})</template></entry><entry><trigger id="r">vvar</trigger><description>Variance of a vector</description><template>var(${nvec})</template></entry><entry><trigger id="r">wdir</trigger><description>Get current working dir</description><template>getwd()</template></entry></snippet></scribes>
+})</template>
+        </entry>
+        <entry>
+            <trigger id="r">ucon</trigger>
+            <description>get url using connection</description>
+            <template>fcon &lt;- url("${url}", open = "${r|w|a}")
+close(fcon)</template>
+        </entry>
+        <entry>
+            <trigger id="r">unlist</trigger>
+            <description>convert list into vector</description>
+            <template>${vec} &lt;- unlist(${list})</template>
+        </entry>
+        <entry>
+            <trigger id="r">upper</trigger>
+            <description>convert lower-case characters in upper</description>
+            <template>toupper(${x})</template>
+        </entry>
+        <entry>
+            <trigger id="r">vmax</trigger>
+            <description>Max of a vector</description>
+            <template>max(${nvec})</template>
+        </entry>
+        <entry>
+            <trigger id="r">vmean</trigger>
+            <description>Mean of a vector</description>
+            <template>mean(${nvec})</template>
+        </entry>
+        <entry>
+            <trigger id="r">vmin</trigger>
+            <description>Min of a vector</description>
+            <template>min(${nvec})</template>
+        </entry>
+        <entry>
+            <trigger id="r">vsd</trigger>
+            <description>Standard deviation of a vector</description>
+            <template>sd(${nvec})</template>
+        </entry>
+        <entry>
+            <trigger id="r">vsum</trigger>
+            <description>Sum of vector elements</description>
+            <template>sum(${nvec})</template>
+        </entry>
+        <entry>
+            <trigger id="r">vsummury</trigger>
+            <description>Summary of a vector</description>
+            <template>summary(${nvec})</template>
+        </entry>
+        <entry>
+            <trigger id="r">vvar</trigger>
+            <description>Variance of a vector</description>
+            <template>var(${nvec})</template>
+        </entry>
+        <entry>
+            <trigger id="r">wcsv</trigger>
+            <description>write csv</description>
+            <template>write.csv(${matrix or data.frame}, file = "${path/to/filename}", 
+           append = ${FALSE}, quote = ${TRUE}, sep = "${,}",
+           eol = "\n", na = "NA", dec = ".", row.names = ${TRUE},
+           col.names = ${TRUE|NA}, qmethod = c(${"escape", "double")})</template>
+        </entry>
+        <entry>
+            <trigger id="r">wcsv2</trigger>
+            <description>write csv2</description>
+            <template>write.csv2(${matrix or data.frame}, file = "${path/to/filename}", 
+           append = ${FALSE}, quote = ${TRUE}, sep = "${;}",
+           eol = "\n", na = "NA", dec = ",", row.names = ${TRUE},
+           col.names = ${TRUE|NA}, qmethod = c(${"escape", "double")})</template>
+        </entry>
+        <entry>
+            <trigger id="r">wdir</trigger>
+            <description>Get current working dir</description>
+            <template>getwd()</template>
+        </entry>
+        <entry>
+            <trigger id="r">writefile</trigger>
+            <description>write file using connection</description>
+            <template>fcon &lt;- file("file_name", open = "w|a")
+writeLines(fcon, n = -1L, ok = TRUE, warn = TRUE, encoding = "unknown")
+cat(${R_obj1}, ${R_obj2}, file = fcon, sep = "\n")
+close(fcon)</template>
+        </entry>
+        <entry>
+            <trigger id="r">writeline</trigger>
+            <description>writeLines</description>
+            <template>writeLines(${text}, ${fcon}, sep = "${\n}", useBytes = ${FALSE})</template>
+        </entry>
+        <entry>
+            <trigger id="r">wtable</trigger>
+            <description>write table</description>
+            <template>write.table(${matrix or data.frame}, file = "${path/to/filename}", 
+           append = ${FALSE}, quote = ${TRUE}, sep = "${ ,;}",
+           eol = "\n", na = "NA", dec = ".", row.names = ${TRUE},
+           col.names = ${TRUE|NA}, qmethod = c(${"escape", "double")})</template>
+        </entry>
+    </snippet>
+</scribes>
