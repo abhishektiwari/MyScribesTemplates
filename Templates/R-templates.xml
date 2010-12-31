@@ -7,15 +7,26 @@
             <template>aes(${dim_1}, ${dim_2}, ${..,} colour = ${dim_i}, size = ${dim_j})</template>
         </entry>
         <entry>
+            <trigger id="r">aformals</trigger>
+            <description>Set the formal arguments of a function using alist</description>
+            <template>formals(${function}) &lt;- alist(${arg1 = val1}, ${arg1 = val1}, ${...})</template>
+        </entry>
+        <entry>
             <trigger id="r">afun</trigger>
             <description>anonymous function</description>
             <template>(function(${arg1}, ${arg2}, ${arg3}, ${...})  {
-  #
-  # ${Description of function, what is does}
-  # 
+  ${args &lt;- list(...)}
   ${do something here}
   return (${something})
 }) (${value1}, ${value2}, ${value3}, ${...})</template>
+        </entry>
+        <entry>
+            <trigger id="r">all</trigger>
+            <description>Are All Values True?</description>
+            <template>all(${logical vec_1}, ${logical vec_1}, ${...}, na.rm = FALSE)
+
+# if(all(x&gt;0, y&lt;0)) cat("everything ok\n")
+</template>
         </entry>
         <entry>
             <trigger id="r">apply</trigger>
@@ -24,15 +35,55 @@
 # 1 for rows, 2 for columns and c(1,2) indicates rows and columns</template>
         </entry>
         <entry>
+            <trigger id="r">args</trigger>
+            <description>function arguments </description>
+            <template>args(${function})</template>
+        </entry>
+        <entry>
             <trigger id="r">arr</trigger>
             <description>Array function</description>
             <template>${myarray} &lt;- array(${data_vector}, ${dimension_vector})
 #  x &lt;- array(1:20, dim=c(4,5)) </template>
         </entry>
         <entry>
+            <trigger id="r">as.arr</trigger>
+            <description>as array</description>
+            <template>as.array(${r.object}, ${args})</template>
+        </entry>
+        <entry>
+            <trigger id="r">as.char</trigger>
+            <description>as character</description>
+            <template>as.character(${r.object}, ${args})</template>
+        </entry>
+        <entry>
+            <trigger id="r">as.data</trigger>
+            <description>As data.frame</description>
+            <template>as.data.frame(${r.object}, ${args})</template>
+        </entry>
+        <entry>
+            <trigger id="r">as.logi</trigger>
+            <description>as logical</description>
+            <template>as.logical(${r.object}, ${args})</template>
+        </entry>
+        <entry>
+            <trigger id="r">as.mat</trigger>
+            <description>as matrix</description>
+            <template>as.matrix(${r.object}, ${args})</template>
+        </entry>
+        <entry>
+            <trigger id="r">as.num</trigger>
+            <description>as numeric</description>
+            <template>as.numeric(${r.object}, ${args})</template>
+        </entry>
+        <entry>
             <trigger id="r">attach</trigger>
             <description>Attaching a data frame (or list) to the search path</description>
             <template>attach(${data.frame or list})</template>
+        </entry>
+        <entry>
+            <trigger id="r">break</trigger>
+            <description>break  apply only to the innermost of nested loops.</description>
+            <template>break</template>
         </entry>
         <entry>
             <trigger id="r">cat</trigger>
@@ -61,6 +112,11 @@
             <template>setwd("${path/to/dir}")</template>
         </entry>
         <entry>
+            <trigger id="r">class</trigger>
+            <description>check class or data type</description>
+            <template>class(${obj})</template>
+        </entry>
+        <entry>
             <trigger id="r">concat</trigger>
             <description>Concatenating</description>
             <template>${list.ABC} &lt;- c(${list.A}, ${list.B}, ${list.C})
@@ -78,6 +134,11 @@ if (is.null(ylim)) {
 }</template>
         </entry>
         <entry>
+            <trigger id="r">cswitch</trigger>
+            <description>Switch with char as EXPR, also has otherwise expr</description>
+            <template>switch(EXPR = char, ${ch1} = ${expr_1}, ${ch2} = ${expr_2}, ${..} = ${...}, ${otherwise expr})</template>
+        </entry>
+        <entry>
             <trigger id="r">cvec</trigger>
             <description>Create character vector</description>
             <template>${vecName} &lt;- c( "${Str1}", "${Str2}", "${Str3}", ${...})</template>
@@ -86,6 +147,12 @@ if (is.null(ylim)) {
             <trigger id="r">detach</trigger>
             <description>Detach either a data.frame or a package to search path</description>
             <template>detach(${packageName or data.frame})</template>
+        </entry>
+        <entry>
+            <trigger id="r">deva</trigger>
+            <description>delay evaluation of an expression</description>
+            <template>${var} &lt;- quote(${expr})
+eval(${var})</template>
         </entry>
         <entry>
             <trigger id="r">dframe</trigger>
@@ -102,12 +169,21 @@ if (is.null(ylim)) {
             <template>diag(${matrix, vector or 1D array}, ${nrow}, ${ncol})</template>
         </entry>
         <entry>
-            <trigger id="r">dim</trigger>
-            <description>dim attribute</description>
-            <template>dim(${vec}) &lt;- c(${x}, ${y}, ${z})
-# A vector can be used by R as an array only if it has a dimension vector as its dim attribute.
-# vec &lt;- c(1:36)
-# dim(vec) &lt;- c(3, 3, 4)</template>
+            <trigger id="r">dimget</trigger>
+            <description>get dim attribute from a matrix, array or data frame</description>
+            <template>dim(${r.object})</template>
+        </entry>
+        <entry>
+            <trigger id="r">dimset</trigger>
+            <description>set dim attribute to a vector</description>
+            <template>dim(${vec}) &lt;- c(${x}, ${y}, ${z})</template>
+        </entry>
+        <entry>
+            <trigger id="r">env</trigger>
+            <description>Get the environment, fun: a ‘function’, a ‘formula’, or ‘NULL’</description>
+            <template>environment(fun = ${NULL})
+
+</template>
         </entry>
         <entry>
             <trigger id="r">fcon</trigger>
@@ -121,6 +197,13 @@ close(fcon)</template>
             <template>help("${FunctionName}")</template>
         </entry>
         <entry>
+            <trigger id="r">for</trigger>
+            <description>for loop</description>
+            <template>for(${var} in ${seq})  {
+  ${expr}
+}</template>
+        </entry>
+        <entry>
             <trigger id="r">format</trigger>
             <description>format R objects</description>
             <template>format(${R_obj}, trim = ${FALSE}, justify = "${left, right, centre, none}")</template>
@@ -129,15 +212,10 @@ close(fcon)</template>
             <trigger id="r">fun</trigger>
             <description>Writing your own function</description>
             <template>${FunctionName} &lt;- function(${arg1}, ${arg2}, ${arg3}, ${...})  {
-  #
-  # ${Description of function, what is does}
-  # 
- 
+  ${args &lt;- list(...)}
   ${do something here}
-
   return (${something})
-}
-</template>
+}</template>
         </entry>
         <entry>
             <trigger id="r">gddply</trigger>
@@ -168,6 +246,16 @@ close(fcon)</template>
             <trigger id="r">geom_type</trigger>
             <description>ggplot2 geom type</description>
             <template>bar | point | smooth | boxplot | path | line | histogram | density | tile | quantile | contour</template>
+        </entry>
+        <entry>
+            <trigger id="r">getbody</trigger>
+            <description>Get function body</description>
+            <template>body(${function})</template>
+        </entry>
+        <entry>
+            <trigger id="r">gformals</trigger>
+            <description>Get the formal arguments of a function</description>
+            <template>formals(${function})</template>
         </entry>
         <entry>
             <trigger id="r">ggplot</trigger>
@@ -230,6 +318,63 @@ close(fcon)</template>
             <template>#! /usr/bin/env Rscript</template>
         </entry>
         <entry>
+            <trigger id="r">if</trigger>
+            <description>if condition</description>
+            <template>if(cond)  {
+  ${expr}
+}</template>
+        </entry>
+        <entry>
+            <trigger id="r">ifelse</trigger>
+            <description>if-else control</description>
+            <template>if(cond)  {
+  ${expr}
+}  
+else {
+  ${alt.expr}
+}</template>
+        </entry>
+        <entry>
+            <trigger id="r">is.arr</trigger>
+            <description>Is Array?</description>
+            <template>is.array(${r.object})</template>
+        </entry>
+        <entry>
+            <trigger id="r">is.char</trigger>
+            <description>Is Character?</description>
+            <template>is.character(${r.object})</template>
+        </entry>
+        <entry>
+            <trigger id="r">is.data</trigger>
+            <description>Is data.frame?</description>
+            <template>is.data.frame(${r.object})</template>
+        </entry>
+        <entry>
+            <trigger id="r">is.mat</trigger>
+            <description>Is Matrix?</description>
+            <template>is.matrix(${r.object})</template>
+        </entry>
+        <entry>
+            <trigger id="r">is.na</trigger>
+            <description>Is NA?</description>
+            <template>is.na(${atomic.vec})</template>
+        </entry>
+        <entry>
+            <trigger id="r">is.nu</trigger>
+            <description>Is NULL?</description>
+            <template>is.null(${r.object})</template>
+        </entry>
+        <entry>
+            <trigger id="r">is.num</trigger>
+            <description>Is Numeric?</description>
+            <template>is.numeric(${r.object})</template>
+        </entry>
+        <entry>
+            <trigger id="r">iswitch</trigger>
+            <description>Switch with integer index as EXPR</description>
+            <template>switch(EXPR = int, ${expr_1}, ${expr_2}, ${expr_3}, ${...})</template>
+        </entry>
+        <entry>
             <trigger id="r">labs</trigger>
             <description>ggplot2 labels</description>
             <template>labs(x = "x-axis", y = "y-axis", colour = "color", size = "size")</template>
@@ -238,6 +383,12 @@ close(fcon)</template>
             <trigger id="r">ldir</trigger>
             <description>List files stored in the directory</description>
             <template>dir("${path/dirName}")</template>
+        </entry>
+        <entry>
+            <trigger id="r">len</trigger>
+            <description>length, you can change it by padding or discarding element</description>
+            <template>length(${r.object})
+# length(${r.object}) &lt; value</template>
         </entry>
         <entry>
             <trigger id="r">lfile</trigger>
@@ -266,7 +417,7 @@ library(ts)
         <entry>
             <trigger id="r">lic</trigger>
             <description>GPL License</description>
-            <template># Copyright © 2010 ${Abhishek Tiwari} (abhishek@abhishek-tiwari.com)
+            <template># Copyright © 2010-2011 ${Abhishek Tiwari} (abhishek@abhishek-tiwari.com)
 #
 # This file is part of ${ProjectName}.
 #
@@ -282,8 +433,7 @@ ${cursor}</template>
         <entry>
             <trigger id="r">list</trigger>
             <description>Constructing List </description>
-            <template>${lst} &lt;- list(${name1} = ${object1}, ${name2} = ${object2}, ${name3} = ${object3},  ${...}, ${name_m} = ${object_m})
-# An R list is an object consisting of an ordered collection of objects known as its components.
+            <template>${lst} &lt;- list(${name1} = ${object1}, ${name2} = ${object2}, ${...}, ${name_m} = ${object_m})
 # Components can accessed either ${lst$name_m}, ${lst[["name_m"]]} or ${lst[[m]]}
 # ${lst[[m]][n]} to access elements inside the components</template>
         </entry>
@@ -301,6 +451,12 @@ ${cursor}</template>
             <trigger id="r">lower</trigger>
             <description>convert upper-case characters in lower</description>
             <template>tolower(${x})</template>
+        </entry>
+        <entry>
+            <trigger id="r">ls</trigger>
+            <description>Return the vector of object names  in a given environment</description>
+            <template>${vec} &lt;- ls(${myenv})
+# ls() for local variables</template>
         </entry>
         <entry>
             <trigger id="r">lstrip</trigger>
@@ -357,6 +513,16 @@ filename_unittest.R</template>
             <template>ncol(${x})</template>
         </entry>
         <entry>
+            <trigger id="r">newenv</trigger>
+            <description>New environment</description>
+            <template>${myenv} &lt;- new.env(${parent = baseenv() | emptyenv() | parent.frame()})</template>
+        </entry>
+        <entry>
+            <trigger id="r">next</trigger>
+            <description>next  apply only to the innermost of nested loops.</description>
+            <template>next</template>
+        </entry>
+        <entry>
             <trigger id="r">nrow</trigger>
             <description>Number of rows # x a vector, array or data frame</description>
             <template>nrow(${x})</template>
@@ -387,6 +553,12 @@ filename_unittest.R</template>
             <template>${nvec} &lt;- c(stats::rnorm( ${N}, ${mean}, ${sd}))</template>
         </entry>
         <entry>
+            <trigger id="r">objects</trigger>
+            <description>Return the vector of object names  in a given environment</description>
+            <template>${vec} &lt;- objects(${myenv})
+# objects() for local variables</template>
+        </entry>
+        <entry>
             <trigger id="r">opts</trigger>
             <description>ggplot options</description>
             <template>#Need to add details</template>
@@ -395,6 +567,11 @@ filename_unittest.R</template>
             <trigger id="r">paste</trigger>
             <description>R objects converted to character vectors and one or more R objects, to be converted to character vectors and concatenated</description>
             <template>paste(${R_obj1}, ${R_obj2}, ${...}, sep = " ", collapse = NULL)</template>
+        </entry>
+        <entry>
+            <trigger id="r">penv</trigger>
+            <description>Parent environment of its argument</description>
+            <template>parent.env(${myenv})</template>
         </entry>
         <entry>
             <trigger id="r">phelp</trigger>
@@ -468,6 +645,11 @@ close(fcon)</template>
             <template>readLines(${fcon or ucon}, n = ${-1L}, ok = ${TRUE}, warn = ${TRUE}, encoding = "${unknown}")</template>
         </entry>
         <entry>
+            <trigger id="r">repeat</trigger>
+            <description>repeat</description>
+            <template>repeat ${expr}</template>
+        </entry>
+        <entry>
             <trigger id="r">reqp</trigger>
             <description>Load a package from within a function</description>
             <template>require(package = ${packageName})</template>
@@ -481,6 +663,15 @@ close(fcon)</template>
             <trigger id="r">rhelp</trigger>
             <description>Help on a topic</description>
             <template>help(${topic})</template>
+        </entry>
+        <entry>
+            <trigger id="r">rifelse</trigger>
+            <description />
+            <template>ifelse(${test-objects}, ${yes-objects}, ${no-objects})
+
+# ifelse(c(TRUE, FALSE, TRUE, FALSE), c(1, 2, 3, 4), c(5, 6, 7, 8))
+# 1 6 3 8
+</template>
         </entry>
         <entry>
             <trigger id="r">rstrip</trigger>
@@ -511,6 +702,18 @@ rep(x = ${N1}:${N1}, times = ${nvec})</template>
             <trigger id="r">save</trigger>
             <description>Save R objects to disk</description>
             <template>save(${obj1, obj2, ..}, file = "${name}.rdata")</template>
+        </entry>
+        <entry>
+            <trigger id="r">setbody</trigger>
+            <description>Set function body</description>
+            <template>body(${function}) &lt;- expression(${new.expr})</template>
+        </entry>
+        <entry>
+            <trigger id="r">sformals</trigger>
+            <description>Set the formal arguments of a function</description>
+            <template>${myfor} &lt;- formals(${function})
+${myfor}$${arg} &lt;- ${value}
+formals(${function}) &lt;- ${myfor}</template>
         </entry>
         <entry>
             <trigger id="r">space</trigger>
@@ -554,6 +757,12 @@ if (my.var &gt; 10)
             <trigger id="r">stat_type</trigger>
             <description>ggplot2 stat type</description>
             <template>abline | bin | smooth | boxplot | function | summary | density | identity | quantile | contour</template>
+        </entry>
+        <entry>
+            <trigger id="r">stop</trigger>
+            <description>stopifnot</description>
+            <template>stopifnot(${logical.expr1}, ${logical.expr1}, ${...})
+# Value ‘NULL’ if all statements in ‘...’ are ‘TRUE’.</template>
         </entry>
         <entry>
             <trigger id="r">strip</trigger>
@@ -703,6 +912,13 @@ close(fcon)</template>
             <trigger id="r">wdir</trigger>
             <description>Get current working dir</description>
             <template>getwd()</template>
+        </entry>
+        <entry>
+            <trigger id="r">while</trigger>
+            <description>while loop</description>
+            <template>while(${cond})  {
+  ${expr}
+}</template>
         </entry>
         <entry>
             <trigger id="r">writefile</trigger>
