@@ -118,9 +118,35 @@ qplot(${dim_1}, ${dim_2} ${= NULL}, ${dim_3} ${= NULL}, ${...}, colour = ${dim_i
             <template>setwd("${path/to/dir}")</template>
         </entry>
         <entry>
-            <trigger id="r">class</trigger>
-            <description>check class or data type</description>
-            <template>class(${obj})</template>
+            <trigger id="r">classmethod</trigger>
+            <description>s3 class method</description>
+            <template>${x} &lt;- structure(${data}, class = c("${classname1}", "${classname2}", "${classname3}"))
+
+${gname} &lt;- function (${x}, ${...})  {
+  if(is.null(attr(${x}, "class"))){
+    ${do something}
+  }
+  else  UseMethod("${gname}", ${x}, ${...})
+}
+
+${gname}.default &lt;- ${gname}(${x})
+
+${gname}.${classname1} &lt;- function(${x}, ${...})  {
+  # Only if class of an S3 object is a vector
+  NextMethod()
+}
+
+${gname}.${classname2} &lt;- function(${x}, ${...})  {
+  # First argument is an object of class classname
+  ${args} &lt;- list(...)
+  ${do something}
+}
+
+${gname}.${classname3} &lt;- function(${x}, ${...})  {
+  # First argument is an object of class classname
+  ${args} &lt;- list(...)
+  ${do something}
+}</template>
         </entry>
         <entry>
             <trigger id="r">concat</trigger>
@@ -138,6 +164,11 @@ ${vect.ABC} &lt;- c(${vect.A}, ${vect.B}, ${vect.C})</template>
 if (is.null(ylim)) {
   ylim &lt;- c(0, 0.06)
 }</template>
+        </entry>
+        <entry>
+            <trigger id="r">createobject</trigger>
+            <description>create object s3 class, same as setclass</description>
+            <template>${s3.obj} &lt;- structure(${data}, class = ${vec.class.names})</template>
         </entry>
         <entry>
             <trigger id="r">cswitch</trigger>
@@ -264,6 +295,11 @@ close(fcon)</template>
             <template>body(${function})</template>
         </entry>
         <entry>
+            <trigger id="r">getclass</trigger>
+            <description> get class type S3 or data type</description>
+            <template>class(${s3.obj})</template>
+        </entry>
+        <entry>
             <trigger id="r">gformals</trigger>
             <description>Get the formal arguments of a function</description>
             <template>formals(${function})</template>
@@ -354,6 +390,11 @@ close(fcon)</template>
 else {
   ${alt.expr}
 }</template>
+        </entry>
+        <entry>
+            <trigger id="r">inherits</trigger>
+            <description>Indicates whether obj is inherites from given classes</description>
+            <template>inherits(${s3.obj}, ${class.names})</template>
         </entry>
         <entry>
             <trigger id="r">is.arr</trigger>
@@ -509,6 +550,11 @@ ${cursor}</template>
             <description>matrix</description>
             <template>matrix(data = ${vec}, nrow = ${1}, ncol = ${1}, byrow = ${FALSE},
             dimnames = ${NULL})</template>
+        </entry>
+        <entry>
+            <trigger id="r">methods</trigger>
+            <description>List of all the implementations of generic function</description>
+            <template>methods(${gname})</template>
         </entry>
         <entry>
             <trigger id="r">naming</trigger>
@@ -729,6 +775,14 @@ rep(x = ${N1}:${N1}, times = ${nvec})</template>
             <template>body(${function}) &lt;- expression(${new.expr})</template>
         </entry>
         <entry>
+            <trigger id="r">setclass</trigger>
+            <description>set the class s3 type</description>
+            <template>${s3.obj} &lt;- ${data}
+class(${s3.obj}) &lt; - ${vec.class.names}
+# OR
+attr(${s3.obj}, "class") &lt;- ${vec.class.names}</template>
+        </entry>
+        <entry>
             <trigger id="r">sformals</trigger>
             <description>Set the formal arguments of a function</description>
             <template>${myfor} &lt;- formals(${function})
@@ -903,6 +957,11 @@ transform(${column1}, ${change column1, Ozone = Ozone * 3}, ${column2}, ${change
             <description>get url using connection</description>
             <template>fcon &lt;- url("${url}", open = "${r|w|a}")
 close(fcon)</template>
+        </entry>
+        <entry>
+            <trigger id="r">unclass</trigger>
+            <description>returns (a copy of) its argument  with its class  attribute removed</description>
+            <template>unclass(${s3.obj})</template>
         </entry>
         <entry>
             <trigger id="r">unlist</trigger>
