@@ -35,6 +35,12 @@
 # 1 for rows, 2 for columns and c(1,2) indicates rows and columns</template>
         </entry>
         <entry>
+            <trigger id="r">aqplot</trigger>
+            <description>ggplot2 attach data and then qplot</description>
+            <template>attach(${data.frame})
+qplot(${dim_1}, ${dim_2} ${= NULL}, ${dim_3} ${= NULL}, ${...}, colour = ${dim_i}, shape = ${dim_j},${facets} ${geom} ${stat} ${xlim} ${ylim} ${glog} main = "${plot title}", xlab = "${x-axis}", ylab = "${y-axis}") + ${ggplot_functions}</template>
+        </entry>
+        <entry>
             <trigger id="r">args</trigger>
             <description>function arguments </description>
             <template>args(${function})</template>
@@ -186,6 +192,11 @@ eval(${var})</template>
 </template>
         </entry>
         <entry>
+            <trigger id="r">facets</trigger>
+            <description>ggplot facets</description>
+            <template>facets = ${dim_x or .} ~ ${dim_y or .},</template>
+        </entry>
+        <entry>
             <trigger id="r">fcon</trigger>
             <description>file connection</description>
             <template>fcon &lt;- file("${file_name}", open = "${r|w|a}")
@@ -268,6 +279,11 @@ close(fcon)</template>
             <template>${plot.object} &lt;- ggplot(data = ${data.frame}, mapping = ${aes}) + ${geom_} + ${stat_} + ${opts}  + ${labs} + ${lims}</template>
         </entry>
         <entry>
+            <trigger id="r">ggplot_functions</trigger>
+            <description>ggplot function triggers</description>
+            <template>${geom_ | stat_ | scale_ | coord_ | facet_ | position_ | theme_}</template>
+        </entry>
+        <entry>
             <trigger id="r">ggsave</trigger>
             <description>Save ggplot and  qplot</description>
             <template>ggsave("${filename.png}", width = ${ like 5}, height = ${ like 5}, dpi = ${ like 300})</template>
@@ -283,6 +299,11 @@ close(fcon)</template>
   ${stat}
   ${position}
 )</template>
+        </entry>
+        <entry>
+            <trigger id="r">glog</trigger>
+            <description>ggplot qplot log</description>
+            <template>log = "${x | y | xy}",</template>
         </entry>
         <entry>
             <trigger id="r">gmelt</trigger>
@@ -378,6 +399,11 @@ else {
             <trigger id="r">labs</trigger>
             <description>ggplot2 labels</description>
             <template>labs(x = "x-axis", y = "y-axis", colour = "color", size = "size")</template>
+        </entry>
+        <entry>
+            <trigger id="r">lastplot</trigger>
+            <description>last ggplot</description>
+            <template>last_plot() + ${ggplot_functions}</template>
         </entry>
         <entry>
             <trigger id="r">ldir</trigger>
@@ -561,7 +587,7 @@ filename_unittest.R</template>
         <entry>
             <trigger id="r">opts</trigger>
             <description>ggplot options</description>
-            <template>#Need to add details</template>
+            <template>opts(title = "${Plot title}", ${theme_options}, ${keep = "legend_box"})</template>
         </entry>
         <entry>
             <trigger id="r">paste</trigger>
@@ -594,20 +620,9 @@ filename_unittest.R</template>
             <template>qplot(${dim_1}, data = ${data.frame}, fill = ${dim_i}, binwidth = ${some_number}, facets = ${dim_x or .} ~ ${dim_y or .}, main = "${plot title}")</template>
         </entry>
         <entry>
-            <trigger id="r">qplot1</trigger>
+            <trigger id="r">qplot</trigger>
             <description>ggplot2 qplot</description>
-            <template>qplot(${dim_1}, ${dim_2} ${= NULL}, ${dim_3} ${= NULL}, ${...}, colour = ${dim_i}, shape = ${dim_j}, data = ${data.frame}, facets = ${dim_x or .} ~ ${dim_y or .}, ${geom} main = "${plot title}", xlab = "${x-axis}", ylab = "${y-axis}")</template>
-        </entry>
-        <entry>
-            <trigger id="r">qplot2</trigger>
-            <description>ggplot2 qplot</description>
-            <template>attach(${data.frame})
-qplot(${dim_1}, ${dim_2} ${= NULL}, ${dim_3} ${= NULL}, ${...}, colour = ${dim_i}, shape = ${dim_j}, facets = ${dim_x or .} ~ ${dim_y or .}, ${geom} main = "${plot title}", xlab = "${x-axis}", ylab = "${y-axis}")</template>
-        </entry>
-        <entry>
-            <trigger id="r">qplot3</trigger>
-            <description>ggplot2 qplot</description>
-            <template>qplot(${dim_1}, ${dim_2} ${= NULL}, ${dim_3} ${= NULL}, ${...}, colour = ${dim_i}, shape = ${dim_j}, data = ${data.frame}, facets = ${dim_x or .} ~ ${dim_y or .}, ${geom} main = "${plot title}", xlab = "${x-axis}", ylab = "${y-axis}")</template>
+            <template>qplot(${dim_1}, ${dim_2} ${= NULL}, ${dim_3} ${= NULL}, ${...}, colour = ${dim_i}, shape = ${dim_j}, data = ${data.frame}, ${facets} ${geom} ${stat} ${xlim} ${ylim} ${glog} main = "${plot title}", xlab = "${x-axis}", ylab = "${y-axis}") + ${ggplot_functions}</template>
         </entry>
         <entry>
             <trigger id="r">rbind</trigger>
@@ -704,6 +719,11 @@ rep(x = ${N1}:${N1}, times = ${nvec})</template>
             <template>save(${obj1, obj2, ..}, file = "${name}.rdata")</template>
         </entry>
         <entry>
+            <trigger id="r">scale_</trigger>
+            <description>ggplot scale</description>
+            <template>scale_${alpha | continuous | gradient | gradient2 | shape | size | date | linetype | identity}(${garg})</template>
+        </entry>
+        <entry>
             <trigger id="r">setbody</trigger>
             <description>Set function body</description>
             <template>body(${function}) &lt;- expression(${new.expr})</template>
@@ -776,6 +796,28 @@ if (my.var &gt; 10)
          perl = ${FALSE}, fixed = ${FALSE}, useBytes = ${FALSE})</template>
         </entry>
         <entry>
+            <trigger id="r">subplot</trigger>
+            <description>ggplot subplot snippet</description>
+            <template>Layout &lt;- grid.layout( nrow = ${r}, ncol = ${c}, 
+              widths  = unit(c(${w1}, ${..}), c("${cm | null}", "${..}")) 
+              heights = unit(c(${h1}, ${..}), c("${cm | null}", "${..}")) 
+              )
+
+vplayout &lt;- function (...) {
+ grid.newpage()
+ pushViewport(viewport(layout= Layout))
+}
+
+subplot &lt;- function(x, y) viewport(layout.pos.row=x, layout.pos.col=y)
+
+vplayout()
+legend &lt;- ${plot1} + opts(keep= "legend_box")
+print(${plot1}, vp=subplot(2,1))
+print(${plot2}, vp=subplot(1,1))
+print(${plot3}, vp=subplot(2,2))
+print(${legend},vp=subplot(1,2))</template>
+        </entry>
+        <entry>
             <trigger id="r">substr</trigger>
             <description>substr</description>
             <template>substr(${cvec}, ${start}, ${stop})</template>
@@ -799,6 +841,21 @@ if (my.var &gt; 10)
             <trigger id="r">summary</trigger>
             <description>Summary of R object, data structure or anythin</description>
             <template>summary(${obj})</template>
+        </entry>
+        <entry>
+            <trigger id="r">theme</trigger>
+            <description>set ggplot theme </description>
+            <template>theme_set(${theme_bw() | theme_grey()})</template>
+        </entry>
+        <entry>
+            <trigger id="r">theme_</trigger>
+            <description>ggplot theme options</description>
+            <template>${bw | grey | text | line | segment | rect | blank}(${..})</template>
+        </entry>
+        <entry>
+            <trigger id="r">theme_options</trigger>
+            <description>ggplot  theme options</description>
+            <template>plot.title = theme_text(size = ${20}, colour = "${red}"), axis.title.x = theme_text(${..}), axis.title.y = theme_text(${..}), plot.background = theme_rect(size = ${2}, colour = "${red}"), panel.background = theme_rect(${..}), plot.background = theme_rect(${..}), </template>
         </entry>
         <entry>
             <trigger id="r">trans</trigger>
@@ -940,6 +997,16 @@ close(fcon)</template>
            append = ${FALSE}, quote = ${TRUE}, sep = "${ ,;}",
            eol = "\n", na = "NA", dec = ".", row.names = ${TRUE},
            col.names = ${TRUE|NA}, qmethod = c(${"escape", "double")})</template>
+        </entry>
+        <entry>
+            <trigger id="r">xlim</trigger>
+            <description>ggplot plot range xlim</description>
+            <template>xlim = c(${x1},${x2}),</template>
+        </entry>
+        <entry>
+            <trigger id="r">ylim</trigger>
+            <description>ggplot plot range ylim</description>
+            <template>ylim = c(${y1},${y2}),</template>
         </entry>
     </snippet>
 </scribes>
