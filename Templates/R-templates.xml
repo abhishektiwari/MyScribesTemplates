@@ -118,6 +118,22 @@ qplot(${dim_1}, ${dim_2} ${= NULL}, ${dim_3} ${= NULL}, ${...}, colour = ${dim_i
             <template>setwd("${path/to/dir}")</template>
         </entry>
         <entry>
+            <trigger id="r">class3</trigger>
+            <description>S3 style class and objects</description>
+            <template># Cunstructor  function
+${classname} &lt;- function(${x}, ${...})  {
+  ${args} &lt;- list(...)
+  ${do something}
+  ${object} &lt;- ${data from above}
+  class(${object}) &lt;- "${classname}"
+  return (${object})
+}
+
+# Creating object of class type
+${my.object} &lt;- ${classname}(${x}, ${...})
+# To access object attributes,  my.object$attribute.name</template>
+        </entry>
+        <entry>
             <trigger id="r">classmethod</trigger>
             <description>s3 class method</description>
             <template>${x} &lt;- structure(${data}, class = c("${classname1}", "${classname2}", "${classname3}"))
@@ -126,7 +142,7 @@ ${gname} &lt;- function (${x}, ${...})  {
   if(is.null(attr(${x}, "class"))){
     ${do something}
   }
-  else  UseMethod("${gname}", ${x}, ${...})
+  else  UseMethod("${gname}", ${x})
 }
 
 ${gname}.default &lt;- ${gname}(${x})
@@ -300,6 +316,11 @@ close(fcon)</template>
             <template>class(${s3.obj})</template>
         </entry>
         <entry>
+            <trigger id="r">getslots</trigger>
+            <description>get list of slots for S4 class</description>
+            <template>getSlots("${className}")</template>
+        </entry>
+        <entry>
             <trigger id="r">gformals</trigger>
             <description>Get the formal arguments of a function</description>
             <template>formals(${function})</template>
@@ -395,6 +416,19 @@ else {
             <trigger id="r">inherits</trigger>
             <description>Indicates whether obj is inherites from given classes</description>
             <template>inherits(${s3.obj}, ${class.names})</template>
+        </entry>
+        <entry>
+            <trigger id="r">init</trigger>
+            <description>initialize S4 object</description>
+            <template>setMethod(
+  "initialize",
+  signature(.Object = "${className}"),
+  function (.Object, ${x}, ${y}, ${...})  {
+    ${do something here with arguments like change input to upper or lower}
+    callNextMethod(.Object, ${x} = ${x}, ${y} = ${y}, ${...})
+  }
+)
+# method.skeleton recommended way to generate a  skeleton of the call to ‘setMethod’</template>
         </entry>
         <entry>
             <trigger id="r">is.arr</trigger>
@@ -583,6 +617,14 @@ filename_unittest.R</template>
             <trigger id="r">ncol</trigger>
             <description>Number of columns # x a vector, array or data frame</description>
             <template>ncol(${x})</template>
+        </entry>
+        <entry>
+            <trigger id="r">new</trigger>
+            <description>new S4 object</description>
+            <template># To create new object
+${obj} &lt;- new("${className}", ${slot1} = ${value1}, ${slot2} = ${value2}, ${..})
+# To access slot values ${obj}@${slot1}, ${obj}@${slot2}, .. Otherwise
+# To access slot values slot(${obj}, "${slot1}"), slot(${obj}, "${slot1}"), ..</template>
         </entry>
         <entry>
             <trigger id="r">newenv</trigger>
@@ -783,11 +825,53 @@ class(${s3.obj}) &lt; - ${vec.class.names}
 attr(${s3.obj}, "class") &lt;- ${vec.class.names}</template>
         </entry>
         <entry>
+            <trigger id="r">setclass4</trigger>
+            <description>Set or create class of type S4</description>
+            <template>setClass(
+  "${className}", 
+  representation(
+    ${slot1} = " slot.type ",
+    ${slot2} = " slot.type ",
+    ${..}
+  ),
+  prototype(
+    ${slot1} = ${defult.value1},
+    ${slot2} = ${defult.value2},
+    ${..}
+  ),
+  validity = ${validation.function},
+  contains = c("${superclass1}", "${superclass2}")
+)</template>
+        </entry>
+        <entry>
+            <trigger id="r">setmethod</trigger>
+            <description>setMethod for S4 objects</description>
+            <template>setMethod(
+  "${generic.function}",
+  signature(${x} = "${className1}", ${y} = "${className2}", ${..}),
+  function (${x}, ${y}, ${...})  {
+    ${do something here}
+  }
+)
+# Class names can formal, basic or special class names "ANY" &amp; "missing"
+# method.skeleton recommended way to generate a  skeleton of the call to ‘setMethod’</template>
+        </entry>
+        <entry>
+            <trigger id="r">setvalidity</trigger>
+            <description>setValidity for S4 object creation</description>
+            <template>setValidity("${className}", ${validation.function})</template>
+        </entry>
+        <entry>
             <trigger id="r">sformals</trigger>
             <description>Set the formal arguments of a function</description>
             <template>${myfor} &lt;- formals(${function})
 ${myfor}$${arg} &lt;- ${value}
 formals(${function}) &lt;- ${myfor}</template>
+        </entry>
+        <entry>
+            <trigger id="r">slot.type</trigger>
+            <description>slot.type for s4 class</description>
+            <template>numeric | character | data.frame | matrix | complex | call </template>
         </entry>
         <entry>
             <trigger id="r">space</trigger>
@@ -972,6 +1056,41 @@ close(fcon)</template>
             <trigger id="r">upper</trigger>
             <description>convert lower-case characters in upper</description>
             <template>toupper(${x})</template>
+        </entry>
+        <entry>
+            <trigger id="r">valid</trigger>
+            <description>check if an object is valid or not</description>
+            <template>validObject(${object}, test = ${FALSE}, complete = ${FALSE})</template>
+        </entry>
+        <entry>
+            <trigger id="r">vfun</trigger>
+            <description>Validation function S4 objects</description>
+            <template># Validation function, access the slot values by object@${slot}
+
+${validation.function} &lt;- function(object)  {
+  if(${valid cond}) TRUE
+  else paste("${suggest error}")
+}
+
+# Or Try this one
+
+${validation.function} &lt;- function(object)  {
+  errors &lt;- character()
+  if(${invalid cond1}) {
+    msg &lt;- paste("${suggest error}")
+    errors &lt;- c(errors, msg)
+  }
+  
+  if(${invalid cond2}) {
+    msg &lt;- paste("${suggest error}")
+    errors &lt;- c(errors, msg)
+  }
+  
+  if (length(errors) == 0) TRUE else errors
+  }
+
+# validity tests are not applied recursively by default 
+# validity tests are not applied we modify  slots directly</template>
         </entry>
         <entry>
             <trigger id="r">vmax</trigger>
