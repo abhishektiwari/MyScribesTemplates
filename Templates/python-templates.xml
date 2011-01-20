@@ -23,13 +23,124 @@
             <template>break</template>
         </entry>
         <entry>
-            <trigger id="python">cls</trigger>
+            <trigger id="python">class</trigger>
             <description>Class definition</description>
             <template>class ${class_name}(${object}):
 	"""
 	${class_documentation}
 	"""
 	${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">classtemp</trigger>
+            <description>class template</description>
+            <template>class ${ClassName}(${object}):
+	"""
+	${class_documentation}
+	"""
+	# Tracking a Class’s Instances
+	# Using List
+	Instances = []
+
+	# Using Dictionary:
+	# Instances = {}
+
+	# Fundamental Methods
+	def __init__(self, ${arg1}, ${arg2}, ${...}):
+		self.${var1} = ${arg1}
+		self.${var2} = ${arg2}
+		self.${ldata} = []
+		self.${ddata} = {}
+		# If it is derived class
+		# super(${ClassName}, self).__init__(${args to base class})
+		# Using List
+		self.Instances.append(self)
+		# Using Dictionary
+		# self.Instances[self.${idfield}] = self
+		# no return
+
+	def __repr__(self):
+		return ${string used by the interpreter to print instances}
+
+	def __str__(self):
+		return ${string used by print and str}
+
+	# Predicates
+	def __lt__(self, other):
+		if type(self) != type(other):
+			raise Exception(
+				'Incompatible argument to __lt__: ' +
+				str(other))
+		return ${self.somemethod() &lt; other.somemethod()}
+
+	def is_some_characteristic(self):
+		return ${True or False}
+
+	# Access Methods
+	# For list
+	def get_${ldata_point}(self): # returning generator  not orginal
+		return (${ldata_point} for ${data_point} in self.${ldata})
+
+				
+	def add_${ldata_point}(self, ${arg}, ${...}):
+		self.${ldata}.append(${arg})
+		# self.${data}["key"] = []
+	
+	def remove_${ldata_point}(self, ${arg}):
+		self.${ldata}.remove(${arg})
+	
+	# For dictionary
+	def get_${ddata_point}(self): # returning generator  not orginal
+		return (${data_point} for ${data_point} in self.${ddata}.keys())
+				
+	def add_${ddata_point}(self, ${key}, ${value}):
+		self.${ddata}[${key}] = ${value}
+	
+	def remove_${ldata_point}(self, ${key}):
+		del self.${ddata}[${key}]
+
+	# Modification Methods
+	def set_${something}(self, ${...}):
+		# change the value of one or more fields based on
+		# the parameter values supplied in the call.
+		# generally no return value
+
+	# Action Methods
+	def do_something(self, ${...}):
+		# do something that has effects outside the class
+
+	# Private Support Methods
+	def helper_method(self, ${...}):
+		# something used by other methods of the class only
+	
+	# Class methods
+	# To external call from class, ClassName.class_method(arg1, arg2, ..)
+	# To external call from object, ClassName.class_method(arg1, arg2, ..)
+	# Internal call in a class method, cls.class_method(arg1, arg2, ..)
+	# Internal call in an instance method, self.class_method(arg1, arg2, ..)
+	@classmethod
+	def ${class_method}(cls, ${...})
+		${do something}
+		return ${value}
+	
+	@classmethod
+	def InstanceCount(cls):
+		return len(cls.Instances)
+	
+	@classmethod
+	def GetInstances(self): # returning generator  not orginal
+		return (value for value in self.Instances)
+		# return (value for value in self.Instance.keys())
+	
+	@classmethod
+	def Get(self, target):
+	"""
+	Return the instance whose GID is target
+	"""
+		for inst in self.GetInstances:     # using the Find template
+			if target == inst.get_gid():   # define a get_gid method
+			return inst
+		# return self.Instances.get(target, None) </template>
         </entry>
         <entry>
             <trigger id="python">cmt</trigger>
@@ -40,16 +151,6 @@
             <trigger id="python">cont</trigger>
             <description>continue statement</description>
             <template>continue</template>
-        </entry>
-        <entry>
-            <trigger id="python">def</trigger>
-            <description>Function definition</description>
-            <template>def ${function_name}(${parameters}):
-	"""
-	${Enter_documentation}
-	"""
-	${cursor}
-	return ${value}</template>
         </entry>
         <entry>
             <trigger id="python">del</trigger>
@@ -105,6 +206,20 @@ ${Enter_documentation}
             <description>python looping construct</description>
             <template>for ${item} in ${list}:
 	${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">fun</trigger>
+            <description>Function definition</description>
+            <template>def ${function_name}(${arg1}, ${arg2} = ${value}, ${...}, ${*args}, ${**kwargs}):
+	"""
+	${Enter_documentation}
+	"""
+	# args - Collects extra positional args as a new tuple
+	# for arg in args:
+	# kwargs Collects extra keyword args passed as a new dictionary
+	# for key in kwargs:
+	${do something here}
+	return ${somevalue}</template>
         </entry>
         <entry>
             <trigger id="python">fxm</trigger>
@@ -289,7 +404,7 @@ ${cursor}</template>
 @rtype: A Boolean object.</template>
         </entry>
         <entry>
-            <trigger id="python">prt</trigger>
+            <trigger id="python">print</trigger>
             <description>A print statement</description>
             <template>print ${cursor}</template>
         </entry>
@@ -328,7 +443,7 @@ config = {
 setup(**config)</template>
         </entry>
         <entry>
-            <trigger id="python">sprt</trigger>
+            <trigger id="python">sprint</trigger>
             <description>Print String Statement</description>
             <template>print "${string}"${cursor}</template>
         </entry>
@@ -420,6 +535,22 @@ finally:
             <trigger id="python">tup</trigger>
             <description>Tuple statement</description>
             <template>${tuple_name} = (${elements})</template>
+        </entry>
+        <entry>
+            <trigger id="python">types</trigger>
+            <description>Python built in object types</description>
+            <template># Python’s built-in object types
+
+#                                                       __________ Strings (Character is string length 1)
+#                                                      |
+#                          ___________ Primitive ------|
+#                         |                            |__________ Numbers 
+#  Core object types -----|                             __________ Sets
+#                         |___________ Compound or     |
+#                                      Collections or  |__________ Sequences (strings, lists, tuples, bytes, bytearray)
+#                                      Containers.     |
+#                                                      |__________ Mappings (dictionary)
+</template>
         </entry>
     </snippet>
 </scribes>

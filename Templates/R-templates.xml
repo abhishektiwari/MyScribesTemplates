@@ -420,15 +420,32 @@ else {
         <entry>
             <trigger id="r">init</trigger>
             <description>initialize S4 object</description>
-            <template>setMethod(
+            <template># Initialize function
+setMethod(
   "initialize",
   signature(.Object = "${className}"),
-  function (.Object, ${x}, ${y}, ${...})  {
-    ${do something here with arguments like change input to upper or lower}
-    callNextMethod(.Object, ${x} = ${x}, ${y} = ${y}, ${...})
+  function (.Object, ${slot1}, ${slot2}, ${...}, ${slot3}, ${slot4})  {
+    ${do something here}
+    # callNextMethod for a call to superclass with matching arguments
+    callNextMethod(
+      .Object,
+      ${slot1} = ${slot1}, 
+      ${slot2} = ${slot2}, 
+      ${...},
+      ${slot3} = ${slot3},
+      ${slot4} = ${slot4}
+    )
   }
 )
-# method.skeleton recommended way to generate a  skeleton of the call to ‘setMethod’</template>
+# Formal arguments are .Object and "..."
+# .Object is  an S4 object and  "..." gives new slot values
+# Use explicitly named slots ${slot1}, ${slot2}, to pass intilize value 
+# to the superclass using callNextMethod
+
+# Creating object
+${obj} &lt;- new("className")
+# Initializing object
+${obj} &lt;- initialize(${obj}, ${slot1} = ${value1}, ${slot2} = ${value2}, ${..})</template>
         </entry>
         <entry>
             <trigger id="r">is.arr</trigger>
@@ -497,6 +514,11 @@ else {
             <template>list.files("{path/to/dir}")</template>
         </entry>
         <entry>
+            <trigger id="r">library</trigger>
+            <description>Loading a package </description>
+            <template>library(${package.name})</template>
+        </entry>
+        <entry>
             <trigger id="r">libs</trigger>
             <description>libs required</description>
             <template>library(RCurl)
@@ -512,6 +534,7 @@ library(rJava)
 library(XML)
 library(tm)
 library(ts)
+library(methods)
 # 'require' for use inside other  functions
 </template>
         </entry>
@@ -758,6 +781,11 @@ close(fcon)</template>
             <template>require(package = ${packageName})</template>
         </entry>
         <entry>
+            <trigger id="r">require</trigger>
+            <description>require a package</description>
+            <template>require(${package.name})</template>
+        </entry>
+        <entry>
             <trigger id="r">rfile</trigger>
             <description>Remove a file</description>
             <template>file.remove("${path/file_name}")</template>
@@ -848,8 +876,8 @@ attr(${s3.obj}, "class") &lt;- ${vec.class.names}</template>
             <description>setMethod for S4 objects</description>
             <template>setMethod(
   "${generic.function}",
-  signature(${x} = "${className1}", ${y} = "${className2}", ${..}),
-  function (${x}, ${y}, ${...})  {
+  signature(${slot1} = "${className1}", ${slot2} = "${className2}", ${..}),
+  function (${slot1}, ${slot2}, ${...})  {
     ${do something here}
   }
 )
