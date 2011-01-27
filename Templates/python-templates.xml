@@ -161,17 +161,35 @@
 	collect()</template>
         </entry>
         <entry>
-            <trigger id="python">dict</trigger>
-            <description>Create a dictionary object</description>
-            <template>${dictionary} = {
-		${key}: ${value},
-	}</template>
+            <trigger id="python">dic</trigger>
+            <description>Dictionary type</description>
+            <template>${adic} = {'${key1}': ${value1}, '${key2}': ${value2}, '${key3}': ${value3}, ${...}}
+# ${adic} = dict(${key1} = ${value1}, ${key2} = ${value2}, ${key3} = ${value3}, ${...}}</template>
+        </entry>
+        <entry>
+            <trigger id="python">diccomp</trigger>
+            <description>Dictionary comprehension</description>
+            <template>adic = dict((${expression for key}, ${expression for value}) for (${key}, ${value}) in ${two-element lists or tuples})
+# Py3, adic = {${expression for key}: ${expression for value} for key, value in collection}
+
+# dict((${x}, ${x}) for ${x} in ${items})
+# Py3, {${x}:${x} for ${x} in items}</template>
+        </entry>
+        <entry>
+            <trigger id="python">edic</trigger>
+            <description>Empty Dictionary</description>
+            <template>${adic} = {}</template>
         </entry>
         <entry>
             <trigger id="python">elif</trigger>
             <description>An else if statement</description>
             <template>elif ${condition}:
 	${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">elist</trigger>
+            <description>Empty list</description>
+            <template>${alst} = []</template>
         </entry>
         <entry>
             <trigger id="python">else</trigger>
@@ -183,6 +201,11 @@
             <trigger id="python">eq</trigger>
             <description>If Equal Statement</description>
             <template>${name} == ${value}</template>
+        </entry>
+        <entry>
+            <trigger id="python">etup</trigger>
+            <description>Empty Tuple</description>
+            <template>${atup} = ()</template>
         </entry>
         <entry>
             <trigger id="python">f</trigger>
@@ -212,14 +235,15 @@ ${Enter_documentation}
             <description>Function definition</description>
             <template>def ${function_name}(${arg1}, ${arg2} = ${value}, ${...}, ${*args}, ${**kwargs}):
 	"""
-	${Enter_documentation}
+	${Enter documentation here}
 	"""
 	# args - Collects extra positional args as a new tuple
 	# for arg in args:
 	# kwargs Collects extra keyword args passed as a new dictionary
 	# for key in kwargs:
 	${do something here}
-	return ${somevalue}</template>
+	return ${somevalue}
+	# yield ${expression}</template>
         </entry>
         <entry>
             <trigger id="python">fxm</trigger>
@@ -230,6 +254,11 @@ ${Enter_documentation}
             <trigger id="python">gbl</trigger>
             <description>Global Statement</description>
             <template>global</template>
+        </entry>
+        <entry>
+            <trigger id="python">global</trigger>
+            <description>Allows globals to be created or changed within a function or class</description>
+            <template>global ${GL1}, ${GL2}</template>
         </entry>
         <entry>
             <trigger id="python">hdr</trigger>
@@ -275,6 +304,11 @@ else:
             <template>${key}: ${value},${cursor}</template>
         </entry>
         <entry>
+            <trigger id="python">lambda</trigger>
+            <description>Simple anonymous function using lambda</description>
+            <template>lambda ${arg1}, ${arg2}, ${...} :${single expression using arguments}</template>
+        </entry>
+        <entry>
             <trigger id="python">lic</trigger>
             <description>GPL License</description>
             <template>
@@ -285,6 +319,20 @@ else:
 # Files included in this package ${ProjectName} are copyrighted freeware
 # distributed under the terms and conditions as specified in file LICENSE.
 ${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">list</trigger>
+            <description>Lists are mutable (changeable) arrays of object references accessed by offset.</description>
+            <template>${alst} = [${item1}, ${item2}, ${item3}, ${...}]</template>
+        </entry>
+        <entry>
+            <trigger id="python">listcomp</trigger>
+            <description>List Comprehensions</description>
+            <template>[${expression} 
+	for ${expr1} in ${iterable1} ${if condition1}
+	for ${expr2} in ${iterable2} ${if condition2} 
+	${...}
+]</template>
         </entry>
         <entry>
             <trigger id="python">lst</trigger>
@@ -342,6 +390,12 @@ if __name__ == "__main__":
 	sys.exit(main())</template>
         </entry>
         <entry>
+            <trigger id="python">map</trigger>
+            <description>Applies function to each item of any sequence or other iterable, and returns the individual results</description>
+            <template>map(${function}, ${iterable1}, ${iterable2}, ${})
+# iterable objects have a method named next()</template>
+        </entry>
+        <entry>
             <trigger id="python">mdef</trigger>
             <description>Method Definition</description>
             <template>def ${method_name}(self${, parameters}):
@@ -361,6 +415,11 @@ ${enter_documentation_string_here}
 @contact: abhishek@abhishek-tiwari.com
 """
 ${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">next</trigger>
+            <description>next method</description>
+            <template>next(${myobj}, None)</template>
         </entry>
         <entry>
             <trigger id="python">nn</trigger>
@@ -414,9 +473,26 @@ ${cursor}</template>
             <template>pass</template>
         </entry>
         <entry>
+            <trigger id="python">range</trigger>
+            <description>range function</description>
+            <template>range(${start}, ${stop}, ${step}) 
+# start, step default to 0, 1</template>
+        </entry>
+        <entry>
             <trigger id="python">ret</trigger>
             <description>Return Statement</description>
             <template>return</template>
+        </entry>
+        <entry>
+            <trigger id="python">set</trigger>
+            <description>A set is an unordered collection of items that contains no duplicates</description>
+            <template>${aset} = set(${any iterable such as string})</template>
+        </entry>
+        <entry>
+            <trigger id="python">setcomp</trigger>
+            <description>Set comprehensions</description>
+            <template>${aset} =  set(${expression} for ${item} in ${collection})
+# Py3, ${aset} =  {${expression} for ${item} in ${collection}}</template>
         </entry>
         <entry>
             <trigger id="python">setup</trigger>
@@ -482,6 +558,21 @@ else:
             <template>This function is called repeatedly unless its return value is False.</template>
         </entry>
         <entry>
+            <trigger id="python">todic</trigger>
+            <description>To dictionary</description>
+            <template>${adict} = dict(zip(${iterable key sequence}, ${iterable value sequence}))</template>
+        </entry>
+        <entry>
+            <trigger id="python">tolist</trigger>
+            <description>convert a collection type into list</description>
+            <template>${alst} = list(${any collection type})</template>
+        </entry>
+        <entry>
+            <trigger id="python">totup</trigger>
+            <description>To tuple</description>
+            <template>${atup} = tuple(${any collection type})</template>
+        </entry>
+        <entry>
             <trigger id="python">try1</trigger>
             <description>Handling Exceptions</description>
             <template>try:
@@ -533,8 +624,8 @@ finally:
         </entry>
         <entry>
             <trigger id="python">tup</trigger>
-            <description>Tuple statement</description>
-            <template>${tuple_name} = (${elements})</template>
+            <description>Tuples are immutable arrays of object references, accessed by offset.</description>
+            <template>${atup} = (${item1}, ${item2}, ${item3}, ${...})</template>
         </entry>
         <entry>
             <trigger id="python">types</trigger>
@@ -551,6 +642,12 @@ finally:
 #                                      Containers.     |
 #                                                      |__________ Mappings (dictionary)
 </template>
+        </entry>
+        <entry>
+            <trigger id="python">yield</trigger>
+            <description>use only in function defintion</description>
+            <template>yield ${expression}
+# next(${var},None) to access the values</template>
         </entry>
     </snippet>
 </scribes>
