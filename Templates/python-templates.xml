@@ -256,6 +256,16 @@ ${Enter_documentation}
             <template>global</template>
         </entry>
         <entry>
+            <trigger id="python">generator</trigger>
+            <description>generator expression, otherwise you can use yield in a function. </description>
+            <template>${gen} = (${expression} 
+	for ${expr1} in ${iterable1} ${if condition1}
+	for ${expr2} in ${iterable2} ${if condition2} 
+	${...}
+)
+next</template>
+        </entry>
+        <entry>
             <trigger id="python">global</trigger>
             <description>Allows globals to be created or changed within a function or class</description>
             <template>global ${GL1}, ${GL2}</template>
@@ -328,7 +338,7 @@ ${cursor}</template>
         <entry>
             <trigger id="python">listcomp</trigger>
             <description>List Comprehensions</description>
-            <template>[${expression} 
+            <template>${lst} = [${expression} 
 	for ${expr1} in ${iterable1} ${if condition1}
 	for ${expr2} in ${iterable2} ${if condition2} 
 	${...}
@@ -417,14 +427,34 @@ ${enter_documentation_string_here}
 ${cursor}</template>
         </entry>
         <entry>
+            <trigger id="python">nestedwith</trigger>
+            <description>Nested or multiple with statements</description>
+            <template>with ${expression1} ${as} ${variable1}: 
+	with ${expression1} ${as} ${variable2}: 
+		${statements-using} ${variable1} ${variable2}</template>
+        </entry>
+        <entry>
             <trigger id="python">next</trigger>
-            <description>next method</description>
-            <template>next(${myobj}, None)</template>
+            <description>next method for generators</description>
+            <template>next(${gen}, ${default like None})</template>
         </entry>
         <entry>
             <trigger id="python">nn</trigger>
             <description>None Value</description>
             <template>None</template>
+        </entry>
+        <entry>
+            <trigger id="python">open</trigger>
+            <description>open file</description>
+            <template>${file_object} = open('${/path/file_name}', '${r|w|a|rb|wb}')
+${read} ${or} ${write} ${or} ${rcsv} ${or} ${wcsv}
+${file_object}.close()</template>
+        </entry>
+        <entry>
+            <trigger id="python">openfile</trigger>
+            <description>open file using with</description>
+            <template>with open('${/path/file_name}', '${r|w|a|rb|wb}') as ${file_object}:
+	${read} ${or} ${write} ${or} ${rcsv} ${or} ${wcsv}</template>
         </entry>
         <entry>
             <trigger id="python">param</trigger>
@@ -477,6 +507,22 @@ ${cursor}</template>
             <description>range function</description>
             <template>range(${start}, ${stop}, ${step}) 
 # start, step default to 0, 1</template>
+        </entry>
+        <entry>
+            <trigger id="python">rcsv</trigger>
+            <description>csv file reader</description>
+            <template># import csv
+${csvreader} = csv.reader(${file_object}), delimiter='${  \t ; , :}', quotechar='${| "}')
+for ${row} in ${csvreader}:
+	${do something here}
+# To read particular column use list comprehension 
+# lst = [ x[i] for x in cvs.reader(${file_object}) ]</template>
+        </entry>
+        <entry>
+            <trigger id="python">read</trigger>
+            <description>read a fileobject</description>
+            <template>for ${line} in ${file_object}:
+	${do something here}</template>
         </entry>
         <entry>
             <trigger id="python">ret</trigger>
@@ -642,6 +688,17 @@ finally:
 #                                      Containers.     |
 #                                                      |__________ Mappings (dictionary)
 </template>
+        </entry>
+        <entry>
+            <trigger id="python">with</trigger>
+            <description>with statement wraps a nested block of code in a context manager</description>
+            <template>with ${expression} ${as} ${variable}: 
+	${statements-using} ${variable}</template>
+        </entry>
+        <entry>
+            <trigger id="python">write</trigger>
+            <description>write the string to file object</description>
+            <template>${file_object}.write(${str}) # Not str, it needs to be converted to a str first</template>
         </entry>
         <entry>
             <trigger id="python">yield</trigger>
