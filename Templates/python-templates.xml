@@ -23,6 +23,16 @@
             <template>break</template>
         </entry>
         <entry>
+            <trigger id="python">bstr</trigger>
+            <description>A binary string</description>
+            <template>${abstr} = b'${mybinarystring}'</template>
+        </entry>
+        <entry>
+            <trigger id="python">cap</trigger>
+            <description>only its first character capitalized</description>
+            <template>${astr}.capitalize()</template>
+        </entry>
+        <entry>
             <trigger id="python">class</trigger>
             <description>Class definition</description>
             <template>class ${class_name}(${object}):
@@ -153,6 +163,11 @@
             <template>continue</template>
         </entry>
         <entry>
+            <trigger id="python">count</trigger>
+            <description>Substring count</description>
+            <template>${astr}.count(${substring}, ${start}, ${end})</template>
+        </entry>
+        <entry>
             <trigger id="python">del</trigger>
             <description>Instance Destructor</description>
             <template>def __del__(self):
@@ -198,9 +213,19 @@
 	${cursor}</template>
         </entry>
         <entry>
+            <trigger id="python">enum</trigger>
+            <description>Returns an iterable enumerate object</description>
+            <template>enumerate(${iterable, sequence, iterator}, start=0)</template>
+        </entry>
+        <entry>
             <trigger id="python">eq</trigger>
             <description>If Equal Statement</description>
             <template>${name} == ${value}</template>
+        </entry>
+        <entry>
+            <trigger id="python">estr</trigger>
+            <description>Empty string</description>
+            <template>${astr} = str()</template>
         </entry>
         <entry>
             <trigger id="python">etup</trigger>
@@ -225,10 +250,26 @@ ${Enter_documentation}
             <template>from ${module} import ${object}</template>
         </entry>
         <entry>
+            <trigger id="python">find</trigger>
+            <description>Returns offset of the first occurrence of string sub</description>
+            <template>${astr}.find('${substring}', ${start}, ${end})</template>
+        </entry>
+        <entry>
+            <trigger id="python">findall</trigger>
+            <description>re findall</description>
+            <template># import re
+${aregex} = re.compile('${pattern}', re.${UILMSX})
+# [re.compile(x) for x in ${pattern_sequence}]
+
+${alst} = ${aregex}.findall(${astr})</template>
+        </entry>
+        <entry>
             <trigger id="python">for</trigger>
             <description>python looping construct</description>
-            <template>for ${item} in ${list}:
-	${cursor}</template>
+            <template>for ${target} in ${iterable}:
+	${do something here}
+${else:}
+	${do something else}</template>
         </entry>
         <entry>
             <trigger id="python">fun</trigger>
@@ -280,16 +321,18 @@ ${cursor}</template>
         <entry>
             <trigger id="python">if</trigger>
             <description>Conditional statement</description>
-            <template>if ${condition}:
-	${cursor}</template>
+            <template>if ${test condition}:
+	${do something here}</template>
         </entry>
         <entry>
-            <trigger id="python">ifs</trigger>
+            <trigger id="python">ifelse</trigger>
             <description>If-Else conditional statement</description>
-            <template>if ${condition}:
-	${statement}
+            <template>if ${condition 1}:
+	${do something here 1}
+elif ${condition2}:
+	${do something here 2}
 else:
-	${cursor}</template>
+	${do something here 3}</template>
         </entry>
         <entry>
             <trigger id="python">iftest</trigger>
@@ -309,6 +352,11 @@ else:
 	${cursor}</template>
         </entry>
         <entry>
+            <trigger id="python">join</trigger>
+            <description>Join the sequence of strings</description>
+            <template>${astr}.join(${iterable or sequence})</template>
+        </entry>
+        <entry>
             <trigger id="python">keyvalue</trigger>
             <description>A key, value pair for a dictionary</description>
             <template>${key}: ${value},${cursor}</template>
@@ -317,6 +365,11 @@ else:
             <trigger id="python">lambda</trigger>
             <description>Simple anonymous function using lambda</description>
             <template>lambda ${arg1}, ${arg2}, ${...} :${single expression using arguments}</template>
+        </entry>
+        <entry>
+            <trigger id="python">len</trigger>
+            <description>legth of python collection</description>
+            <template>len(${set, seq or dic})</template>
         </entry>
         <entry>
             <trigger id="python">lic</trigger>
@@ -345,9 +398,46 @@ ${cursor}</template>
 ]</template>
         </entry>
         <entry>
+            <trigger id="python">loopdic</trigger>
+            <description>Looping over dictionary</description>
+            <template>for ${key}, ${value} in ${adict}.iteritems():
+	${do something here with sequence}
+#Py3, items(), keys(), values() return iterable view objects
+#Py3, removed adict.iteritems(), adict.iterkeys(), adict.itervalues()</template>
+        </entry>
+        <entry>
+            <trigger id="python">loopseq</trigger>
+            <description>Looping over sequences- tuple, list, string</description>
+            <template>for ${index}, ${value} in enumerate(${aseq}):
+	${do something here with sequence}
+
+for ${index}, ${value} in enumerate(reversed(${aseq})):
+	${do something here with reversed sequence}
+
+
+for ${value1}, ${value2} in zip(${aseq1}, ${aseq2}):
+	${do something here with sequences}
+
+for ${index}, ${value} in enumerate(${aseq}):
+	${do something here with sequence}
+
+for ${value} in sorted(set(${aseq})):
+	${do something here with values}</template>
+        </entry>
+        <entry>
+            <trigger id="python">lower</trigger>
+            <description>Change to lower case</description>
+            <template>${astr}.lower()</template>
+        </entry>
+        <entry>
             <trigger id="python">lst</trigger>
             <description>List statement</description>
             <template>${list_name} = [${elements}]</template>
+        </entry>
+        <entry>
+            <trigger id="python">lstrip</trigger>
+            <description>defult strip whitespace else given char</description>
+            <template>${astr}.lstrip(${'char'})</template>
         </entry>
         <entry>
             <trigger id="python">main</trigger>
@@ -404,6 +494,18 @@ if __name__ == "__main__":
             <description>Applies function to each item of any sequence or other iterable, and returns the individual results</description>
             <template>map(${function}, ${iterable1}, ${iterable2}, ${})
 # iterable objects have a method named next()</template>
+        </entry>
+        <entry>
+            <trigger id="python">match</trigger>
+            <description>match regex at the beginning of string</description>
+            <template># import re
+${aregex} = re.compile('${pattern}', re.${UILMSX})
+# [re.compile(x) for x in ${pattern_sequence}]
+
+${matchobj} = ${aregex}.match(${astr})
+
+# ${matchobj}.string, ${matchobj}.group(${0-N}), 
+# ${matchobj}.groups() ${matchobj}.groupdict()</template>
         </entry>
         <entry>
             <trigger id="python">mdef</trigger>
@@ -525,9 +627,46 @@ for ${row} in ${csvreader}:
 	${do something here}</template>
         </entry>
         <entry>
+            <trigger id="python">replace</trigger>
+            <description>replace something in a string</description>
+            <template>${astr}.replace('${old}', '${new}', ${count})</template>
+        </entry>
+        <entry>
+            <trigger id="python">resplit</trigger>
+            <description>Split using re module</description>
+            <template># import re
+${aregex} = re.compile('${pattern}', re.${UILMSX})
+# [re.compile(x) for x in ${pattern_sequence}]
+
+${aseq} = ${aregex}.split(${astr}, ${maxsplit=0})</template>
+        </entry>
+        <entry>
             <trigger id="python">ret</trigger>
             <description>Return Statement</description>
             <template>return</template>
+        </entry>
+        <entry>
+            <trigger id="python">rfind</trigger>
+            <description>Reverse find</description>
+            <template>${astr}.rfind('${substring}', ${start}, ${end})</template>
+        </entry>
+        <entry>
+            <trigger id="python">rstrip</trigger>
+            <description>defult strip whitespace else given char</description>
+            <template>${astr}.rstrip(${'char'})</template>
+        </entry>
+        <entry>
+            <trigger id="python">search</trigger>
+            <description>search regex pattern anywhere in a string</description>
+            <template># import re
+${aregex} = re.compile('${pattern}', re.${UILMSX})
+# [re.compile(x) for x in ${pattern_sequence}]
+
+${matchobj} = ${aregex}.search(${astr})
+
+# ${matchobj}.string, ${matchobj}.group(${0-N}), 
+# ${matchobj}.groups() ${matchobj}.groupdict()
+</template>
         </entry>
         <entry>
             <trigger id="python">set</trigger>
@@ -565,9 +704,48 @@ config = {
 setup(**config)</template>
         </entry>
         <entry>
+            <trigger id="python">split</trigger>
+            <description>Split a given string around sep</description>
+            <template>${astr}.split('${sep}', ${maxsplit})</template>
+        </entry>
+        <entry>
             <trigger id="python">sprint</trigger>
             <description>Print String Statement</description>
             <template>print "${string}"${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">str</trigger>
+            <description>A string</description>
+            <template>${astr} = '${mystring}'</template>
+        </entry>
+        <entry>
+            <trigger id="python">strcon</trigger>
+            <description>String Concatenate</description>
+            <template>${astr} = ${astr1} + ${astr2}</template>
+        </entry>
+        <entry>
+            <trigger id="python">strip</trigger>
+            <description>defult strip whitespace else given char</description>
+            <template>${astr}.strip(${'char'})</template>
+        </entry>
+        <entry>
+            <trigger id="python">strrep</trigger>
+            <description>String repeat</description>
+            <template>${astr} * ${times repeat}</template>
+        </entry>
+        <entry>
+            <trigger id="python">sub</trigger>
+            <description>Sub operation</description>
+            <template># import re
+${aregex} = re.compile('${pattern}', re.${UILMSX})
+# [re.compile(x) for x in ${pattern_sequence}]
+
+${astr} = ${aregex}.sub(${replacement}, ${astr}, ${count=0})</template>
+        </entry>
+        <entry>
+            <trigger id="python">substr</trigger>
+            <description>Substring extraction using slice</description>
+            <template>${astr}[${i}:${j}]</template>
         </entry>
         <entry>
             <trigger id="python">svdef</trigger>
@@ -583,6 +761,11 @@ setup(**config)</template>
             <trigger id="python">td</trigger>
             <description>Todo Comment</description>
             <template>#TODO: ${comment}</template>
+        </entry>
+        <entry>
+            <trigger id="python">ter</trigger>
+            <description>ternary operator</description>
+            <template>${expr X} if ${cond Y} else ${expr Z}</template>
         </entry>
         <entry>
             <trigger id="python">test</trigger>
@@ -617,6 +800,14 @@ else:
             <trigger id="python">totup</trigger>
             <description>To tuple</description>
             <template>${atup} = tuple(${any collection type})</template>
+        </entry>
+        <entry>
+            <trigger id="python">trans</trigger>
+            <description>String translation</description>
+            <template># import string as str
+${transtable} = str.maketrans(${'ichar'},${'ochar'})
+
+${astr}.translate(${transtable}, ${deletechars})</template>
         </entry>
         <entry>
             <trigger id="python">try1</trigger>
@@ -688,6 +879,19 @@ finally:
 #                                      Containers.     |
 #                                                      |__________ Mappings (dictionary)
 </template>
+        </entry>
+        <entry>
+            <trigger id="python">upper</trigger>
+            <description>Change to upper case</description>
+            <template>${astr}.upper()</template>
+        </entry>
+        <entry>
+            <trigger id="python">while</trigger>
+            <description>while loop</description>
+            <template>while ${condition}:
+	${do something here}
+${else:}
+	${do something else here}</template>
         </entry>
         <entry>
             <trigger id="python">with</trigger>
