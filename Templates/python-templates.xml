@@ -28,6 +28,23 @@
             <template>${abstr} = b'${mybinarystring}'</template>
         </entry>
         <entry>
+            <trigger id="python">cafdeco</trigger>
+            <description>Class as function decorators</description>
+            <template>class ${decorator}:
+	def __init__(self, ${myfunc}):
+		self.${myfunc} = ${myfunc}
+	def __call__(self, *args, **kwargs):
+		# Use self.func and args
+		# self.${myfunc}(*args, **kwargs) calls original function
+		${do something with function call, args, kwargs}
+		return ${something from above call}
+
+@${decorator}
+def func(${x}, ${y}, ${...}):
+	${do something here}
+	return ${something}</template>
+        </entry>
+        <entry>
             <trigger id="python">cap</trigger>
             <description>only its first character capitalized</description>
             <template>${astr}.capitalize()</template>
@@ -238,6 +255,22 @@
             <template>False</template>
         </entry>
         <entry>
+            <trigger id="python">fafdeco</trigger>
+            <description>Function as Function Decorator</description>
+            <template>def ${decorator}(${myfun}):
+	def wrapper(*args, **kwargs): 
+		# Use ${myfun}, args, kwargs
+		# ${myfun}(*args, **kwargs) calls original function
+		${do something with function call, args, kwargs}
+		return ${something from above call}
+	return wrapper
+
+@${decorator}
+def func(${x}, ${y}, ${...}):
+	${do something here}
+	return ${something}</template>
+        </entry>
+        <entry>
             <trigger id="python">fdoc</trigger>
             <description>Function documentation</description>
             <template>"""
@@ -350,6 +383,15 @@ else:
             <description>python constructor</description>
             <template>def __init__(self${parameter}):
 	${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">iterable</trigger>
+            <description>iterable, iterator and generator</description>
+            <template>An iterable object can be iterated over multiple times (a sequence such as list, tuple, string etc)
+
+An iterator object can only be iterated over once using next.
+
+A generator is a function that creates, or generates, an iterator. Use yield in function or list comprehension with ().</template>
         </entry>
         <entry>
             <trigger id="python">join</trigger>
@@ -881,6 +923,21 @@ finally:
 </template>
         </entry>
         <entry>
+            <trigger id="python">unpack</trigger>
+            <description>List/Tuple unpacking</description>
+            <template>unpack
+${elm1}, ${elm2}, ${elm3}, ${...}, ${elmN} = ${atup or alst or astr with N elements}
+# For Tuple/List unpacking, the no of elements on the left = the length of the tuple/list. 
+# In Py3, a single starred name, *X, can be used in the assignment target in order to 
+# specify a more general matching a, *b, c = seq, or a, b, *c = seq
+# Can be using in loops, for (a, *b, c) in [(1, 2, 3, 4), (5, 6, 7, 8)]:</template>
+        </entry>
+        <entry>
+            <trigger id="python">unzip</trigger>
+            <description>unzip zipped tuples</description>
+            <template>zip(*${zipped tuples or a series of tupples})</template>
+        </entry>
+        <entry>
             <trigger id="python">upper</trigger>
             <description>Change to upper case</description>
             <template>${astr}.upper()</template>
@@ -909,6 +966,12 @@ ${else:}
             <description>use only in function defintion</description>
             <template>yield ${expression}
 # next(${var},None) to access the values</template>
+        </entry>
+        <entry>
+            <trigger id="python">zip</trigger>
+            <description>zip function</description>
+            <template>zip(${iterable1} , ${iterable2}, ${...})
+# zip truncates each item to the length of the shortest iterable</template>
         </entry>
     </snippet>
 </scribes>
