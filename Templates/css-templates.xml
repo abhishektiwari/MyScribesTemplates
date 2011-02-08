@@ -1,0 +1,250 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<scribes version="0.1">
+    <snippet>
+        <entry>
+            <trigger id="css">/*</trigger>
+            <description>single line comment</description>
+            <template>/* ${my single line comment} */</template>
+        </entry>
+        <entry>
+            <trigger id="css">comment</trigger>
+            <description>multiline comment</description>
+            <template>/* -----------------------------------
+${multiline comments}
+----------------------------------- */</template>
+        </entry>
+        <entry>
+            <trigger id="css">condcss</trigger>
+            <description>Condtional CSS for Condtional HTML</description>
+            <template>body { 
+	${add properties for others}
+}
+.ie6 body { 
+	${add properties for ie6}
+}
+.ie7 body { 
+	${add properties for ie7}
+}
+
+#myid { ${add id properties for others} }
+.ie7 #myid, .ie6 #myid { ${add id properties for IE} }
+
+#myclass { ${add class properties for others} }
+.ie7 .myclass, .ie6 .myclass { ${add class properties for IE} }</template>
+        </entry>
+        <entry>
+            <trigger id="css">cssreset</trigger>
+            <description>css reset</description>
+            <template>html { 
+	margin:0; 
+	padding:0; 
+	border:0; 
+}
+
+body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, code,
+del, dfn, em, img, q, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, dialog, figure, footer, header,
+hgroup, nav, section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+/* This helps to make newer HTML5 elements behave like DIVs in older browers */ 
+article, aside, dialog, figure, footer, header,
+hgroup, nav, section {
+    display:block;
+}
+
+/* Line-height should always be unitless! */
+body {
+  line-height: 1.5;
+  background: white; 
+}
+
+/* Tables still need 'cellspacing="0"' in the markup. */
+table { 
+	border-collapse: separate; 
+	border-spacing: 0; 
+}
+/* float:none prevents the span-x classes from breaking table-cell display */
+caption, th, td { 
+	text-align: left; 
+	font-weight: normal; 
+	float:none !important; 
+}
+table, th, td { 
+	vertical-align: middle; 
+}
+
+/* Remove possible quote marks (") from &lt;q&gt;, &lt;blockquote&gt;. */
+blockquote:before, blockquote:after, q:before, q:after { content: ''; }
+blockquote, q { quotes: "" ""; }
+
+/* Remove annoying border on linked images. */
+a img { border: none; }
+
+/* Remember to define your own focus styles! */
+:focus { outline: 0; }</template>
+        </entry>
+        <entry>
+            <trigger id="css">dec</trigger>
+            <description>declaration</description>
+            <template>${property}: ${value};</template>
+        </entry>
+        <entry>
+            <trigger id="css">fontfamily</trigger>
+            <description>font elements</description>
+            <template>font-family: ${"Helvetica Neue", Arial, Helvetica, sans-serif};
+</template>
+        </entry>
+        <entry>
+            <trigger id="css">fontsize</trigger>
+            <description>font size</description>
+            <template>font-size: ${pt or % or em or px};</template>
+        </entry>
+        <entry>
+            <trigger id="css">fontstyle</trigger>
+            <description>font style</description>
+            <template>font-style: ${italic | normal | oblique | inherit};</template>
+        </entry>
+        <entry>
+            <trigger id="css">fontweight</trigger>
+            <description>font weight</description>
+            <template>font-weight: ${bold | bolder | lighter | normal | inherit};</template>
+        </entry>
+        <entry>
+            <trigger id="css">hdr</trigger>
+            <description>css file header</description>
+            <template>/* ---------------------------------------------------------------------
+Theme Name: ${Theme name}
+Theme URI: ${http://mywebsite.com/}
+Description: ${Theme name}
+Version: ${1.0}
+Author: ${Abhishek Tiwari}
+Author URI: ${http://abhishek-tiwari.com/}
+--------------------------------------------------------------------- */</template>
+        </entry>
+        <entry>
+            <trigger id="css">import</trigger>
+            <description>import css file</description>
+            <template>@import url(${mystyle}.css) ${screen | print | handheld};</template>
+        </entry>
+        <entry>
+            <trigger id="css">media</trigger>
+            <description>media</description>
+            <template>@media ${screen | print | handheld} {
+	${rule sets}
+}</template>
+        </entry>
+        <entry>
+            <trigger id="css">reset</trigger>
+            <description>css reset</description>
+            <template>/* -----------------------------------
+Resets default browser CSS.
+----------------------------------- */
+html { 
+	margin:0; 
+	padding:0; 
+	border:0; 
+}
+
+body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, code,
+del, dfn, em, img, q, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, dialog, figure, footer, header,
+hgroup, nav, section {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+/* -----------------------------------
+This helps to make newer HTML5 
+elements behave like DIVs in older 
+browers
+----------------------------------- */
+article, aside, dialog, figure, footer, header,
+hgroup, nav, section {
+	display:block;
+}
+
+/* -----------------------------------
+Line-height should always be unitless!
+----------------------------------- */
+body {
+	line-height: 1.5;
+	background: white; 
+}
+
+/* -----------------------------------
+Tables still need 'cellspacing="0"'
+in the markup.
+----------------------------------- */
+table { 
+	border-collapse: separate; 
+	border-spacing: 0; 
+}
+
+/* -----------------------------------
+float:none prevents the span-x classes
+from breaking table-cell display 
+----------------------------------- */
+caption, th, td { 
+	text-align: left; 
+	font-weight: normal; 
+	float:none !important; 
+}
+table, th, td { 
+	vertical-align: middle; 
+}
+
+/* -----------------------------------
+Remove possible quote marks (") from 
+&lt;q&gt;, &lt;blockquote&gt;.
+----------------------------------- */
+blockquote:before, blockquote:after, q:before, q:after { content: ''; }
+blockquote, q { quotes: "" ""; }
+
+/* -----------------------------------
+Remove annoying border on linked 
+images.
+----------------------------------- */
+a img { border: none; }
+
+/* -----------------------------------
+Define your own focus styles!
+----------------------------------- */
+:focus { outline: 0; }</template>
+        </entry>
+        <entry>
+            <trigger id="css">rule</trigger>
+            <description>css rule set</description>
+            <template>${selector1}, ${selector2}, ${...} {
+	${declarations}
+}</template>
+        </entry>
+        <entry>
+            <trigger id="css">sdec</trigger>
+            <description>shorthand  declaration</description>
+            <template>${property}: ${value1} ${value2} ${value3} ${value4}; </template>
+        </entry>
+    </snippet>
+</scribes>

@@ -30,7 +30,8 @@
         <entry>
             <trigger id="python">cafdeco</trigger>
             <description>Class as function decorators</description>
-            <template>class ${decorator}:
+            <template># Not support class method functions
+class ${decorator}:
 	def __init__(self, ${myfunc}):
 		self.${myfunc} = ${myfunc}
 	def __call__(self, *args, **kwargs):
@@ -255,9 +256,22 @@ def func(${x}, ${y}, ${...}):
             <template>False</template>
         </entry>
         <entry>
+            <trigger id="python">facdeco</trigger>
+            <description>Function as Class Decorator</description>
+            <template>def decorator(${cls}):
+	class Wrapper:
+		def __init__(self, *args, **kwargs):
+			self.wrapped = ${cls}(*args, **kwargs)
+		def __getattr__(self, ${attrname}):
+			return getattr(self.wrapped, ${attrname})
+		${other functions}
+	return Wrapper</template>
+        </entry>
+        <entry>
             <trigger id="python">fafdeco</trigger>
             <description>Function as Function Decorator</description>
-            <template>def ${decorator}(${myfun}):
+            <template># Support both functions and methods
+def ${decorator}(${myfun}):
 	def wrapper(*args, **kwargs): 
 		# Use ${myfun}, args, kwargs
 		# ${myfun}(*args, **kwargs) calls original function
