@@ -28,7 +28,7 @@
             <template>${abstr} = b'${mybinarystring}'</template>
         </entry>
         <entry>
-            <trigger id="python">cafdeco</trigger>
+            <trigger id="python">e</trigger>
             <description>Class as function decorators</description>
             <template>class ${decorator}:
 	def __init__(self, ${myfunc}):
