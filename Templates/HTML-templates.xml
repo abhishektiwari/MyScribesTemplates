@@ -1,9 +1,350 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <scribes version="0.1">
-<snippet><entry><trigger id="html">altag</trigger><description>Tag with Attribute</description><template>&lt;${HTML_TAG} ${name}=${value}&gt;
+    <snippet>
+        <entry>
+            <trigger id="html">altag</trigger>
+            <description>Tag with Attribute</description>
+            <template>&lt;${HTML_TAG} ${name}=${value}&gt;
 	${text}
-&lt;/${HTML_TAG}&gt;${cursor}</template></entry><entry><trigger id="html">tag</trigger><description>Generic Tag</description><template>&lt;${HTML_TAG}&gt;${text}&lt;/${HTML_TAG}&gt;${cursor}</template></entry><entry><trigger id="html">link</trigger><description>HTML link</description><template>&lt;a href=&quot;${URL}&quot;&gt;${text}&lt;/a&gt;${cursor}</template></entry><entry><trigger id="html">ltag</trigger><description>Long Generic Tag</description><template>&lt;${HTML_TAG}&gt;
+&lt;/${HTML_TAG}&gt;${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="html">atag</trigger>
+            <description>Short Tag With Attributes</description>
+            <template>&lt;${HTML_TAG} ${name}=${value}&gt;${text}&lt;/${HTML_TAG}&gt;${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="html">attr</trigger>
+            <description>Tag Attribute Definition</description>
+            <template>${name}="${value}"${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="html">br</trigger>
+            <description>line break</description>
+            <template>&lt;br /&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">checkinput</trigger>
+            <description>check input</description>
+            <template>&lt;input type="checkbox" name="${checkn}" value="${checkv}" /&gt; ${option} &lt;br /&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">code</trigger>
+            <description>code</description>
+            <template>&lt;code&gt;
+	${Computer code text}
+&lt;/code&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">condcss</trigger>
+            <description>Condtional CSS tag</description>
+            <template>&lt;!--[if IE 7]&gt;&lt;link rel="stylesheet" type="text/css" media="screen" href="css/ie7.css"  /&gt;&lt; ![endif]--&gt;
+&lt;!--[if IE 7]&gt;&lt;link rel="stylesheet" type="text/css" media="screen" href="css/ie7.css"  /&gt;&lt; ![endif]--&gt;
+&lt;!--[if IE 6]&gt;&lt;link rel="stylesheet" type="text/css" media="screen" href="css/ie6.css"  /&gt;&lt; ![endif]--&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">condhtml</trigger>
+            <description>Conditional html tag</description>
+            <template>&lt;!--[if IE]&gt;&lt;![endif]--&gt;
+&lt;!--[if lt IE 7 ]&gt; &lt;html lang="en" class="no-js ie6"&gt;    &lt;![endif]--&gt;
+&lt;!--[if IE 8 ]&gt;    &lt;html lang="en" class="no-js ie8"&gt;    &lt;![endif]--&gt;
+&lt;!--[if IE 9 ]&gt;    &lt;html lang="en" class="no-js ie9"&gt;    &lt;![endif]--&gt;
+&lt;!--[if (gt IE 9)|!(IE)]&gt;&lt;!--&gt;&lt;html lang="en" class="no-js"&gt;&lt;!--&lt;![endif]--&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">div</trigger>
+            <description>div</description>
+            <template>&lt;div&gt;
+	${cursor}
+&lt;/div&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">em</trigger>
+            <description>em</description>
+            <template>&lt;em&gt;${Emphasized text}&lt;/em&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">form</trigger>
+            <description>form element</description>
+            <template>&lt;form ${forsubmit}&gt;
+	${textinput}
+	${radioinput}
+	${checkinput}
+	${textarea}
+	${submitinput}
+&lt;/form&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">forsubmit</trigger>
+            <description>form attributes if input is submit</description>
+            <template>name="${input}" action="${action url}" method="${get}"</template>
+        </entry>
+        <entry>
+            <trigger id="html">grid</trigger>
+            <description>blue grid</description>
+            <template>&lt;link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection"&gt;
+&lt;link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print"&gt;	
+&lt;!--[if lt IE 8]&gt;&lt;link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection"&gt;&lt;![endif]--&gt;
+</template>
+        </entry>
+        <entry>
+            <trigger id="html">handheld</trigger>
+            <description>Handheld mobile device css</description>
+            <template>&lt;link rel="stylesheet" type="text/css" media="handheld" href="css/handheld.css" /&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">htmlstrict</trigger>
+            <description>Doctype Strict</description>
+            <template>&lt;!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">icon</trigger>
+            <description>favicon</description>
+            <template>&lt;link rel="icon" href="favicon.ico" type="image/x-icon" /&gt;
+&lt;link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /&gt;
+&lt;link rel="image_src" href="images/${your 100x100 icon.png}" type="image/png" /&gt;
+&lt;link rel="apple-touch-icon" href="/apple-touch-icon.png" /&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">img</trigger>
+            <description>img tag</description>
+            <template>&lt;img src="${image url}" alt="${image text}" /&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">imglink</trigger>
+            <description>image link</description>
+            <template>&lt;a href="${target url}"&gt;&lt;img src="${image url}" alt="${image text}" /&gt;&lt;/a&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">jquery</trigger>
+            <description>jquery</description>
+            <template>&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;!window.jQuery &amp;&amp; document.write('&lt;script src="js/jquery-1.4.2.min.js"&gt;&lt;\/script&gt;')&lt;/script&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">jscript</trigger>
+            <description>add javascript file in path</description>
+            <template>&lt;script src="js/${whatever}.js" type="text/javascript"&gt;&lt;/script&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">labelname</trigger>
+            <description>labelname</description>
+            <template>&lt;label for="${labelname}"&gt;${labelname}&lt;/label&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">link</trigger>
+            <description>HTML link</description>
+            <template>&lt;a href="${target url}"&gt;${text}&lt;/a&gt;${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="html">ltag</trigger>
+            <description>Long Generic Tag</description>
+            <template>&lt;${HTML_TAG}&gt;
 	${text}
-&lt;/${HTML_TAG}&gt;${cursor}</template></entry><entry><trigger id="html">atag</trigger><description>Short Tag With Attributes</description><template>&lt;${HTML_TAG} ${name}=${value}&gt;${text}&lt;/${HTML_TAG}&gt;${cursor}</template></entry><entry><trigger id="html">attr</trigger><description>Tag Attribute Definition</description><template>${name}=&quot;${value}&quot;${cursor}</template></entry><entry><trigger id="html">htmlstrict</trigger><description>Doctype Strict</description><template>&lt;!DOCTYPE html
-PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;
-&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</template></entry></snippet></scribes>
+&lt;/${HTML_TAG}&gt;${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="html">meta</trigger>
+            <description>meta</description>
+            <template>&lt;!-- Always force latest IE rendering engine (even in intranet) &amp; Chrome Frame --&gt;
+&lt;meta http-equiv="content-type" content="text/html;charset=utf-8" /&gt;
+&lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /&gt;
+&lt;meta name="description" content="${page description}" /&gt;
+&lt;meta name="author" content="${your name}" /&gt;
+&lt;meta name="keywords" content="${keyword list,site-wide keyword(s)}" /&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">olist</trigger>
+            <description>ordered list</description>
+            <template>&lt;ol&gt;
+	&lt;li&gt;item1&lt;/li&gt;
+	&lt;li&gt;item2&lt;/li&gt;
+	&lt;li&gt;item3&lt;/li&gt;
+	&lt;li&gt;...&lt;/li&gt;
+&lt;/ol&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">para</trigger>
+            <description>paragraph</description>
+            <template>&lt;p&gt;${This is some text in a paragraph.}&lt;/p&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">radioinput</trigger>
+            <description>radio input</description>
+            <template>&lt;input type="radio" name="${radion}" value="${radiov}" /&gt; ${option} &lt;br /&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">script</trigger>
+            <description>add javascript snippets</description>
+            <template>&lt;script type="text/javascript"&gt;
+	${My JavaScript goes here}
+&lt;/script&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">submitinput</trigger>
+            <description>for submit input</description>
+            <template>&lt;input type="${submit}" value="${Submit}" /&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">table</trigger>
+            <description>html table</description>
+            <template>&lt;!-- start of table --&gt;
+&lt;table&gt;
+	&lt;tr&gt;
+		&lt;th&gt;${Col1Title}&lt;/th&gt;
+		&lt;th&gt;${Col2Title}&lt;/th&gt;
+		&lt;th&gt;${...}&lt;/th&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;${Row1Cell1}&lt;/td&gt;
+		&lt;td&gt;${Row1Cell2}&lt;/td&gt;
+		&lt;td&gt;${...}&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;${Row2Cell1}&lt;/td&gt;
+		&lt;td&gt;${Row2Cell2}&lt;/td&gt;
+		&lt;td&gt;${...}&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;!-- end of table --&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">tag</trigger>
+            <description>Generic Tag</description>
+            <template>&lt;${HTML_TAG}&gt;${text}&lt;/${HTML_TAG}&gt;${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="html">temphtml4</trigger>
+            <description>HTML4 Boilerplate</description>
+            <template>&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;!-- To explicitly target the IE versions use condhtml --&gt;
+
+	&lt;!-- start of head --&gt;
+	&lt;head&gt;
+		&lt;title&gt;${Page Title!}-${Company}&lt;/title&gt;
+		${meta}
+		${icon}
+		&lt;link rel="stylesheet" type="text/css" media="screen, projection" href="css/main.css"&gt;
+		${condcss}
+		${handheld}
+		${grid}
+		${jquery}
+		${jscript}
+		${script}
+	&lt;/head&gt;
+	&lt;!-- end of head --&gt;
+
+&lt;!-- start of body --&gt;
+	&lt;body&gt;
+
+		&lt;!-- start of header container --&gt;
+		&lt;div id="header-containetemphtml4r"&gt; 
+
+			&lt;!-- start of header --&gt;
+			&lt;div id="header"&gt;
+				${add header content, logo etc}
+				
+				&lt;!-- start of navigation --&gt;
+				&lt;div id="navigation"&gt;
+					&lt;h2 class="structural"&gt;
+						My navigation
+					&lt;/h2&gt;
+					&lt;ul&gt; 
+						&lt;li id="topnav"&gt;&lt;a href="${target url1}"&gt;${url text1}&lt;/a&gt;&lt;/li&gt;
+						&lt;li id="topnav"&gt;&lt;a href="${target url2}"&gt;${url text2}&lt;/a&gt;&lt;/li&gt;
+						&lt;li id="topnav"&gt;&lt;a href="${target url2		}"&gt;${url text2}&lt;/a&gt;&lt;/li&gt;
+					&lt;/ul&gt;
+				&lt;/div&gt;
+				&lt;!-- end of navigation --&gt;
+
+			&lt;/div&gt;
+			&lt;!-- end of header --&gt;
+
+		&lt;/div&gt;
+		&lt;!-- end of header container --&gt;
+
+		&lt;!-- start of banner container --&gt;
+		&lt;div id="banner-container"&gt;
+
+			&lt;!-- start of banner --&gt;
+			&lt;div id="banner"&gt;
+				${on main page add slider, sign-up, news-letter etc}
+			&lt;/div&gt;
+			&lt;!-- end of banner --&gt;
+
+		&lt;/div&gt;
+		&lt;!-- end of banner container --&gt;
+
+		&lt;!-- start of content container --&gt;
+		&lt;div id="content-container"&gt; 
+
+			&lt;!-- start of content --&gt;
+			&lt;div id="content"&gt;
+				${blueprint css-grid, add body content}
+			&lt;/div&gt;
+			&lt;!-- end of content --&gt;
+
+		&lt;/div&gt;
+		&lt;!-- end of content container --&gt;
+
+		&lt;!-- start of footer container --&gt;
+		&lt;div id="footer-container"&gt;
+
+			&lt;!-- start of footer top --&gt;
+			&lt;div id="footer-top"&gt;
+				${footer top}
+			&lt;/div&gt;
+			&lt;!-- end of footer top--&gt;
+
+			&lt;!-- start of footer --&gt;
+			&lt;div id="footer"&gt;
+				${widgets, contact form etc}
+			&lt;/div&gt;
+			&lt;!-- end of footer --&gt;
+
+			&lt;!-- start of footer bottom --&gt;
+			&lt;div id="footer-bottom"&gt;
+				${&amp;copy; Copyright} ${Company} ${2011}
+					&lt;ul&gt; 
+						&lt;li id="bottomnav"&gt;&lt;a href="${target url1}"&gt;${url text1}&lt;/a&gt;&lt;/li&gt;
+						&lt;li id="bottomnav"&gt;&lt;a href="${target url2}"&gt;${url text2}&lt;/a&gt;&lt;/li&gt;
+						&lt;li id="bottomnav"&gt;&lt;a href="${target url2}"&gt;${url text2}&lt;/a&gt;&lt;/li&gt;
+					&lt;/ul&gt;
+			&lt;/div&gt;
+			&lt;!-- end of footer bottom--&gt;
+
+		&lt;/div&gt;
+		&lt;!-- end of footer container --&gt;
+
+	&lt;/body&gt;
+&lt;!-- end of body --&gt;
+
+&lt;/html&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">textarea</trigger>
+            <description>text area input</description>
+            <template>&lt;textarea rows="${2}" cols="${20}"&gt;
+	${text input}
+&lt;/textarea&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">textinput</trigger>
+            <description>form text input</description>
+            <template>${Text Input Name}: &lt;input type="text" name="${text input name}" /&gt; &lt;br /&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="html">ulist</trigger>
+            <description>unordered list</description>
+            <template>&lt;ul&gt;
+	&lt;li&gt;${item1}&lt;/li&gt;
+	&lt;li&gt;${item2}&lt;/li&gt;
+	&lt;li&gt;${item3}&lt;/li&gt;
+	&lt;li&gt;${...}&lt;/li&gt;
+&lt;/ul&gt;</template>
+        </entry>
+    </snippet>
+</scribes>

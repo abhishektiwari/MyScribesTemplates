@@ -1,19 +1,59 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<scribes version="0.1"><snippet><entry><trigger id="js">//</trigger><description>Single line comment</description><template>// ${Add your comment here}</template></entry><entry><trigger id="js">/*</trigger><description>Multi-line comment</description><template>/*
+<scribes version="0.1">
+    <snippet>
+        <entry>
+            <trigger id="js">//</trigger>
+            <description>Single line comment</description>
+            <template>// ${Add your comment here}</template>
+        </entry>
+        <entry>
+            <trigger id="js">/*</trigger>
+            <description>Multi-line comment</description>
+            <template>/*
   ${your comments here}
  
- */</template></entry><entry><trigger id="js">/**</trigger><description>Multi-line comment</description><template>/**
+ */</template>
+        </entry>
+        <entry>
+            <trigger id="js">/**</trigger>
+            <description>Multi-line comment</description>
+            <template>/**
  * ${your comments here}
  *
  *
- */</template></entry><entry><trigger id="js">afun</trigger><description>anonymous function</description><template>function (${var1},${var2},${...},${varN})
+ */</template>
+        </entry>
+        <entry>
+            <trigger id="js">afun</trigger>
+            <description>anonymous function</description>
+            <template>function (${var1},${var2},${...},${varN})
   {
     ${some code here}
     
     return ${something}
-  }</template></entry><entry><trigger id="js">alert</trigger><description>Alert</description><template>alert("${add something here}");
-// window.alert(), self.alert(), or just alert()</template></entry><entry><trigger id="js">break</trigger><description>break</description><template>break ${labelname}
-// exiting a loop or switch</template></entry><entry><trigger id="js">cfun</trigger><description>Function constructor</description><template>var ${variablename} = new Function(${Arg1}, ${Arg2}, ${...}, "${statement1};${statement2};${...};");</template></entry><entry><trigger id="js">condef</trigger><description>constructor</description><template>// Then define a constructor method for our ${ClassName} objects.
+  }</template>
+        </entry>
+        <entry>
+            <trigger id="js">alert</trigger>
+            <description>Alert</description>
+            <template>alert("${add something here}");
+// window.alert(), self.alert(), or just alert()</template>
+        </entry>
+        <entry>
+            <trigger id="js">break</trigger>
+            <description>break</description>
+            <template>break ${labelname}
+// exiting a loop or switch</template>
+        </entry>
+        <entry>
+            <trigger id="js">cfun</trigger>
+            <description>Function constructor</description>
+            <template>var ${variablename} = new Function(${Arg1}, ${Arg2}, ${...}, "${statement1};${statement2};${...};");</template>
+        </entry>
+        <entry>
+            <trigger id="js">condef</trigger>
+            <description>constructor</description>
+            <template>// Then define a constructor method for our ${ClassName} objects.
 // The constructor initializes properties and also assigns methods.
 function ${ClassName}(${arg1}, ${arg2}, ${...})
 {
@@ -27,46 +67,111 @@ function ${ClassName}(${arg1}, ${arg2}, ${...})
   this.${var1} = ${Object_function1};
   ${....}
 }
-</template></entry><entry><trigger id="js">conmet</trigger><description>constructor method</description><template>// Define some functions that will be used as methods.
+</template>
+        </entry>
+        <entry>
+            <trigger id="js">conmet</trigger>
+            <description>constructor method</description>
+            <template>// Define some functions that will be used as methods.
 function ${Object_function1}() { ${use object properties using this and return something} }
-function ${Object_function2}() { ${use object properties using this and return something} }</template></entry><entry><trigger id="js">conpro</trigger><description>constructor prototype</description><template>// A property that will be shared by all ${ClassName} objects
+function ${Object_function2}() { ${use object properties using this and return something} }</template>
+        </entry>
+        <entry>
+            <trigger id="js">conpro</trigger>
+            <description>constructor prototype</description>
+            <template>// A property that will be shared by all ${ClassName} objects
 ${ClassName}.prototype.${propertyname} = ${value1};
-</template></entry><entry><trigger id="js">continue</trigger><description>continue</description><template>continue ${labelname};
+</template>
+        </entry>
+        <entry>
+            <trigger id="js">continue</trigger>
+            <description>continue</description>
+            <template>continue ${labelname};
 // restarts a loop in a new iteration
-// only within the body of a while, for, or for/in loop</template></entry><entry><trigger id="js">cscript</trigger><description>Script with CDATA</description><template>&lt;script type="text/javascript"&gt;
+// only within the body of a while, for, or for/in loop</template>
+        </entry>
+        <entry>
+            <trigger id="js">cscript</trigger>
+            <description>Script with CDATA</description>
+            <template>&lt;script type="text/javascript"&gt;
   //&lt;![CDATA[
     ${Content of your Javascript goes here}
   //]]&gt;
-&lt;/script&gt;</template></entry><entry><trigger id="js">domgetelementbyid</trigger><description>Get DOM element by id</description><template>document.getElementById("${your id}")</template></entry><entry><trigger id="js">domwrite</trigger><description>Document write</description><template>document.write("${add some HTML here} ");
-//window.document.write() or document.write()</template></entry><entry><trigger id="js">for</trigger><description>for </description><template>for (var ${var}=${startvalue};${var}&lt;=${endvalue};${var}++)
+&lt;/script&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="js">domgetelementbyid</trigger>
+            <description>Get DOM element by id</description>
+            <template>document.getElementById("${your id}")</template>
+        </entry>
+        <entry>
+            <trigger id="js">domwrite</trigger>
+            <description>Document write</description>
+            <template>document.write("${add some HTML here} ");
+//window.document.write() or document.write()</template>
+        </entry>
+        <entry>
+            <trigger id="js">for</trigger>
+            <description>for </description>
+            <template>for (var ${var}=${startvalue};${var}&lt;=${endvalue};${var}++)
   {
     ${code to be executed}
-  }</template></entry><entry><trigger id="js">forin</trigger><description>for-in</description><template>for (${variable} in ${object})
+  }</template>
+        </entry>
+        <entry>
+            <trigger id="js">forin</trigger>
+            <description>for-in</description>
+            <template>for (${variable} in ${object})
   {
     ${code to be executed}
-  }</template></entry><entry><trigger id="js">fun</trigger><description>function</description><template>function ${functionname}(${var1},${var2},${...},${varN})
+  }</template>
+        </entry>
+        <entry>
+            <trigger id="js">fun</trigger>
+            <description>function</description>
+            <template>function ${functionname}(${var1},${var2},${...},${varN})
   {
     ${some code here}
     
     return ${something}
-  }</template></entry><entry><trigger id="js">hdr</trigger><description>Header</description><template>// Copyright © 2010 ${Abhishek Tiwari} (abhishek@abhishek-tiwari.com).
+  }</template>
+        </entry>
+        <entry>
+            <trigger id="js">hdr</trigger>
+            <description>Header</description>
+            <template>// Copyright © 2010 ${Abhishek Tiwari} (abhishek@abhishek-tiwari.com).
 
 /**
  * @fileoverview This file is part of ${ProjectName}
  * Files included in this package ${ProjectName} are copyrighted freeware
  * distributed under the terms and conditions as specified in file LICENSE.
  * @author abhishek@abhishek-tiwari.com (Abhishek Tiwari)
- */</template></entry><entry><trigger id="js">if</trigger><description>if condition</description><template>if (${condition})
+ */</template>
+        </entry>
+        <entry>
+            <trigger id="js">if</trigger>
+            <description>if condition</description>
+            <template>if (${condition})
   {
     ${code to be executed if condition is true}
-  }</template></entry><entry><trigger id="js">ifelse</trigger><description>if-else</description><template>if (${condition})
+  }</template>
+        </entry>
+        <entry>
+            <trigger id="js">ifelse</trigger>
+            <description>if-else</description>
+            <template>if (${condition})
   {
     ${code to be executed if condition is true}
   }
 else
   {
     ${code to be executed if condition is not true}
-  }</template></entry><entry><trigger id="js">ifelseif</trigger><description>if-else if-else</description><template>if (${condition1})
+  }</template>
+        </entry>
+        <entry>
+            <trigger id="js">ifelseif</trigger>
+            <description>if-else if-else</description>
+            <template>if (${condition1})
   {
     ${code to be executed if condition1 is true}
   }
@@ -77,10 +182,44 @@ else if (${condition2})
 else
   {
     ${code to be executed if condition1 and condition2 are not true}
-  }</template></entry><entry><trigger id="js">label</trigger><description>control label</description><template>${label name}:
-  ${statements}</template></entry><entry><trigger id="js">script</trigger><description>script</description><template>&lt;script type="text/javascript"&gt;
+  }</template>
+        </entry>
+        <entry>
+            <trigger id="js">label</trigger>
+            <description>control label</description>
+            <template>${label name}:
+  ${statements}</template>
+        </entry>
+        <entry>
+            <trigger id="js">script</trigger>
+            <description>script</description>
+            <template>&lt;script type="text/javascript"&gt;
   ${Content of your Javascript goes here}
-&lt;/script&gt;</template></entry><entry><trigger id="js">scriptsrc</trigger><description>script src</description><template>&lt;script type="text/javascript" src="${URL}"&gt;&lt;/script&gt;</template></entry><entry><trigger id="js">switch</trigger><description>switch</description><template>switch(${variable to match})
+&lt;/script&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="js">scriptsrc</trigger>
+            <description>script src</description>
+            <template>&lt;script type="text/javascript" src="${URL}"&gt;&lt;/script&gt;</template>
+        </entry>
+        <entry>
+            <trigger id="js">stringmethod</trigger>
+            <description>string method</description>
+            <template>var ${result} = ${stringvar}.${methodName}();
+//toUpperCase, toLowerCase, indexOf, charAt, 
+//substring</template>
+        </entry>
+        <entry>
+            <trigger id="js">stringvar</trigger>
+            <description>var string</description>
+            <template>var ${stringvar} =  new String("${your string}");
+//Optionally, var ${stringvar} = "${your string}"
+</template>
+        </entry>
+        <entry>
+            <trigger id="js">switch</trigger>
+            <description>switch</description>
+            <template>switch(${variable to match})
 {
   case 1:
     ${execute code block 1}
@@ -91,17 +230,62 @@ else
     ${add more cases here}
   default:
     ${code to be executed if n is different from case 1 and 2}
-}</template></entry><entry><trigger id="js">throw</trigger><description>user-defined exception</description><template>throw(${user-defined exception});</template></entry><entry><trigger id="js">try</trigger><description>try-catch</description><template>try
+}</template>
+        </entry>
+        <entry>
+            <trigger id="js">throw</trigger>
+            <description>user-defined exception</description>
+            <template>throw(${user-defined exception});</template>
+        </entry>
+        <entry>
+            <trigger id="js">try</trigger>
+            <description>try-catch</description>
+            <template>try
   {
     ${Run some code here}
   }
 catch(err)
   {
     ${Handle errors here}
-  }</template></entry><entry><trigger id="js">var</trigger><description>variable</description><template>var ${name_1} = ${value_l};</template></entry><entry><trigger id="js">while</trigger><description>while loop</description><template>while (${var}&lt;=${endvalue})
+  }</template>
+        </entry>
+        <entry>
+            <trigger id="js">tryf</trigger>
+            <description>try-catch-finally</description>
+            <template>try
+  {
+    ${Run some code here}
+  }
+catch(err)
+  {
+    ${Handle errors here}
+  }
+finally
+  {
+    ${statements to run, exception or not}
+  }
+</template>
+        </entry>
+        <entry>
+            <trigger id="js">var</trigger>
+            <description>variable</description>
+            <template>var ${name_1} = ${value_l};</template>
+        </entry>
+        <entry>
+            <trigger id="js">while</trigger>
+            <description>while loop</description>
+            <template>while (${var}&lt;=${endvalue})
   {
     ${code to be executed}
-  }</template></entry><entry><trigger id="js">with</trigger><description>with</description><template>with (object)
+  }</template>
+        </entry>
+        <entry>
+            <trigger id="js">with</trigger>
+            <description>with</description>
+            <template>with (object)
   {
     ${Access object elements directly here}
-  }</template></entry></snippet></scribes>
+  }</template>
+        </entry>
+    </snippet>
+</scribes>
