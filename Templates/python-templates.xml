@@ -7,6 +7,11 @@
             <template>self.${cursor}</template>
         </entry>
         <entry>
+            <trigger id="python">apath</trigger>
+            <description>get absolute path</description>
+            <template>os.path.abspath(${path})</template>
+        </entry>
+        <entry>
             <trigger id="python">bcmt</trigger>
             <description>Block Comment</description>
             <template>################################################################################
@@ -28,27 +33,14 @@
             <template>${abstr} = b'${mybinarystring}'</template>
         </entry>
         <entry>
-            <trigger id="python">e</trigger>
-            <description>Class as function decorators</description>
-            <template># Not support class method functions
-class ${decorator}:
-	def __init__(self, ${myfunc}):
-		self.${myfunc} = ${myfunc}
-	def __call__(self, *args, **kwargs):
-		# Use self.func and args
-		# self.${myfunc}(*args, **kwargs) calls original function
-		${do something with function call, args, kwargs}
-		return ${something from above call}
-
-@${decorator}
-def func(${x}, ${y}, ${...}):
-	${do something here}
-	return ${something}</template>
-        </entry>
-        <entry>
             <trigger id="python">cap</trigger>
             <description>only its first character capitalized</description>
             <template>${astr}.capitalize()</template>
+        </entry>
+        <entry>
+            <trigger id="python">cd</trigger>
+            <description>Change the current working directory to path.</description>
+            <template>os.chdir(${path})</template>
         </entry>
         <entry>
             <trigger id="python">class</trigger>
@@ -209,6 +201,24 @@ def func(${x}, ${y}, ${...}):
 # Py3, {${x}:${x} for ${x} in items}</template>
         </entry>
         <entry>
+            <trigger id="python">e</trigger>
+            <description>Class as function decorators</description>
+            <template># Not support class method functions
+class ${decorator}:
+	def __init__(self, ${myfunc}):
+		self.${myfunc} = ${myfunc}
+	def __call__(self, *args, **kwargs):
+		# Use self.func and args
+		# self.${myfunc}(*args, **kwargs) calls original function
+		${do something with function call, args, kwargs}
+		return ${something from above call}
+
+@${decorator}
+def func(${x}, ${y}, ${...}):
+	${do something here}
+	return ${something}</template>
+        </entry>
+        <entry>
             <trigger id="python">edic</trigger>
             <description>Empty Dictionary</description>
             <template>${adic} = {}</template>
@@ -229,6 +239,11 @@ def func(${x}, ${y}, ${...}):
             <description>An else statement</description>
             <template>else:
 	${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">endswith</trigger>
+            <description>return true if string ends with the given suffix</description>
+            <template>${astr}.endswith(${suffix}, ${start}, ${end})</template>
         </entry>
         <entry>
             <trigger id="python">enum</trigger>
@@ -399,6 +414,22 @@ else:
 	${cursor}</template>
         </entry>
         <entry>
+            <trigger id="python">input</trigger>
+            <description>input from cmd, python3 </description>
+            <template>${var} = raw_input('${prompt massage ?}')
+#Py3, use raw_input is renamed as input</template>
+        </entry>
+        <entry>
+            <trigger id="python">isdir</trigger>
+            <description>TRUE if path is a directory</description>
+            <template>os.path.isdir(path)</template>
+        </entry>
+        <entry>
+            <trigger id="python">isfile</trigger>
+            <description>true if path is a file</description>
+            <template>os.path.isfile(${path})</template>
+        </entry>
+        <entry>
             <trigger id="python">iterable</trigger>
             <description>iterable, iterator and generator</description>
             <template>An iterable object can be iterated over multiple times (a sequence such as list, tuple, string etc)
@@ -411,6 +442,11 @@ A generator is a function that creates, or generates, an iterator. Use yield in 
             <trigger id="python">join</trigger>
             <description>Join the sequence of strings</description>
             <template>${astr}.join(${iterable or sequence})</template>
+        </entry>
+        <entry>
+            <trigger id="python">jpath</trigger>
+            <description>oin one or more path components os independent</description>
+            <template>os.path.join(${dirpath}, ${name})</template>
         </entry>
         <entry>
             <trigger id="python">keyvalue</trigger>
@@ -484,6 +520,11 @@ for ${value} in sorted(set(${aseq})):
             <trigger id="python">lower</trigger>
             <description>Change to lower case</description>
             <template>${astr}.lower()</template>
+        </entry>
+        <entry>
+            <trigger id="python">ls</trigger>
+            <description>list directory</description>
+            <template>os.listdir(${path})</template>
         </entry>
         <entry>
             <trigger id="python">lst</trigger>
@@ -585,6 +626,11 @@ ${enter_documentation_string_here}
 ${cursor}</template>
         </entry>
         <entry>
+            <trigger id="python">mkdir</trigger>
+            <description>make a new directory</description>
+            <template>os.mkdir(${path}, ${mode})</template>
+        </entry>
+        <entry>
             <trigger id="python">nestedwith</trigger>
             <description>Nested or multiple with statements</description>
             <template>with ${expression1} ${as} ${variable1}: 
@@ -661,6 +707,11 @@ ${file_object}.close()</template>
             <template>pass</template>
         </entry>
         <entry>
+            <trigger id="python">pwd</trigger>
+            <description>a string representing the current working directory</description>
+            <template>os.getcwd()</template>
+        </entry>
+        <entry>
             <trigger id="python">range</trigger>
             <description>range function</description>
             <template>range(${start}, ${stop}, ${step}) 
@@ -681,6 +732,16 @@ for ${row} in ${csvreader}:
             <description>read a fileobject</description>
             <template>for ${line} in ${file_object}:
 	${do something here}</template>
+        </entry>
+        <entry>
+            <trigger id="python">readline</trigger>
+            <description> reads just a single line from a file at a time</description>
+            <template>${file_object}.readline()</template>
+        </entry>
+        <entry>
+            <trigger id="python">readlines</trigger>
+            <description>read all lines as list from file object</description>
+            <template>${file_object}.readlines()</template>
         </entry>
         <entry>
             <trigger id="python">replace</trigger>
@@ -768,6 +829,11 @@ setup(**config)</template>
             <trigger id="python">sprint</trigger>
             <description>Print String Statement</description>
             <template>print "${string}"${cursor}</template>
+        </entry>
+        <entry>
+            <trigger id="python">startswith</trigger>
+            <description>Return true if string starts with the given prefix</description>
+            <template>${astr}.startswith(${prefix}, ${start}, ${end})</template>
         </entry>
         <entry>
             <trigger id="python">str</trigger>
@@ -974,6 +1040,11 @@ ${else:}
             <trigger id="python">write</trigger>
             <description>write the string to file object</description>
             <template>${file_object}.write(${str}) # Not str, it needs to be converted to a str first</template>
+        </entry>
+        <entry>
+            <trigger id="python">writelines</trigger>
+            <description>Writes all strings in list L onto file</description>
+            <template>${file_object}.writelines(${str list})</template>
         </entry>
         <entry>
             <trigger id="python">yield</trigger>
