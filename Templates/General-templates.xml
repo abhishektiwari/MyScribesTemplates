@@ -4,7 +4,7 @@
         <entry>
             <trigger id="General">License</trigger>
             <description>License</description>
-            <template>Copyright (c) 2010 Abhishek Tiwari
+            <template>Copyright (c) 2010-2011 Abhishek Tiwari
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -26,6 +26,21 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</template>
         </entry>
         <entry>
+            <trigger id="General">rdesc</trigger>
+            <description>R</description>
+            <template>Package: ${Your R package name}
+Title: ${Title for your R package}
+Description: ${A multi-line description for your R package}.
+URL: https://github.com/abhishektiwari/${Your R package name}
+Version: ${0.1}
+Maintainer: ${Abhishek Tiwari} &lt;${abhishek@abhishek-tiwari.com}&gt;
+Author: ${Abhishek Tiwari} &lt;${abhishek@abhishek-tiwari.com}&gt;
+Depends: R (&gt;= 2.11.0), ${ggplot2} 
+Suggests: ${RCurl}, ${ts}, ${stats}, ${utils}
+Imports: ${rjson}, ${RCurl}
+License: ${MIT}</template>
+        </entry>
+        <entry>
             <trigger id="General">Readme</trigger>
             <description>Read me</description>
             <template>== ${ProjectName}
@@ -45,9 +60,7 @@ including a list of known issues and troubleshooting information,
 refer to: http://wiki.github.com/abhishektiwari/${ProjectName}/
 
 == Directory Hierarchy
-
-
-		Add here
+See the DirTree.txt file
 
 == Authors and copyright
 © 2010 Abhishek Tiwari (abhishek@abhishek-tiwari.com)

@@ -208,6 +208,18 @@ if (is.null(ylim)) {
 eval(${var})</template>
         </entry>
         <entry>
+            <trigger id="r">devlib</trigger>
+            <description>Load files in R directory into workspace</description>
+            <template># Adopted from http://goo.gl/2lO2q
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!@
+# Delete this file when packge development is over
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!@
+
+# Load all files with extension .R into the workspace
+sapply(list.files("R", pattern="\\.R$", ignore.case=TRUE, full.names=TRUE), source)
+invisible(NULL)</template>
+        </entry>
+        <entry>
             <trigger id="r">dframe</trigger>
             <description>data.frame made of vector columns. a data frame can have different data types for each column, while a matrix is all one data type</description>
             <template>${dataframe} &lt;- data.frame(${colName1} = ${vec1}, ${colName2} = ${vec2}, ${colName3} = ${vec3}, ${...})
@@ -398,7 +410,7 @@ close(fcon)</template>
         <entry>
             <trigger id="r">if</trigger>
             <description>if condition</description>
-            <template>if(cond)  {
+            <template>if(${cond})  {
   ${expr}
 }</template>
         </entry>
